@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="3.9.0.less.min.js" />
+    <Content Include="images\3M.jpg" />
     <Content Include="images\bonnie_castillo.jpg" />
     <Content Include="images\dalai_lama.jpg" />
     <Content Include="images\david_schneider.jpg" />
