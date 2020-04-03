@@ -1,0 +1,17 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Tom Russell -- Developer -- @tlrss
+    Dominic Humphreys -- Developer -- @dominijk
+    Katz Kiely -- Project Lead -- @katz
+
+# THANKS
+
+    All health and social care workers, frontline and throughout the NHS and beyond.
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5
+    Normalize.css
