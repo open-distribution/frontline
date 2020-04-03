@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="3.9.0.less.js" />
     <Content Include="3.9.0.less.min.js" />
     <Content Include="images\3M.jpg" />
     <Content Include="images\bonnie_castillo.jpg" />
@@ -80,7 +81,9 @@
     <Content Include="images\logo_trans.png" />
     <Content Include="images\logo_tweets.jpg" />
     <Content Include="images\map.jpg" />
+    <Content Include="map.html" />
     <Content Include="index.html" />
+    <Content Include="style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

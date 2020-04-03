@@ -119,7 +119,7 @@ body {
                         color: @color_background_dark;
                     }
                 }
-            
+
                 #facebook {
                     border: solid blue @border_thickness_test;
                 }
@@ -268,6 +268,17 @@ body {
                     height: 100%;
                     min-height: 800px;
                     .box_4;
+
+                    #map_container {
+                        border: solid purple @border_thickness_test;
+                        width: 600px;
+                        height: 400px;
+                        position: relative;
+                        outline: none;
+                        margin:0;
+                        padding:0;
+                        box-sizing:content-box;
+                    }
                 }
             }
         }
@@ -469,4 +480,10 @@ a {
 .faa-parent.animated-hover:hover > .faa-tada.faa-slow {
     -webkit-animation: tada 3s linear infinite;
     animation: tada 3s linear infinite;
+}
+
+
+#mapid {
+    height: 180px;
+    width:180px;
 }
