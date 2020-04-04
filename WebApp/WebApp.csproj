@@ -69,6 +69,13 @@
   <ItemGroup>
     <Content Include="3.9.0.less.js" />
     <Content Include="3.9.0.less.min.js" />
+    <Content Include="android-chrome-192x192.png" />
+    <Content Include="android-chrome-512x512.png" />
+    <Content Include="apple-touch-icon.png" />
+    <Content Include="browserconfig.xml" />
+    <Content Include="favicon-16x16.png" />
+    <Content Include="favicon-32x32.png" />
+    <Content Include="favicon.ico" />
     <Content Include="images\3M.jpg" />
     <Content Include="images\bonnie_castillo.jpg" />
     <Content Include="images\dalai_lama.jpg" />
@@ -83,6 +90,8 @@
     <Content Include="images\map.jpg" />
     <Content Include="map.html" />
     <Content Include="index.html" />
+    <Content Include="mstile-150x150.png" />
+    <Content Include="safari-pinned-tab.svg" />
     <Content Include="style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -97,6 +106,7 @@
     <None Include="packages.config" />
     <Content Include="README.md" />
     <Content Include="style.less" />
+    <Content Include="site.webmanifest" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
