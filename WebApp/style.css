@@ -6,14 +6,24 @@
     border-radius: 50%;
 }
 
+.major_title,
+.minor_title {
+    text-transform: uppercase;
+    background-color: #ffffff;
+    color: #00966B;
+    display: inline-block;
+}
+
 .major_title {
     font-size: 3em;
-    color: #00966b;
+    padding: 0px 32px;
+    border-radius: 24px;
 }
 
 .minor_title {
     font-size: 2em;
-    color: #4eb697;
+    padding: 0px 16px;
+    border-radius: 12px;
 }
 
 .act_as_btn {
@@ -52,7 +62,12 @@
 
 .box_4 {
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
+
+    .box_4:hover {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.95), 0 10px 10px rgba(0, 0, 0, 0.22);
+    }
 
 html {
     box-sizing: border-box;
@@ -68,7 +83,7 @@ html,
 body {
     font-family: 'DM Sans', Helvetica, Verdana, sans-serif;
     font-weight: normal;
-    background: #00966b;
+    background: #00966B;
     color: #ffffff;
 }
 
@@ -80,18 +95,17 @@ body {
 }
 
     body header {
-        border: solid #ff0000 0px;
+        border: solid red 0px;
     }
 
         body header #title_bar {
             display: flex;
             align-items: baseline;
             justify-content: flex-start;
-            box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
         }
 
             body header #title_bar #icons {
-                border: solid #ff0000 0px;
+                border: solid red 0px;
                 margin-left: 30px;
                 margin-right: 30px;
                 font-size: 1em;
@@ -100,7 +114,7 @@ body {
 
                 body header #title_bar #icons #twitter,
                 body header #title_bar #icons #facebook {
-                    border: solid #ff0000 0px;
+                    border: solid red 0px;
                     margin-left: 30px;
                 }
 
@@ -110,26 +124,29 @@ body {
                     }
 
                 body header #title_bar #icons #facebook {
-                    border: solid #0000ff 0px;
+                    border: solid blue 0px;
                 }
 
             body header #title_bar #title {
+                text-transform: uppercase;
+                background-color: #ffffff;
+                color: #00966B;
+                display: inline-block;
                 font-size: 3em;
-                font-weight: normal;
-                text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+                padding: 0px 32px;
+                border-radius: 24px;
             }
 
         body header nav {
-            background-color: #fff;
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
             body header nav ol {
-                border: solid #800080 0px;
+                border: solid purple 0px;
                 /* flex items */
                 display: flex;
                 flex-wrap: wrap;
-                justify-content: flex-end;
+                justify-content: flex-start;
                 align-items: stretch;
                 /* remove numbers */
                 list-style: none;
@@ -142,8 +159,9 @@ body {
                     padding: 10px 50px 5px 50px;
                     display: inline-block;
                     text-decoration: none;
-                    border: solid #0000ff 0px;
-                    color: #156d84;
+                    border: solid blue 0px;
+                    text-transform: uppercase;
+                    /*color: @color_highlight;*/
                     transition: all 1s ease-out;
                     font-family: 'DM Sans', Helvetica, Verdana, sans-serif;
                 }
@@ -155,9 +173,7 @@ body {
     body #main_content {
         flex: 1;
         overflow: auto;
-        border: solid 0px #0000ff;
-        background: #ffffff;
-        color: #0a150d;
+        border: solid 0px blue;
         padding-top: 50px;
     }
 
@@ -169,157 +185,143 @@ body {
         }
 
             body #main_content #core_content #intro {
-                width: 50%;
-                border: solid #008000 0px;
-                padding-left: 100px;
-                color: #0a150d;
+                width: 30%;
+                padding-left: 2%;
+                border: solid green 0px;
             }
 
                 body #main_content #core_content #intro h1 {
-                    font-size: 2em;
-                    color: #4eb697;
+                    text-transform: uppercase;
+                    background-color: #ffffff;
+                    color: #00966B;
+                    display: inline-block;
+                    font-size: 3em;
+                    padding: 0px 32px;
+                    border-radius: 24px;
+                    margin-bottom: 0px;
+                    margin-top: 0px;
                 }
 
-                body #main_content #core_content #intro #intro_title {
-                    font-size: 3em;
-                    color: #00966b;
+                body #main_content #core_content #intro h2 {
+                    text-transform: uppercase;
+                    background-color: #ffffff;
+                    color: #00966B;
+                    display: inline-block;
+                    font-size: 2em;
+                    padding: 0px 16px;
+                    border-radius: 12px;
+                    margin-bottom: 0px;
+                    margin-top: 0px;
                 }
 
                 body #main_content #core_content #intro #request,
                 body #main_content #core_content #intro #response {
-                    border: solid #008000 0px;
+                    border: solid green 0px;
                     display: flex;
                     justify-content: flex-start;
                 }
 
-                    body #main_content #core_content #intro #request .icon,
-                    body #main_content #core_content #intro #response .icon {
-                        width: 100px;
-                        margin-top: 30px;
-                    }
-
-                        body #main_content #core_content #intro #request .icon i,
-                        body #main_content #core_content #intro #response .icon i {
-                            color: grey;
-                        }
-
                     body #main_content #core_content #intro #request #request_text,
                     body #main_content #core_content #intro #response #request_text {
-                        border: solid #808080 0px;
+                        border: solid gray 0px;
                         display: inline;
-                        font-size: 2em;
+                        /*font-size: 2em;*/
                         width: 550px;
                     }
 
-                    body #main_content #core_content #intro #request ul li,
-                    body #main_content #core_content #intro #response ul li {
-                        padding-top: .5em;
-                        font-size: 1.5em;
-                    }
-
-                    body #main_content #core_content #intro #request .example,
-                    body #main_content #core_content #intro #response .example {
-                        border: solid #7fffd4 0px;
-                        color: lightblue;
-                        font-size: 2em;
-                        float: right;
-                    }
-
-                        body #main_content #core_content #intro #request .example:hover,
-                        body #main_content #core_content #intro #response .example:hover {
-                            color: #156d84;
-                        }
-
                 body #main_content #core_content #intro #request {
-                    margin-bottom: 40px;
+                    margin-bottom: 10px;
                 }
 
-                    body #main_content #core_content #intro #request .example {
-                        margin-top: 160px;
-                        margin-left: 50px;
+                    body #main_content #core_content #intro #request p {
+                        font-size: 2em;
                     }
 
-                body #main_content #core_content #intro #response .example {
-                    margin-top: 100px;
-                    margin-left: 320px;
+                body #main_content #core_content #intro #response p {
+                    font-size: 1.5em;
+                    margin-right: 100px;
                 }
 
             body #main_content #core_content #map {
-                width: 50%;
-                border: solid #ff0000 0px;
-                padding-top: 50px;
-                padding-right: 100px;
+                width: 70%;
+                border: solid red 0px;
             }
 
                 body #main_content #core_content #map #map_inner {
                     background-size: cover;
                     height: 100%;
-                    min-height: 800px;
                     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+                    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
                 }
 
+                    body #main_content #core_content #map #map_inner:hover {
+                        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.95), 0 10px 10px rgba(0, 0, 0, 0.22);
+                    }
+
                     body #main_content #core_content #map #map_inner #map_container {
-                        border: solid #800080 0px;
+                        border: solid purple 0px;
                         width: 600px;
                         height: 400px;
                         position: relative;
                         outline: none;
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: content-box;
                     }
 
         body #main_content #twitter_feeds {
-            border: solid 0px #0000ff;
-            margin-top: 200px;
+            border: solid 0px blue;
+            margin-top: 0px;
             margin-bottom: 100px;
         }
 
-            body #main_content #twitter_feeds h1 {
-                padding-left: 100px;
-                font-size: 3em;
-                color: #00966b;
-            }
-
             body #main_content #twitter_feeds #feeds {
-                border: solid 0px #0000ff;
+                border: solid 0px blue;
                 display: flex;
                 justify-content: space-evenly;
-                padding-left: 50px;
-                padding-right: 50px;
             }
 
                 body #main_content #twitter_feeds #feeds h2 {
                     margin-bottom: 50px;
                     text-align: center;
+                    text-transform: uppercase;
+                    background-color: #ffffff;
+                    color: #00966B;
+                    display: inline-block;
                     font-size: 2em;
-                    color: #4eb697;
+                    padding: 0px 16px;
+                    border-radius: 12px;
                 }
 
                 body #main_content #twitter_feeds #feeds #need {
-                    border: solid 0px #ff0000;
+                    border: solid 0px red;
                     width: 30%;
                 }
 
                 body #main_content #twitter_feeds #feeds #patterns {
-                    border: solid 0px #ffff00;
+                    border: solid 0px yellow;
                     width: 30%;
                 }
 
                 body #main_content #twitter_feeds #feeds #supplied {
-                    border: solid 0px #008000;
+                    border: solid 0px green;
                     width: 30%;
                 }
 
                 body #main_content #twitter_feeds #feeds .tweet {
+                    color: #0a150d;
+                    background-color: #ffffff;
                     display: flex;
                     margin-bottom: 20px;
                     padding: 10px 20px;
                     border-radius: 5px;
+                    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
                     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.05);
                     cursor: pointer;
                 }
 
                     body #main_content #twitter_feeds #feeds .tweet:hover {
-                        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+                        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.95), 0 10px 10px rgba(0, 0, 0, 0.22);
                     }
 
                     body #main_content #twitter_feeds #feeds .tweet .image {
@@ -343,7 +345,7 @@ body {
 
                         body #main_content #twitter_feeds #feeds .tweet .body .date_time {
                             margin-top: 10px;
-                            color: #808080;
+                            color: gray;
                         }
 
     body footer {
@@ -355,7 +357,7 @@ body {
         }
 
 .fa-inverse {
-    color: #00966b;
+    color: #00966B;
 }
 
 .fa-stack {
@@ -372,10 +374,9 @@ a {
     vertical-align: top;
     width: 80px;
     height: 80px;
-    border: solid #ff0000 0px;
+    border: solid red 0px;
     display: inline-block;
 }
-/* TADA https://l-lin.github.io/font-awesome-animation/ */
 @-webkit-keyframes tada {
     0% {
         -webkit-transform: scale(1);

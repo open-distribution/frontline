@@ -5,28 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>#FrontLine | Voices of Heroes</title>
 
-
     <script src="https://kit.fontawesome.com/e10dd0382c.js" crossorigin="anonymous"></script>
-
-
-    <!--either less.js or leaflet hmmm -->
-    <link rel="stylesheet/less" type="text/css" href="style.less" />
-    <script src="3.9.0.less.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    <!--<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
           integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
           crossorigin="" />
 
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
             integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-            crossorigin=""></script>
+            crossorigin=""></script>-->
 
+    <!--either less.js or leaflet hmmm -->
+    <!--<link rel="stylesheet/less" type="text/css" href="style.less" />
+    <script src="3.9.0.less.min.js"></script>-->
     <!--<link rel="stylesheet/css" type="text/css" href="style.css" />-->
-
+    <link href="style.css" rel="stylesheet" />
 </head>
-<body>  
+<body>
 
     <header>
 
@@ -41,7 +38,7 @@
 (I know this is a TV show link just as an e.g.)" class="faa-parent animated-hover"><i class="faa-tada fab fa-facebook fa-4x"></i></a>
             </span>
 
-            <h1 id="title">Giving Frontline Heroes a Voice</h1>
+            <h1 id="title">Giving #Frontline Heroes a Voice</h1>
 
         </div>
 
@@ -58,49 +55,45 @@
     <div id="main_content">
 
         <div id="core_content">
-
             <div id="intro">
 
-                <h1 id="intro_title">We're Here for You</h1>
+
+
+
+                <h1>We're Here to Help</h1>
+
+
+
 
                 <div id="request">
-                    <div class="icon">
-                        <i class="fas fa-user-nurse fa-3x"></i>
-                    </div>
 
-                    <div id="request_text" title="Tweet a message with #frontline #yourpostcode #yourneeds e.g.
+                    <div id="request_text" title="Tweet a message with #frontline #yourpostcode #yourneed e.g.
 #frontline #HR12ER #masks">
-                        <p>If you're working with COVID patients on the frontline</p>
+                        <p>So we can promote your need for protective gear, tweet a selfie with ALL the following hashtags</p>
                         <p class="indent">
-                            tweet <strong>#frontline</strong> your <strong>#need</strong><br />
-                            and organisation <strong>#postcode</strong>
+                            <strong>#frontline</strong><br />
+                            <strong>#yourpostcode</strong><br />
+                            <strong>#yourneed</strong>
                         </p>
-
                     </div>
 
-                    <a class="example faa-parent animated-hover" title="See an example">
-                        <i class="faa-tada fas fa-question-circle"></i>
-                    </a>
                 </div>
 
 
-                <h1>So We Can</h1>
+
+
+
+
+
+                <h2>We’ll Do Our Best</h2>
+
+
+
 
                 <div id="response">
 
-                    <div class="icon">
-                        <i class="fas fa-map-marker-alt fa-3x"></i>
-                    </div>
+                    <p>If you don’t feel brave enough to tweet, <a href="/contact-us">Contact Us</a> with the same format and hashtags</p>
 
-                    <ul>
-                        <li>Put You on the Map</li>
-                        <li>Know What You Need</li>
-                        <li>Let Suppliers Find You</li>
-                    </ul>
-
-                    <a class="example faa-parent animated-hover" title="See an example">
-                        <i class="faa-tada fas fa-question-circle"></i>
-                    </a>
                 </div>
             </div>
 
@@ -117,14 +110,10 @@
 
         <div id="twitter_feeds">
 
-            <h1>Twitter Feeds</h1>
-
-
-
             <div id="feeds">
 
                 <div id="need">
-                    <h2>Needs</h2>
+                    <h2>What You Need</h2>
 
                     <div class="tweet">
                         <div class="image">
@@ -189,7 +178,7 @@
 
 
                 <div id="patterns">
-                    <h2>Patterns</h2>
+                    <h2>Calls For Help</h2>
 
                     <div class="tweet">
                         <div class="image">
@@ -228,7 +217,7 @@
                 </div>
 
                 <div id="supplied">
-                    <h2>Supplied</h2>
+                    <h2>Problems Solved</h2>
 
                     <div class="tweet">
                         <div class="image">
@@ -294,46 +283,46 @@
 
     <script>
 
-        //var testMap = L.map('map_container').setView([51.505, -0.09], 13);
+            //var testMap = L.map('map_container').setView([51.505, -0.09], 13);
 
-                //var mymap = L.map('map_container').setView([51.505, -0.09], 13);
+                    //var mymap = L.map('map_container').setView([51.505, -0.09], 13);
 
-                //L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-                //    maxZoom: 18,
-                //    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                //        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                //        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                //    id: 'mapbox/streets-v11',
-                //    tileSize: 512,
-                //    zoomOffset: -1
-                //}).addTo(mymap);
+                    //L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                    //    maxZoom: 18,
+                    //    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                    //        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                    //        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                    //    id: 'mapbox/streets-v11',
+                    //    tileSize: 512,
+                    //    zoomOffset: -1
+                    //}).addTo(mymap);
 
-                //L.marker([51.5, -0.09]).addTo(mymap)
-                //    .bindPopup("<b>Hel lo world!</b><br />I am a popup.").openPopup();
+                    //L.marker([51.5, -0.09]).addTo(mymap)
+                    //    .bindPopup("<b>Hel lo world!</b><br />I am a popup.").openPopup();
 
-                //L.circle([51.508, -0.11], 500, {
-                //    color: 'red',
-                //    fillColor: '#f03',
-                //    fillOpacity: 0.5
-                //}).addTo(mymap).bindPopup("I am a circle.");
+                    //L.circle([51.508, -0.11], 500, {
+                    //    color: 'red',
+                    //    fillColor: '#f03',
+                    //    fillOpacity: 0.5
+                    //}).addTo(mymap).bindPopup("I am a circle.");
 
-                //L.polygon([
-                //    [51.509, -0.08],
-                //    [51.503, -0.06],
-                //    [51.51, -0.047]
-                //]).addTo(mymap).bindPopup("I am a polygon.");
+                    //L.polygon([
+                    //    [51.509, -0.08],
+                    //    [51.503, -0.06],
+                    //    [51.51, -0.047]
+                    //]).addTo(mymap).bindPopup("I am a polygon.");
 
 
-                //var popup = L.popup();
+                    //var popup = L.popup();
 
-                //function onMapClick(e) {
-                //    popup
-                //        .setLatLng(e.latlng)
-                //        .setContent("You clicked the map at " + e.latlng.toString())
-                //        .openOn(mymap);
-                //}
+                    //function onMapClick(e) {
+                    //    popup
+                    //        .setLatLng(e.latlng)
+                    //        .setContent("You clicked the map at " + e.latlng.toString())
+                    //        .openOn(mymap);
+                    //}
 
-                //mymap.on('click', onMapClick);
+                    //mymap.on('click', onMapClick);
 
     </script>
 
