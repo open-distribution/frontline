@@ -88,7 +88,6 @@
     <Content Include="images\logo_trans.png" />
     <Content Include="images\logo_tweets.jpg" />
     <Content Include="images\map.jpg" />
-    <Content Include="map.html" />
     <Content Include="index.html" />
     <Content Include="moment.js" />
     <Content Include="mstile-150x150.png" />
@@ -101,9 +100,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LICENSE" />
-    <Content Include="fonts\DMSans-Bold.woff" />
-    <Content Include="fonts\DMSans-Medium.woff" />
-    <Content Include="fonts\DMSans-Regular.woff" />
     <Content Include="data.json" />
     <Content Include="data1.json" />
     <Content Include="data2.json" />

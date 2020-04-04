@@ -1,5 +1,4 @@
-
-
+/* VARIABLES */
 @border_thickness_test: 0px;
 
 @color_green_main: #00966B;
@@ -22,6 +21,8 @@ body.not_yet_ready {
         display: none;
     }
 }
+
+/* MIXINS */ 
 
 .margin_left {
     margin-left: 50px;
@@ -97,6 +98,8 @@ body.not_yet_ready {
     }
 }
 
+/* RESET */ 
+
 html {
     box-sizing: border-box;
 }
@@ -105,17 +108,17 @@ html {
     box-sizing: inherit;
 }
 
+/* BASE STYLES */ 
+
 html, body {
     font-family: 'DM Sans', Helvetica, Verdana, sans-serif;
     font-weight: normal;
     font-size:15px;
     background: @color_background;
     color: @color_font;
-
 }
 
-
-
+/* STYLES - if that's what you call it ;)  */ 
 
 body {
     margin: 0;
@@ -192,7 +195,6 @@ body {
                         text-decoration: none;
                         border: solid blue @border_thickness_test;
                         text-transform: uppercase;
-                        /*color: @color_highlight;*/
                         transition: all 1s ease-out;
                         font-family: 'DM Sans', Helvetica, Verdana, sans-serif;
 
@@ -244,7 +246,6 @@ body {
                     #request_text {
                         border: solid gray @border_thickness_test;
                         display: inline;
-                        /*font-size: 2em;*/
                         width: 550px;
                     }
                 }
@@ -305,7 +306,6 @@ body {
                 h2 {
                     margin-bottom: 10px;
                     text-align: center;
-                    /*.minor_title;*/
                 }
 
                 #need {
@@ -360,12 +360,9 @@ body {
                         flex-direction: column;
 
                         .main {
-                            /*margin-top: 10px;
-                            font-size: 120%;*/
                         }
 
                         .date_time {
-                            /*margin-top: 10px;*/
                             color: @color_font_light;
                         }
                     }
@@ -505,6 +502,8 @@ a {
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
 }
+
+/* group transitions for tweets - ~straight from vue docs but not working properly. hmmm? */
 
 /*.list-item {
     display: inline-block;
