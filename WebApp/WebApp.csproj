@@ -105,7 +105,9 @@
     <Content Include="fonts\DMSans-Medium.woff" />
     <Content Include="fonts\DMSans-Regular.woff" />
     <Content Include="data.json" />
-    <Content Include="moredata.json" />
+    <Content Include="data1.json" />
+    <Content Include="data2.json" />
+    <Content Include="data3.json" />
     <None Include="packages.config" />
     <Content Include="README.md" />
     <Content Include="style.less" />
