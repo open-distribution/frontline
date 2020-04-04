@@ -1,3 +1,5 @@
+
+
 @border_thickness_test: 0px;
 
 @color_green_main: #00966B;
@@ -15,7 +17,11 @@
 
 @color_background_light: #fbfbfb;
 
-
+body.not_yet_ready {
+    .anti_fouc {
+        display: none;
+    }
+}
 
 .margin_left {
     margin-left: 50px;
@@ -317,6 +323,14 @@ body {
                     width: 32%;
                 }
 
+                .tweets{
+                    i.fa-spin{
+                        margin-left:45%;
+                        margin-top:10vh;
+                    }
+                }
+
+
                 .tweet {
                     float: left;
                     font-size:0.8em;
@@ -481,5 +495,28 @@ a {
 .faa-parent.animated-hover:hover > .faa-tada.faa-slow {
     -webkit-animation: tada 3s linear infinite;
     animation: tada 3s linear infinite;
+}
+
+
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+}
+
+/*.list-item {
+    display: inline-block;
+    margin-right: 10px;
+}*/
+
+.list-enter-active, .list-leave-active {
+    transition: all 2s;
+}
+
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateY(30px);
 }
 

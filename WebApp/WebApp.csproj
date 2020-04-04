@@ -90,6 +90,7 @@
     <Content Include="images\map.jpg" />
     <Content Include="map.html" />
     <Content Include="index.html" />
+    <Content Include="moment.js" />
     <Content Include="mstile-150x150.png" />
     <Content Include="safari-pinned-tab.svg" />
     <Content Include="style.css" />
@@ -103,6 +104,8 @@
     <Content Include="fonts\DMSans-Bold.woff" />
     <Content Include="fonts\DMSans-Medium.woff" />
     <Content Include="fonts\DMSans-Regular.woff" />
+    <Content Include="data.json" />
+    <Content Include="moredata.json" />
     <None Include="packages.config" />
     <Content Include="README.md" />
     <Content Include="style.less" />
