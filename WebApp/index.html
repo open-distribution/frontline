@@ -333,8 +333,22 @@
                 var html = "";
 
                 if (feature.properties) {
+
+                    var typeAsColor = feature.properties["marker-color"];
+                    var typeTitle = "N/A";
+                    if (typeAsColor == "#00966B")//green 
+                    {
+                        typeTitle = "Solution";
+                    }
+                    else if(typeAsColor == "#A51A1A")//red 
+                    {
+                        typeTitle = "Need";
+                    }
+
+                    html = `<h1>${typeTitle}</h1>`;
+
                     if (feature.properties.title) {
-                        html = `<h1>${feature.properties.title}</h1>`;
+                        html += `<h2>${feature.properties.title}</h2>`;
                     }
 
                     if (feature.properties.description) {
