@@ -1,4 +1,4 @@
-﻿function doStuff(theMap) {
+﻿function getUshahidiData(theMap) {
 
     var features = [];
     var featuresAndUrls = [];

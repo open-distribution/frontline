@@ -113,8 +113,7 @@
 
         <div id="twitter_feeds">
 
-            <a v-on:click="ushahidi" class="ushahidi">Test Ushahidi API</a>
-            <a v-on:click="test" class="ushahidi">Test Docs</a>
+         
 
             <div id="feeds">
 
@@ -292,26 +291,7 @@
 
             var mymap = L.map('map_container').setView(mapCentre, mapZoom);
             setupAttributions();
-            mymap.on('zoomend', zoomedHandler);
 
-            mymap.on('popupopen', function (e) {
-                //console.log(e.popup);
-                //console.log(e.popup._source);
-
-                //console.log('popupopen has popup:');
-                //console.log(e.popup);
-                //console.log('popupopen has _source' + e.popup._source);
-                //console.log('popupopen has _source._popUpUrl' + e.popup._source._popUpUrl);
-
-                //console.log(e.popup._content);
-                //e.popup._content = e.popup._source._popUpUrl;
-                //console.log(e.popup._content);
-
-                //alert(e.popup._source._myId);
-            });
-
-            augmentMap();
-            var londonCircle = {};
 
             function setupAttributions() {
                 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -325,130 +305,6 @@
                 }).addTo(mymap);
             }
 
-            var zoomThreshold = 8;
-
-            function zoomedHandler(eventData) {
-                console.log(`Zoomed to ${mymap.getZoom()}`)
-                if (mymap.getZoom() >= zoomThreshold) {
-                    console.log('removing city scale items...');
-                    //seems we should use layers for this - this doesn't work ? maybe //https://gis.stackexchange.com/questions/178595/how-to-show-hide-markers-that-are-inside-a-function-using-js
-                    //if (londonCircle !== undefined) {
-                    mymap.removeLayer(londonCircle);
-                    //}
-                }
-            }
-
-            function augmentMap() {
-
-
-            };
-
-            function onEachFeature(feature, layer) {
-                // does this feature have a property named popupContent?
-                //console.log(layer);
-
-                var html = "";
-
-                if (feature.properties) {
-
-                    //console.log("onEachFeature");
-                    //console.log(feature._needsListHtml);
-
-                    var typeAsColor = feature.properties["marker-color"];
-                    var typeTitle = "N/A";
-                    var needsListValuesKey = "";
-                    if (typeAsColor == "#00966B")//green
-                    {
-                        typeTitle = "Solution";
-                        needsListValuesKey = "7180b854-c51e-4f0a-b5b6-4f30e27c87cc";
-                    }
-                    else if (typeAsColor == "#A51A1A")//red
-                    {
-                        typeTitle = "Need";
-                        needsListValuesKey = "f3817f67-4a2e-4fda-bb83-df3909d5e588";
-                    }
-
-                    //var needsListHtml = "NEEDS : N/A";
-
-
-                    html = `<h1>${typeTitle}</h1>`;
-
-                    if (feature.properties.title) {
-                        html += `<h2>${feature.properties.title}</h2>`;
-                    }
-
-                    if (feature.properties.description) {
-                        html += `<p>${feature.properties.description}</p>`;
-                    }
-
-                    html += feature._needsListHtml;
-
-                    //html += feature.;
-                }
-
-                if (html.length > 0) {
-
-
-                    layer.bindPopup(html);
-                    //layer.bindPopup(function (layer2) {
-                    //    //return "Some string";
-                    //    return "Some <h1>HTML</h1>";
-                    //});
-                }
-
-
-            }
-
-            function styleEachMarker(feature) {
-
-                console.log('styleEachMarker');
-                //marker-colo
-                if (feature.properties["marker-color"]) {
-                    console.log("returning color " + feature.properties["marker-color"]);
-                    return { color: "green" };
-                    //return { "color": feature.properties["marker-color"] };
-                }
-                else {
-                    console.log("fail");
-                    return { color: "green" };
-                }
-
-                //var mag = feature.properties.mag;
-                //if (mag >= 4.0) {
-                //    return { color: "red" };
-                //}
-                //else if (mag >= 3.0) {
-                //    return { color: "orange" };
-                //}
-                //else if (mag >= 2.0) {
-                //    return { color: "yellow" };
-                //}
-                //else {
-                //    return { color: "green" };
-                //}
-            }
-
-
-            function getNeedsListValueKey(sourceFeature) {
-                var typeAsColor = sourceFeature.properties["marker-color"];
-                var needsListValuesKey = "";
-                if (typeAsColor === "#00966B")//green
-                {
-                    console.log("green")
-                    needsListValuesKey = "175ae465-02b2-44f0-a07c-8eea2b723395";
-                }
-                else if (typeAsColor === "#A51A1A")//red
-                {
-                    console.log("red RED RED")
-                    needsListValuesKey = "f3817f67-4a2e-4fda-bb83-df3909d5e588";
-                }
-                return needsListValuesKey;
-            }
-
-            function fetchAndAugment(thing, url) {
-
-            }
-
             //vue
             var appVm = new Vue({
                 el: '#twitter_feeds',
@@ -460,197 +316,9 @@
                     featuresAndUrls: [],
                 },
                 methods: {
-
-                    test: function () {
-
-                        doStuff(mymap);
-
-                        //var states = [{
-                        //    "type": "Feature",
-                        //    "properties": { "party": "Republican" },
-                        //    "geometry": {
-                        //        "type": "Polygon",
-                        //        "coordinates": [[
-                        //            [-104.05, 48.99],
-                        //            [-97.22, 48.98],
-                        //            [-96.58, 45.94],
-                        //            [-104.03, 45.94],
-                        //            [-104.05, 48.99]
-                        //        ]]
-                        //    }
-                        //}, {
-                        //    "type": "Feature",
-                        //    "properties": { "party": "Democrat" },
-                        //    "geometry": {
-                        //        "type": "Polygon",
-                        //        "coordinates": [[
-                        //            [-109.05, 41.00],
-                        //            [-102.06, 40.99],
-                        //            [-102.03, 36.99],
-                        //            [-109.04, 36.99],
-                        //            [-109.05, 41.00]
-                        //        ]]
-                        //    }
-                        //}];
-
-                        //L.geoJSON(states, {
-                        //    style: function (feature) {
-                        //        switch (feature.properties.party) {
-                        //            case 'Republican': return { color: "#ff0000" };
-                        //            case 'Democrat': return { color: "#0000ff" };
-                        //        }
-                        //    }
-                        //}).addTo(map);
-                    },
-
-                    ushahidi: function () {
-
-                        console.log('usahidi vue method');
-                        var self = this;
-
-                        var map = mymap;
-
-                        var mainUrl = "https://frontlinehelp.api.ushahidi.io/api/v3/posts/geojson";
-
-                        const grabSecondaryContent = (url, feature) => {
-                            return fetch(url).then(res => res.json())
-                                .then(data2 => {
-                                    geojsonDataSecondary.push({ original: feature, secondCallData: data2 });
-                                });
-                        };
-
-                        fetch(mainUrl).then(response => response.json()).then(function (data) {
-                            self.geojsonData = data.features.slice();
-                            console.log("FIRST CALL DONE");//console.log(self.geojsonData.length);
-                            self.geojsonData.forEach(feat => self.featuresAndUrls.push(feat))
-                            console.log("Built array " + self.featuresAndUrls.length);
-                        });
-
-                        //fetch('https://jsonplaceholder.typicode.com/posts')
-                        //    .then(function (response) {
-                        //        return response.json();
-                        //    }).then(function (data) {
-                        //        // You would do something with the /posts data here
-                        //        console.log(data);
-                        //    })
-
-
-                        var urls = [
-                            "https://frontlinehelp.api.ushahidi.io/api/v3/posts/116" //red
-                            , "https://frontlinehelp.api.ushahidi.io/api/v3/posts/94" //green
-                        ];
-
-                        var urls2 = [];
-                        var collectedHtml = [];
-
-                        const grabContent = (url) => {
-                            urls2.push(url);
-                            return fetch(url).then(res => res.json()).then(html => {
-                                collectedHtml.push(html);
-                                console.log(html)
-                            });
-                        };
-
-                        Promise
-                            .all(urls.map(grabContent))
-                            .then(() => {
-                                console.log(`Urls ${urls} were grabbed`)
-                                console.log(`urls2 ${urls2} were grabbed`)
-                                console.log(`collectedHtml ${collectedHtml} were grabbed`)
-                                console.log(collectedHtml)
-                            }
-                            );
-
-
-
-
-                        //this works
-                        //var urls = [
-                        //    "https://frontlinehelp.api.ushahidi.io/api/v3/posts/116" //red
-                        //    , "https://frontlinehelp.api.ushahidi.io/api/v3/posts/94" //green
-                        //];
-
-                        //// separate function to make code more clear
-                        //const grabContent = url => fetch(url)
-                        //    .then(res => res.text())
-                        //    .then(html => console.log(html));
-
-                        //Promise
-                        //    .all(urls.map(grabContent))
-                        //    .then(() => console.log(`Urls ${urls} were grabbed`))
-
-
-
-
-
-                        //adding more data into the functions
-                        //fetch("https://frontlinehelp.api.ushahidi.io/api/v3/posts/116")
-                        //    .then(r => r.json().then(data => ({ status: r.status, body: data })))
-                        //    .then(obj => console.log(obj));
-
-
-
-                        //fetch(url)
-                        //    .then(
-                        //        function (response) {
-                        //            if (response.status !== 200) {
-                        //                console.log(`Fetch problem Status Code: ${response.status}`);
-                        //                return;
-                        //            }
-
-                        //            response.json().then(function (data) {
-                        //                //console.log(data);
-                        //                var markerOptionsDefault = {
-                        //                    radius: 8,
-                        //                    fillColor: "#ff7800",
-                        //                    color: "#000",
-                        //                    weight: 1,
-                        //                    opacity: 1,
-                        //                    fillOpacity: 0.8
-                        //                };
-
-                        //                firstCallFeatures = data.features.slice();
-
-                        //            });
-                        //        }
-                        //    )
-                        //    .catch(function (err) {
-                        //        console.log('Fetch Error :-S', err);
-                        //    });
-                    },
-                    loadDataInternal: function (url) {
-                        var self = this;
-                        fetch(url)
-                            .then(
-                                function (response) {
-                                    if (response.status !== 200) {
-                                        console.log(`Fetch problem Status Code: ${response.status}`);
-                                        return;
-                                    }
-                                    response.json().then(function (data) {
-                                        console.log(data);
-                                        data.forEach(function (item) {
-                                            self.needsData.push(item);
-                                        })
-                                        self.needsFeedReady = true;
-                                    });
-                                }
-                            )
-                            .catch(function (err) {
-                                console.log('Fetch Error :-S', err);
-                            });
-                    },
-                    loadData: function () {
-                        this.loadDataInternal('./data.json');
-                    },
-                    loadMoreData: function () {
-                        this.loadDataInternal('./data1.json');
-                    },
-                    loadEvenMoreData: function () {
-                        this.loadDataInternal('./data2.json');
-                    },
-                    loadLastData: function () {
-                        this.loadDataInternal('./data3.json');
+                    fetchData: function () {
+                        console.log("doing stuff");
+                        getUshahidiData(mymap);
                     },
                     hackTime: function (dateValue) {
                         return new moment(dateValue).format("H:mm:ss");
@@ -662,8 +330,12 @@
                 mounted: function () {
                     var self = this;
                     document.getElementById("body").className = '';
+                    console.log("mounted done");
+                    self.fetchData();
                 }
             });
+
+            
 
             //fake twitter load
             //hacky simulation of APIs giving new data (Yes I know the order's wrong way round)
@@ -671,7 +343,6 @@
             //setTimeout(appVm.loadMoreData, 3500);
             //setTimeout(appVm.loadEvenMoreData, 4500);
             //setTimeout(appVm.loadLastData, 4900);
-
 
 
         }
