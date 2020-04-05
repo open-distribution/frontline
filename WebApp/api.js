@@ -33,6 +33,7 @@
 
                 for (const id in featuresAndDataById) {
                     //console.log(`${property}: ${featuresAndDataById[property]}`);
+                    console.log(id);
                     var thisFeature = featuresAndDataById[id].feature;
                     var thisFeaturesAjaxData = featuresAndDataById[id].ajaxData;
                     L.geoJSON(thisFeature, {
