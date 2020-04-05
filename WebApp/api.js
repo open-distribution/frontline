@@ -23,20 +23,8 @@
                 else {
                     return { feature: objData.feature, ajaxData: data2, imgUrl: null };
                 }
-                //var thisImgUrl = null;
-                //var mediaId = getMediaId(data2);
-                //if (mediaId !== undefined) {
-                //    mediaUrl = mediaUrlRoot + mediaId;
-                //    fetch(mediaUrl).then(res => res.json()).then(mediaData => {
-                //        thisImgUrl = mediaData.original_file_url;
-                //    });
-                //}
-                //var newObj = { feature: objData.feature, ajaxData: data2, imgUrl: thisImgUrl  };
-                //featuresAndDataById[objData.feature.properties.id] = newObj;
             }).then((whatever) => {
-
                 storeCollectedInfo(whatever, featuresAndDataById);
-
             });
     };
 
@@ -56,7 +44,6 @@
                 console.log("All Calls Done");
 
                 for (const id in featuresAndDataById) {
-                    //console.log(`${property}: ${featuresAndDataById[property]}`);
                     console.log(id);
                     var thisFeature = featuresAndDataById[id].feature;
                     var thisFeaturesAjaxData = featuresAndDataById[id].ajaxData;
@@ -85,7 +72,6 @@ const mediaValuesKey = "aaf4c9d9-899c-4050-a39a-1bccf441791a";
 function getMediaId(sourceAjaxData) {
     var respVal = undefined;
     if (mediaValuesKey in sourceAjaxData.values) {
-        console.log("Have media Id in ajax data for " + sourceAjaxData.title);
         respVal = sourceAjaxData.values[mediaValuesKey];
     }
     return respVal;
@@ -137,7 +123,6 @@ function getNeedsHtml(valsKey, relevantAjaxData) {
     respVal += "</ul>";
     return respVal;
 }
-
 
 function getMarker(sourceFeature, location) {
     var markerProps = getMarkerProps(sourceFeature);
