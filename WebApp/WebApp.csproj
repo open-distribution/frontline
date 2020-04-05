@@ -105,6 +105,7 @@
     <Content Include="data1.json" />
     <Content Include="data2.json" />
     <Content Include="data3.json" />
+    <Content Include="geojson.json" />
     <None Include="packages.config" />
     <Content Include="README.md" />
     <Content Include="style.less" />

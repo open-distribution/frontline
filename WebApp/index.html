@@ -114,6 +114,7 @@
         <div id="twitter_feeds">
 
             <a v-on:click="ushahidi" class="ushahidi">Test Ushahidi API</a>
+            <a v-on:click="test" class="ushahidi">Test Docs</a>
 
             <div id="feeds">
 
@@ -141,7 +142,7 @@
                                 </div>
                             </transition-group>
                         </div>
-                      
+
                     </div>
                 </div>
 
@@ -286,6 +287,7 @@
 
             //map
             var mapZoom = 7;//large = more zoom
+            //var mapCentre = [-109.05, 41.00] //centreLocation;
             var mapCentre = centreLocation;
 
             var mymap = L.map('map_container').setView(mapCentre, mapZoom);
@@ -326,11 +328,11 @@
 
             function onEachFeature(feature, layer) {
                 // does this feature have a property named popupContent?
+                console.log(layer);
 
-                var html = ""; 
+                var html = "";
 
                 if (feature.properties) {
-
                     if (feature.properties.title) {
                         html = `<h1>${feature.properties.title}</h1>`;
                     }
@@ -340,10 +342,38 @@
                     }
                 }
 
-                if (html.length > 0)
-                {
+                if (html.length > 0) {
                     layer.bindPopup(html);
                 }
+            }
+
+            function styleEachMarker(feature) {
+
+                console.log('styleEachMarker');
+                //marker-colo
+                if (feature.properties["marker-color"]) {
+                    console.log("returning color " + feature.properties["marker-color"]);
+                    return { color: "green" };
+                    //return { "color": feature.properties["marker-color"] };
+                }
+                else {
+                    console.log("fail");
+                    return { color: "green" };
+                }
+
+                //var mag = feature.properties.mag;
+                //if (mag >= 4.0) {
+                //    return { color: "red" };
+                //}
+                //else if (mag >= 3.0) {
+                //    return { color: "orange" };
+                //}
+                //else if (mag >= 2.0) {
+                //    return { color: "yellow" };
+                //}
+                //else {
+                //    return { color: "green" };
+                //}
             }
 
             //vue
@@ -355,6 +385,46 @@
                     geojsonData: [],
                 },
                 methods: {
+
+                    test: function () {
+                        var states = [{
+                            "type": "Feature",
+                            "properties": { "party": "Republican" },
+                            "geometry": {
+                                "type": "Polygon",
+                                "coordinates": [[
+                                    [-104.05, 48.99],
+                                    [-97.22, 48.98],
+                                    [-96.58, 45.94],
+                                    [-104.03, 45.94],
+                                    [-104.05, 48.99]
+                                ]]
+                            }
+                        }, {
+                            "type": "Feature",
+                            "properties": { "party": "Democrat" },
+                            "geometry": {
+                                "type": "Polygon",
+                                "coordinates": [[
+                                    [-109.05, 41.00],
+                                    [-102.06, 40.99],
+                                    [-102.03, 36.99],
+                                    [-109.04, 36.99],
+                                    [-109.05, 41.00]
+                                ]]
+                            }
+                        }];
+
+                        L.geoJSON(states, {
+                            style: function (feature) {
+                                switch (feature.properties.party) {
+                                    case 'Republican': return { color: "#ff0000" };
+                                    case 'Democrat': return { color: "#0000ff" };
+                                }
+                            }
+                        }).addTo(map);
+                    },
+
                     ushahidi: function () {
 
                         console.log('usahidi vue method');
@@ -372,11 +442,68 @@
                                         return;
                                     }
                                     response.json().then(function (data) {
-                                        console.log(data);
+                                        //console.log(data);
 
-                                        
+                                        var markerOptionsDefault = {
+                                            radius: 8,
+                                            fillColor: "#ff7800",
+                                            color: "#000",
+                                            weight: 1,
+                                            opacity: 1,
+                                            fillOpacity: 0.8
+                                        };
+                                        //     "marker-color": "#A51A1A", vs
+                                        //    "marker-color": "#00966B",
+
+
+                                        //L.geoJSON(data.features, {
+
+                                        //    //pointToLayer: function (feature, latlng) {
+                                        //    //    return L.circleMarker(latlng, geojsonMarkerOptions);
+                                        //    //}
+
+                                        //    //style: function (feature) {
+                                        //    //    if (feature.properties["marker-color"]) {
+                                        //    //        console.log("returning color " + feature.properties["marker-color"]);
+                                        //    //        //return { color: "green" };
+                                        //    //        //return { color: feature.properties["marker-color"] };
+                                        //    //        return { color: "#ff0000" };
+                                        //    //    }
+                                        //    //    else {
+                                        //    //        console.log("fail");
+                                        //    //        return { color: "green" };
+                                        //    //    }
+                                        //    //}
+                                        //}).addTo(map);
+
+
                                         data.features.forEach(function (item) {
+
+                                            console.log("item");
+
                                             L.geoJSON(item, {
+                                                //style: styleEachMarker,
+                                                pointToLayer: function (feature, latlng) {
+                                                    console.log("pointToLayer");
+
+                                                    if (feature.properties["marker-color"]) {
+                                                       return L.circleMarker(latlng, {
+                                                            radius: 8,
+                                                            fillColor: feature.properties["marker-color"],
+                                                            color: "#000",
+                                                            weight: 1,
+                                                            opacity: 1,
+                                                            fillOpacity: 0.8
+                                                        });
+                                                        //console.log("returning color " + feature.properties["marker-color"]);
+                                                        //return { color: "green" };
+                                                        //return { "color":  };
+                                                    }
+                                                    else {
+                                                        console.log("pointToLayer FAIL");
+                                                        return L.circleMarker(latlng, markerOptionsDefault);
+                                                    }
+                                                },
                                                 onEachFeature: onEachFeature
                                             }).addTo(map);
                                             //self.geojsonData.push(item);
@@ -440,10 +567,10 @@
 
             //fake twitter load
             //hacky simulation of APIs giving new data (Yes I know the order's wrong way round)
-            setTimeout(appVm.loadData, 1500);
-            setTimeout(appVm.loadMoreData, 3500);
-            setTimeout(appVm.loadEvenMoreData, 4500);
-            setTimeout(appVm.loadLastData, 4900);
+            //setTimeout(appVm.loadData, 1500);
+            //setTimeout(appVm.loadMoreData, 3500);
+            //setTimeout(appVm.loadEvenMoreData, 4500);
+            //setTimeout(appVm.loadLastData, 4900);
 
 
 
