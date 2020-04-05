@@ -1,0 +1,521 @@
+/* VARIABLES */
+@border_thickness_test: 0px;
+
+@color_green_main: #00966B;
+@color_green_light: #4EB697;
+@color_highlight: #156d84;
+
+@color_font: #ffffff;
+@color_background: @color_green_main;
+@color_background_darkish: #077d5b;
+@color_background_dark: #076f51;
+@color_font_dark: #0a150d;
+@color_font_light: gray;
+@color_dark_green: #006400;
+@color_background_medium: #e2e1e0;
+
+@color_background_light: #fbfbfb;
+
+body.not_yet_ready {
+    .anti_fouc {
+        display: none;
+    }
+}
+
+/* MIXINS */ 
+
+.margin_left {
+    margin-left: 50px;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.hashtag_style {
+    text-transform: uppercase;
+    background-color: @color_font;
+    color: @color_background;
+    display: inline-block;
+}
+
+.major_title,
+.minor_title {
+    .hashtag_style;
+}
+
+.major_title {
+    font-size: 2em;
+    padding: 0px 32px;
+    border-radius: 24px;
+}
+
+.minor_title {
+    font-size: 1.5em;
+    padding: 0px 16px;
+    border-radius: 12px;
+}
+
+.act_as_btn {
+    cursor: pointer;
+}
+
+.indent {
+    padding-left: 40px;
+}
+
+.box_0,
+.box_1 {
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+    &:hover {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+}
+
+.box_0 {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.box_1 {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.box_2 {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.box_3 {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.box_4 {
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+    &:hover {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.95), 0 10px 10px rgba(0,0,0,0.22);
+    }
+}
+
+/* RESET */ 
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* BASE STYLES */ 
+
+html, body {
+    font-family: 'DM Sans', Helvetica, Verdana, sans-serif;
+    font-weight: normal;
+    font-size:15px;
+    background: @color_background;
+    color: @color_font;
+}
+
+/* STYLES - if that's what you call it ;)  */ 
+
+body {
+    margin: 0;
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+
+    header {
+        border: solid red @border_thickness_test;
+
+        #title_bar {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+
+            #icons {
+                border: solid red @border_thickness_test;
+                margin-left: 30px;
+                margin-right: 30px;
+                font-size: 0.8em;
+                vertical-align: top;
+
+                #logo {
+                }
+
+                #twitter, #facebook {
+                    border: solid red @border_thickness_test;
+                    margin-left: 10px;
+
+                    &:hover {
+                        color: @color_background_dark;
+                    }
+                }
+
+                #facebook {
+                    border: solid blue @border_thickness_test;
+                }
+            }
+
+            #title {
+                font-size: 2em;
+                margin-bottom: 0px;
+                margin-right: 2%;
+                font-weight: normal;
+
+                span.hashtag_style {
+                    font-weight: bold;
+                    padding: 0px 20px;
+                    border-radius: 20px;
+                }
+            }
+        }
+
+        nav {
+
+            ol {
+                border: solid purple @border_thickness_test;
+                /* flex items */
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                align-items: stretch;
+                /* remove numbers */
+                list-style: none;
+                margin: 0;
+
+                li {
+
+                    a {
+                        height: 30px;
+                        padding: 5px 0px 0px 0px;
+                        margin-right:100px;
+                        display: inline-block;
+                        text-decoration: none;
+                        border: solid blue @border_thickness_test;
+                        text-transform: uppercase;
+                        transition: all 1s ease-out;
+                        font-family: 'DM Sans', Helvetica, Verdana, sans-serif;
+
+                        &:hover {
+                            color: black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    #main_content {
+        flex: 1;
+        overflow: auto;
+        border: solid @border_thickness_test blue;
+        padding-top: 0px;
+
+        #core_content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: stretch;
+
+            #intro {
+                width: 30%;
+                padding-left: 2%;
+                border: solid green @border_thickness_test;
+
+                h1 {
+                    .major_title;
+                    margin-bottom: 0px;
+                    margin-top: 15px;
+                }
+
+                h2 {
+                    .minor_title;
+                    margin-bottom: 0px;
+                    margin-top: 0px;
+                }
+
+                #request, #response {
+                    border: solid green @border_thickness_test;
+                    display: flex;
+                    justify-content: flex-start;
+
+                    #request_text {
+                        border: solid gray @border_thickness_test;
+                        display: inline;
+                        width: 550px;
+                    }
+                }
+
+
+                #request {
+                    margin-bottom: 10px;
+
+                    p {
+                        font-size: 1.5em;
+                    }
+                }
+
+                #response {
+
+                    p {
+                        font-size: 1em;
+                        margin-right: 100px;
+                    }
+                }
+            }
+
+            #map {
+                width: 70%;
+                border: solid red @border_thickness_test;
+
+                #map_inner {
+                    background-size: cover;
+                    height: 100%;
+                    .box_4;
+
+                    #map_container {
+                        border: solid purple @border_thickness_test;
+                        width: 600px;
+                        height: 400px;
+                        position: relative;
+                        outline: none;
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: content-box;
+                    }
+                }
+            }
+        }
+
+
+
+        #twitter_feeds {
+            border: solid @border_thickness_test blue;
+            margin-top: 0px;
+            margin-bottom: 100px;
+
+            #feeds {
+                border: solid @border_thickness_test blue;
+                display: flex;
+                justify-content: space-evenly;
+
+                h2 {
+                    margin-bottom: 10px;
+                    text-align: center;
+                }
+
+                #need {
+                    border: solid @border_thickness_test red;
+                    width: 32%;
+                }
+
+                #patterns {
+                    border: solid @border_thickness_test yellow;
+                    width: 32%;
+                }
+
+                #supplied {
+                    border: solid @border_thickness_test green;
+                    width: 32%;
+                }
+
+                .tweets{
+                    i.fa-spin{
+                        margin-left:45%;
+                        margin-top:10vh;
+                    }
+                }
+
+
+                .tweet {
+                    float: left;
+                    font-size:0.8em;
+                    color: @color_font_dark;
+                    background-color: @color_font;
+                    width: 48%;
+                    display: flex;
+                    padding: 10px;
+                    border-radius: 5px;
+                    margin-bottom: 10px;
+                    margin-right: 2%;
+                    .box_4;
+                    .act_as_btn;
+
+                    .image {
+                        margin-right: 20px;
+
+                        img {
+                            .box_3;
+                            .img-circle;
+                            width: 48px;
+                        }
+                    }
+
+                    .body {
+                        display: flex;
+                        flex-direction: column;
+
+                        .main {
+                        }
+
+                        .date_time {
+                            color: @color_font_light;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        min-height: 60px;
+
+        p {
+            text-align: center;
+        }
+    }
+}
+
+.fa-inverse {
+    color: @color_background;
+}
+
+.fa-stack {
+    vertical-align: top;
+}
+
+a {
+    color: @color_font;
+}
+
+.logo {
+    vertical-align: top;
+    background: url(images/logo_trans.png);
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    border: solid red @border_thickness_test;
+    display: inline-block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* TADA https://l-lin.github.io/font-awesome-animation/ */
+
+@-webkit-keyframes tada {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    10%, 20% {
+        -webkit-transform: scale(.9) rotate(-8deg);
+        transform: scale(.9) rotate(-8deg);
+    }
+
+    30%, 50%, 70% {
+        -webkit-transform: scale(1.3) rotate(8deg);
+        transform: scale(1.3) rotate(8deg);
+    }
+
+    40%, 60% {
+        -webkit-transform: scale(1.3) rotate(-8deg);
+        transform: scale(1.3) rotate(-8deg);
+    }
+
+    80%, 100% {
+        -webkit-transform: scale(1) rotate(0);
+        transform: scale(1) rotate(0);
+    }
+}
+
+@keyframes tada {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    10%, 20% {
+        -webkit-transform: scale(.9) rotate(-8deg);
+        transform: scale(.9) rotate(-8deg);
+    }
+
+    30%, 50%, 70% {
+        -webkit-transform: scale(1.3) rotate(8deg);
+        transform: scale(1.3) rotate(8deg);
+    }
+
+    40%, 60% {
+        -webkit-transform: scale(1.3) rotate(-8deg);
+        transform: scale(1.3) rotate(-8deg);
+    }
+
+    80%, 100% {
+        -webkit-transform: scale(1) rotate(0);
+        transform: scale(1) rotate(0);
+    }
+}
+
+.faa-tada.animated,
+.faa-tada.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-tada {
+    -webkit-animation: tada 2s linear infinite;
+    animation: tada 2s linear infinite;
+}
+
+.faa-tada.animated.faa-fast,
+.faa-tada.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-tada.faa-fast {
+    -webkit-animation: tada 1s linear infinite;
+    animation: tada 1s linear infinite;
+}
+
+.faa-tada.animated.faa-slow,
+.faa-tada.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-tada.faa-slow {
+    -webkit-animation: tada 3s linear infinite;
+    animation: tada 3s linear infinite;
+}
+
+
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+}
+
+/* group transitions for tweets - ~straight from vue docs but not working properly. hmmm? */
+
+/*.list-item {
+    display: inline-block;
+    margin-right: 10px;
+}*/
+
+.list-enter-active, .list-leave-active {
+    transition: all 2s;
+}
+
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
