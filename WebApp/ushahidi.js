@@ -1,0 +1,3 @@
+﻿function getGeoJson() {
+    //TODO:flesh
+}

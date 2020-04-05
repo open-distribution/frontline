@@ -93,6 +93,7 @@
     <Content Include="mstile-150x150.png" />
     <Content Include="safari-pinned-tab.svg" />
     <Content Include="style.css" />
+    <Content Include="ushahidi.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
