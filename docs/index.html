@@ -14,15 +14,9 @@
     <meta name="theme-color" content="#ffffff">
     <script src="https://kit.fontawesome.com/e10dd0382c.js" crossorigin="anonymous"></script>
 
-
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
           integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
           crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-            crossorigin=""></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
     <style>
         /* deliberate inclusion of minimal CSS for speed of initial styling */
         @font-face {
@@ -51,7 +45,13 @@
         }
     </style>
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="moment.js"></script>
+
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+            crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/moment@2.24.0/min/moment.min.js"></script>
+    <script src="https://platform.twitter.com/widgets.js" charset="utf-8" crossorigin="anonymous"></script>
 </head>
 <body id="body">
 
@@ -128,264 +128,56 @@
         </div>
 
         <div id="twitter_feeds">
-
             <div id="feeds">
-
                 <div id="need" class="feed">
                     <h2>What You Need</h2>
-
-
                     <div class="tweets">
-
-                        <i v-if="!needsFeedReady" class="fas fa-cog fa-spin fa-4x"></i>
-
-                        <div v-if="needsFeedReady" class="anti_fouc">
-                            <transition-group name="list" tag="div">
-                                <div v-for="(need, index) in needsData" class="tweet list-item" :title="hackDateTime(need.dateTime)" v-bind:key="index">
-                                    <div class="image">
-                                        <img :src="need.imageSrc" />
-                                    </div>
-                                    <div class="body">
-                                        <span class="main" v-html="need.mainHtml">
-                                        </span>
-                                        <span class="date_time">
-                                            {{ hackTime(need.dateTime) }}
-                                        </span>
-                                    </div>
-                                </div>
-                            </transition-group>
-                        </div>
-                        <!--v-bind:key="item"-->
-                        <!--<div class="tweet">
-                            <div class="image">
-                                <img src="/images/bonnie_castillo.jpg" />
-                            </div>
-                            <div class="body">
-                                <span class="main">
-                                    <strong>#frontline</strong> #N16_0RH #PPE #Masks
-                                </span>
-                                <span class="date_time" title="07:19 04/04/2020">
-                                    04/04/20 7:19
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="tweet">
-                            <div class="image">
-
-                                <img src="/images/falguni_dave.jpg" />
-
-                            </div>
-                            <div class="body">
-                                <span class="main">
-                                    <strong>#frontline</strong> #BN11ND #FaceShields #Masks #Gloves
-                                </span>
-                                <span class="date_time" title="07:18 04/04/2020">
-                                    04/04/20 7:18
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="tweet">
-                            <div class="image">
-                                <img src="/images/david_schneider.jpg" />
-                            </div>
-                            <div class="body">
-                                <span class="main">
-                                    <strong>#frontline</strong> #Santizer #MoreStaff #HR12ER
-                                </span>
-                                <span class="date_time" title="07:17 04/04/2020">
-                                    04/04/20 7:18
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="tweet">
-                            <div class="image">
-                                <img src="/images/dalai_lama.jpg" />
-                            </div>
-                            <div class="body">
-                                <span class="main">
-                                    <strong>#frontline</strong> #N95Masks #SE17EH
-                                </span>
-                                <span class="date_time" title="07:21 04/04/2020">
-                                    04/04/20 7:16
-                                </span>
-                            </div>
-                        </div>-->
+                    <!--
+                        <a href="https://twitter.com/intent/tweet?screen_name=frontlinehelpuk&ref_src=twsrc%5Etfw"
+                            class="twitter-mention-button"
+                            data-size="large"
+                            data-dnt="true"
+                            data-show-count="false">
+                            Tweet to @frontlinehelpuk</a>
+                    -->
+                        <a class="twitter-timeline"
+                            data-height="600"
+                            href="https://twitter.com/frontlinehelpuk/likes?ref_src=twsrc%5Etfw">
+                            Tweets Liked by @frontlinehelpuk</a>
                     </div>
                 </div>
-
                 <div id="patterns" class="feed">
-                    <h2>Calls For Help</h2>
-
+                    <h2>Supply and demand for PPE</h2>
                     <div class="tweets">
-                        <div class="tweet">
-                            <div class="image">
-                                <img src="/images/logo_tweets.jpg" />
-                            </div>
-                            <div class="body">
-                                <span class="main" title="07:03 04/04/2020">
-                                    Masks and Gloves needed @Broadgreen Hospital, Liverpool
-                                </span>
-                            </div>
-                        </div>
-
-
-                        <div class="tweet">
-                            <div class="image">
-                                <img src="/images/logo_tweets.jpg" />
-                            </div>
-                            <div class="body">
-                                <span class="main" title="22:47 03/04/2020">
-                                    Face Shields needed @Field Farm House Residential Home, Hereford
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="tweet">
-                            <div class="image">
-                                <img src="/images/logo_tweets.jpg" />
-                            </div>
-                            <div class="body">
-                                <span class="main" title="07:21 04/04/2020">
-                                    Latex Gloves run out at @University College Hospital, London
-                                </span>
-                            </div>
-                        </div>
+                        <a class="twitter-timeline"
+                            data-height="600"
+                            href="https://twitter.com/frontlinehelpuk/lists/related-projects?ref_src=twsrc%5Etfw">
+                            Related projects frontlinehelpuk</a>
                     </div>
                 </div>
-
                 <div id="supplied" class="feed">
-                    <h2>Problems Solved</h2>
-
+                    <h2>Frontline thanks</h2>
                     <div class="tweets">
-                        <div class="tweet">
-                            <div class="image">
-                                <img src="/images/3M.jpg" />
-                            </div>
-                            <div class="body">
-                                <span class="main" title="07:19 04/04/2020">
-                                    Thanks to @3M #LatexGloves and #95MMasks have reached @A&E_Ward at Kings College Hospital, London
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="tweet">
-                            <div class="image">
-                                <img src="/images/just_gloves.jpg" />
-                            </div>
-                            <div class="body">
-                                <span class="main" title="07:19 04/04/2020">
-                                    Thanks to @JustGloves #LatexGloves have reached @A&E_Ward at Kings College Hospital, London
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="tweet">
-                            <div class="image">
-                                <img src="/images/emmanuel_oyemade.jpg" />
-                            </div>
-                            <div class="body">
-                                <span class="main" title="07:19 04/04/2020">
-                                    Thanks to @EmmanuelOyemade #FaceShields have reached @AnneCarer at Charing Cross Hospital, London
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="tweet">
-                            <div class="image">
-                                <img src="/images/eureka.jpg" />
-                            </div>
-                            <div class="body">
-                                <span class="main" title="07:19 04/04/2020">
-                                    Thanks to @Eureka #Gloves have reached @SamanthaLowes at Birmingham City Hospital, Birmingham
-                                </span>
-                            </div>
-                        </div>
+                        <a class="twitter-timeline"
+                            data-height="600"
+                            href="https://twitter.com/frontlinehelpuk?ref_src=twsrc%5Etfw">
+                            Tweets by frontlinehelpuk</a>
                     </div>
                 </div>
-
             </div>
-
         </div>
     </main>
     <footer>
-        <p>
 
             This site is open source.
             <a href="https://github.com/open-distribution/frontline/">Improve this page</a>
 
-        </p>
     </footer>
-
-    <!--LEAFLETJS MAPS ~WORKS -->
 
     <script>
 
 
         function setup() {
-
-
-            var appVm = new Vue({
-                el: '#twitter_feeds',
-                data: {
-                    needsData: [],
-                    needsFeedReady: false,
-                },
-                methods: {
-                    loadDataInternal: function (url) {
-                        var self = this;
-                        fetch(url)
-                            .then(
-                                function (response) {
-                                    if (response.status !== 200) {
-                                        console.log(`Fetch problem Status Code: ${response.status}`);
-                                        return;
-                                    }
-                                    response.json().then(function (data) {
-                                        console.log(data);
-                                        data.forEach(function (item) {
-                                            self.needsData.push(item);
-                                        })
-                                        self.needsFeedReady = true;
-                                    });
-                                }
-                            )
-                            .catch(function (err) {
-                                console.log('Fetch Error :-S', err);
-                            });
-                    },
-                    loadData: function () {
-                        this.loadDataInternal('./data.json');
-                    },
-                    loadMoreData: function () {
-                        this.loadDataInternal('./data1.json');
-                    },
-                    loadEvenMoreData: function () {
-                        this.loadDataInternal('./data2.json');
-                    },
-                    loadLastData: function () {
-                        this.loadDataInternal('./data3.json');
-                    },
-                    hackTime: function (dateValue) {
-                        return new moment(dateValue).format("H:mm:ss");
-                    },
-                    hackDateTime: function (dateValue) {
-                        return new moment(dateValue).format("DD/MM/YYYY H:mm:ss");
-                    }
-                },
-                mounted: function () {
-                    var self = this;
-                    document.getElementById("body").className = '';
-                }
-            });
-
-            //hacky simulation of APIs giving new data (Yes I know the order's wrong way round)
-            setTimeout(appVm.loadData, 1500);
-            setTimeout(appVm.loadMoreData, 3500);
-            setTimeout(appVm.loadEvenMoreData, 4500);
-            setTimeout(appVm.loadLastData, 4900);
 
             var requirementsIcon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAoCAYAAADpE0oSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxEAAAsRAX9kX5EAAALHSURBVFhHvZc9bE5RGMdvlbaa+GYgTaUlNGKxlMVEIhHxkfhoOlVithlEBxOLWAw2JCbC0EgTaQwdBY0BA5IWKQ2KIqLqo35/52l625xz77l97+uf/PKe95z/8zzvae8997k1SY4mk0SeVtgBO2ELtEAtSBMwCAPQB/0EvOJz7qJoK1yCUZiMZAQuwlpLEy+CGuAEfAVf8hi+wHFosLTZwtgIl+EX+BIWQTmUq9HS+4VBO70BviSVcBPCxVk8DX/MXDZnrcxMsbALvqeMZTMOe6ycExO1cN8M1eQh1FlZZpLkYGoxj98wBPfgLgzanM/ro3OqqHZ7O7WQxWM4BCugxlgOB+AJ+GJmcwdqVXgDjNlkFr2w6N+v9Yi1xaCkvtg0n2GjAjpSkyH051xtNYLC0wQvLCaLjnn4211Yps5z/o7YOCg8w3yccd8y1a7COvCzpIdAjxtGqRfG3TCoFhVe6cZBvYFPbhilMdDOs7RMhUWZ0mN0vhsGtUBF37txUE2wyg2jJK9isjSqwkNuHJR+/RE3jJK8eTse1i3QOetS96FGYJMFBYWnDd5aTBZHZV4HH1KTIQYgeAew1gwx5/032KwAHXu3bDIP7fwkrIclhnZ5CmLbo35w/woG+1MLMeiIfW4UbY+mrxe+/K/H4gOY6k6dmNgLE2aoBsq9z8pNi0nt+rqZqsFV8B9WLOgK/2jGMnkNzVbGLwzH4KcFlMEPOGzpw8JUBz0WVAZXYOYFFRLGNfDSAivhGeQ9/aaFWai3quQqVzu722UsKAIvpBIV5ZylKS6C1U0+SiWLRef6UkszN5FgG+jNz1fAh7rImD4uXyTqTiXOo9vCKhfJ9Ooa0zP3wUILK0ck1OMvq/HXWpvZyxWJu8B3qmmuy2zli+T1cM2KpdHLfL3ZqiMK6BbTK81UUZ1wRbrQuYtCW+EpvIPtNl1ASfIX/A3niLh/yFIAAAAASUVORK5CYII=";
             var solvedIcon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAoCAYAAADpE0oSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxEAAAsRAX9kX5EAAAN5SURBVFhHtZhJaBRBFIYrLigiSnBBRYWoiHgyEuJyUEaDARFxCehF8KCIiKCSgwcdtBPEiwEPevBoBAnu68Gooxe3RPHgBoIbQQXjDi5xwf+v1+XMZLqWZCYffJWqyqRfV3V11ZuUKR+R4mcmwYWwBlbCCtgfki74DN6Fl+A1lVav8NOJO3CkA+6AS+EIdgXwFp6Ge3EDL3VPAsmBIzUY5WaYhkPZ1Qu+Qt70IVzlh+7JwUxXlkgNQXkQboO8gd4yCC6CE1RKtaqM+qV7Y/JHLCM9Alfqduk4Cddg5N+kqVS/+KdhO1wh1ZLCa+6UqpAdcaRqUXJRFDO9Ln7COoz6PBsSONLP+has0u2+4z6cheBdZqqXw9Cgf+EL2AZvw+dxXwgzYB0rZfFoL0BOtY+HcDe8Cj+wA5TD+bARTmeHhyuwloGnonIHDmevg4twNaaJ72chkRqGkquXO5yLL7CaUz0T+oJyOtdZg5K0vuBaaN2tYniDlQxcrZtumnDhN3HdTlp1oNwjDSd6xNzwXfAQOCPVILheCrbIblQw8EipW3kNP0o1iE+QI3dRzsC0lHBvGCBVKwMZ9J3UrYyHo6QaBD/Lv3HRycBcsS5496ukGgQ/6xtxBwNzB/JRj/fUvzlEahrKrdJw0s7A3PbMLmSD2UczLmx/AyI1EWUzHK3bdng0tnHn4mI4C5ew18N7uA8eg2ZtjIU8vznSkPToOqwxp9MylKd0PYzP0AQeA3uSHnHbbTGv0jnYLtUguMVOie1JUGaix1mRwGn1B2UDzMuLSgyv3RDHyts8uNUxA+krWiBnVpNNfUikJqPk68UztpRw252D0f5P9PPT2wz25JReuYth7mwUAw+ZDQh6Q5pC0sUPQx76peIoPCHVLPlTbYjUOJQ3ITeFYngK52K0ndLMYptOPpN6WMwqZzq7JSkoKfwKQzLaR3je3P5CMpQk9iPogbhegG8B7YIPpNoj7kFmnVbcgdN6ha+H9iSvECZ9G/G3zESsJE91LhmkMSn9uQXS4aURQbmSnYS+q02QibiPVsjTy0vy65SEHPL8fmXLwXlizcZon0jTjX+qDRm8Fin9bwae291n6jfchKCXpekndKoNfHb8mtId5t3e55pL+FQbIp1l8CAxaRA3/iqM1pet5hE+1YaM+o4p57OeB/n1lBnFY/4qHKX+Af57rdvHZ3ClAAAAAElFTkSuQmCC";
@@ -556,7 +348,6 @@
             setTimeout(setup, 250);
 
         })();
-
 
     </script>
 
