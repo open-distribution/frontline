@@ -82,8 +82,7 @@
     </header>
 
 
-    <div id="main_content">
-
+    <main>
         <div id="core_content">
             <div id="intro">
 
@@ -126,15 +125,13 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
 
         <div id="twitter_feeds">
 
             <div id="feeds">
 
-                <div id="need">
+                <div id="need" class="feed">
                     <h2>What You Need</h2>
 
 
@@ -219,10 +216,7 @@
                     </div>
                 </div>
 
-
-
-
-                <div id="patterns">
+                <div id="patterns" class="feed">
                     <h2>Calls For Help</h2>
 
                     <div class="tweets">
@@ -262,7 +256,7 @@
                     </div>
                 </div>
 
-                <div id="supplied">
+                <div id="supplied" class="feed">
                     <h2>Problems Solved</h2>
 
                     <div class="tweets">
@@ -315,13 +309,13 @@
             </div>
 
         </div>
-    </div>
-
-
-
+    </main>
     <footer>
         <p>
-            Footer content here
+
+            This site is open source.
+            <a href="https://github.com/open-distribution/frontline/">Improve this page</a>
+
         </p>
     </footer>
 
@@ -421,7 +415,12 @@
             var mapZoom = 7;//large = more zoom
             var mapCentre = centreLocation;
 
-            var mymap = L.map('map_container').setView(mapCentre, mapZoom);
+            var mymap = L.map(
+                'map_container',
+                {
+                    scrollWheelZoom: false
+                }
+            ).setView(mapCentre, mapZoom);
             setupAttributions();
             mymap.on('zoomend', zoomedHandler);
             augmentMap();
