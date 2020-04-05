@@ -351,8 +351,6 @@
 
                 if (feature.properties) {
 
-                    //console.log("onEachFeature");
-                    //console.log(feature._needsListHtml);
 
                     var typeAsColor = feature.properties["marker-color"];
                     var typeTitle = "N/A";
@@ -368,8 +366,30 @@
                         needsListValuesKey = "f3817f67-4a2e-4fda-bb83-df3909d5e588";
                     }
 
-                    //var needsListHtml = "NEEDS : N/A";
+                    var needsListHtml = "NEEDS : N/A";
 
+
+                    //fetch(feature.properties.url)
+                    //        .then(
+                    //            function (response) {
+                    //                if (response.status !== 200) {
+                    //                    console.log(`Fetch problem Status Code: ${response.status}`);
+                    //                    return;
+                    //                }
+                    //                response.json().then(function (data) {
+                    //                    console.log("fetching props url");
+                    //                    needsListHtml = "<ul>";
+                    //                    console.log(data.values[needsListValuesKey]);
+                    //                    //data.values[needsListValuesKey].forEach(function (item) {
+                    //                    //    needsListHtml += `<li>${item}</li>`;
+                    //                    //});
+                    //                    needsListHtml += "</ul>";
+                    //                });
+                    //            }
+                    //        )
+                    //        .catch(function (err) {
+                    //            console.log('Fetch Error :-S', err);
+                    //        });
 
                     html = `<h1>${typeTitle}</h1>`;
 
@@ -381,7 +401,7 @@
                         html += `<p>${feature.properties.description}</p>`;
                     }
 
-                    html += feature._needsListHtml;
+                    html += needsListHtml;
 
                     //html += feature.;
                 }
@@ -426,32 +446,6 @@
                 //else {
                 //    return { color: "green" };
                 //}
-            }
-
-
-            function getNeedsListValueKey(sourceFeature) {
-                var typeAsColor = sourceFeature.properties["marker-color"];
-                var needsListValuesKey = "";
-                if (typeAsColor === "#00966B")//green
-                {
-                    console.log("green")
-                    needsListValuesKey = "175ae465-02b2-44f0-a07c-8eea2b723395";
-                }
-                else if (typeAsColor === "#A51A1A")//red
-                {
-                    console.log("red RED RED")
-                    needsListValuesKey = "f3817f67-4a2e-4fda-bb83-df3909d5e588";
-                }
-                return needsListValuesKey;
-            }
-
-            function renderToMap(allFeaturesData) {
-
-            }
-
-            function asyncFunction(item, resolve) {
-                console.log(item);
-                return;
             }
 
             //vue
@@ -512,119 +506,137 @@
 
                         var map = mymap;
 
-                        //var firstCallFeatures = [];
-
-                        //let requests = [1, 2, 3].map((item) => {
-                        //    return new Promise((resolve) => {
-                        //        asyncFunction(item, resolve);
-                        //    });
-                        //})
-
-                        //Promise.all(requests).then(function () { console.log('done'); });
+                        fetch(url)
+                            .then(
+                                function (response) {
+                                    if (response.status !== 200) {
+                                        console.log(`Fetch problem Status Code: ${response.status}`);
+                                        return;
+                                    }
 
 
-                        var urls = [
-                            "https://frontlinehelp.api.ushahidi.io/api/v3/posts/116" //red
-                            , "https://frontlinehelp.api.ushahidi.io/api/v3/posts/94" //green
-                        ];
+                                    response.json().then(function (data) {
+                                        //console.log(data);
 
-                        // separate function to make code more clear
-                        const grabContent = url => fetch(url)
-                            .then(res => res.text())
-                            .then(html => console.log(html));
+                                        var markerOptionsDefault = {
+                                            radius: 8,
+                                            fillColor: "#ff7800",
+                                            color: "#000",
+                                            weight: 1,
+                                            opacity: 1,
+                                            fillOpacity: 0.8
+                                        };
+                                        //     "marker-color": "#A51A1A", vs
+                                        //    "marker-color": "#00966B",
 
-            Promise
-                .all(urls.map(grabContent))
-                .then(() => console.log(`Urls ${urls} were grabbed`))
+                                        //L.geoJSON(data.features, {
 
+                                        //    //pointToLayer: function (feature, latlng) {
+                                        //    //    return L.circleMarker(latlng, geojsonMarkerOptions);
+                                        //    //}
 
+                                        //    //style: function (feature) {
+                                        //    //    if (feature.properties["marker-color"]) {
+                                        //    //        console.log("returning color " + feature.properties["marker-color"]);
+                                        //    //        //return { color: "green" };
+                                        //    //        //return { color: feature.properties["marker-color"] };
+                                        //    //        return { color: "#ff0000" };
+                                        //    //    }
+                                        //    //    else {
+                                        //    //        console.log("fail");
+                                        //    //        return { color: "green" };
+                                        //    //    }
+                                        //    //}
+                                        //}).addTo(map);
 
-
-            //fetch(url)
-            //    .then(
-            //        function (response) {
-            //            if (response.status !== 200) {
-            //                console.log(`Fetch problem Status Code: ${response.status}`);
-            //                return;
-            //            }
-
-            //            response.json().then(function (data) {
-            //                //console.log(data);
-            //                var markerOptionsDefault = {
-            //                    radius: 8,
-            //                    fillColor: "#ff7800",
-            //                    color: "#000",
-            //                    weight: 1,
-            //                    opacity: 1,
-            //                    fillOpacity: 0.8
-            //                };
-
-            //                firstCallFeatures = data.features.slice();
-
-            //            });
-            //        }
-            //    )
-            //    .catch(function (err) {
-            //        console.log('Fetch Error :-S', err);
-            //    });
-        },
-        loadDataInternal: function (url) {
-            var self = this;
-            fetch(url)
-                .then(
-                    function (response) {
-                        if (response.status !== 200) {
-                            console.log(`Fetch problem Status Code: ${response.status}`);
-                            return;
-                        }
-                        response.json().then(function (data) {
-                            console.log(data);
-                            data.forEach(function (item) {
-                                self.needsData.push(item);
-                            })
-                            self.needsFeedReady = true;
-                        });
-                    }
-                )
-                .catch(function (err) {
-                    console.log('Fetch Error :-S', err);
-                });
-        },
-        loadData: function () {
-            this.loadDataInternal('./data.json');
-        },
-        loadMoreData: function () {
-            this.loadDataInternal('./data1.json');
-        },
-        loadEvenMoreData: function () {
-            this.loadDataInternal('./data2.json');
-        },
-        loadLastData: function () {
-            this.loadDataInternal('./data3.json');
-        },
-        hackTime: function (dateValue) {
-            return new moment(dateValue).format("H:mm:ss");
-        },
-        hackDateTime: function (dateValue) {
-            return new moment(dateValue).format("DD/MM/YYYY H:mm:ss");
-        }
+                                        data.features.forEach(function (item) {
+                                            L.geoJSON(item, {
+                                                pointToLayer: function (feature, latlng) {
+                                                    //console.log("pointToLayer");
+                                                    if (feature.properties["marker-color"]) {
+                                                        var marker = L.circleMarker(latlng, {
+                                                            radius: 8,
+                                                            fillColor: feature.properties["marker-color"],
+                                                            color: "#000",
+                                                            weight: 1,
+                                                            opacity: 1,
+                                                            fillOpacity: 0.8
+                                                        });
+                                                        marker._popUpUrl = feature.properties.url;
+                                                        return marker;
+                                                    }
+                                                    else {
+                                                        console.log("pointToLayer FAIL");
+                                                        return L.circleMarker(latlng, markerOptionsDefault);
+                                                    }
+                                                },
+                                                onEachFeature: onEachFeature
+                                            }).addTo(map);
+                                        })
+                                    });
+                                }
+                            )
+                            .catch(function (err) {
+                                console.log('Fetch Error :-S', err);
+                            });
                     },
-        mounted: function () {
-            var self = this;
-            document.getElementById("body").className = '';
+                    loadDataInternal: function (url) {
+                        var self = this;
+                        fetch(url)
+                            .then(
+                                function (response) {
+                                    if (response.status !== 200) {
+                                        console.log(`Fetch problem Status Code: ${response.status}`);
+                                        return;
+                                    }
+                                    response.json().then(function (data) {
+                                        console.log(data);
+                                        data.forEach(function (item) {
+                                            self.needsData.push(item);
+                                        })
+                                        self.needsFeedReady = true;
+                                    });
+                                }
+                            )
+                            .catch(function (err) {
+                                console.log('Fetch Error :-S', err);
+                            });
+                    },
+                    loadData: function () {
+                        this.loadDataInternal('./data.json');
+                    },
+                    loadMoreData: function () {
+                        this.loadDataInternal('./data1.json');
+                    },
+                    loadEvenMoreData: function () {
+                        this.loadDataInternal('./data2.json');
+                    },
+                    loadLastData: function () {
+                        this.loadDataInternal('./data3.json');
+                    },
+                    hackTime: function (dateValue) {
+                        return new moment(dateValue).format("H:mm:ss");
+                    },
+                    hackDateTime: function (dateValue) {
+                        return new moment(dateValue).format("DD/MM/YYYY H:mm:ss");
+                    }
+                },
+                mounted: function () {
+                    var self = this;
+                    document.getElementById("body").className = '';
+                }
+            });
+
+            //fake twitter load
+            //hacky simulation of APIs giving new data (Yes I know the order's wrong way round)
+            //setTimeout(appVm.loadData, 1500);
+            //setTimeout(appVm.loadMoreData, 3500);
+            //setTimeout(appVm.loadEvenMoreData, 4500);
+            //setTimeout(appVm.loadLastData, 4900);
+
+
+
         }
-                });
-
-                //fake twitter load
-                //hacky simulation of APIs giving new data (Yes I know the order's wrong way round)
-                //setTimeout(appVm.loadData, 1500);
-                //setTimeout(appVm.loadMoreData, 3500);
-                //setTimeout(appVm.loadEvenMoreData, 4500);
-                //setTimeout(appVm.loadLastData, 4900);
-
-
-
-            }
 
         (function () {
 

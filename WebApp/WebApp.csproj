@@ -88,6 +88,7 @@
     <Content Include="images\logo_trans.png" />
     <Content Include="images\logo_tweets.jpg" />
     <Content Include="images\map.jpg" />
+    <Content Include="index - Copy.html" />
     <Content Include="index.html" />
     <Content Include="moment.js" />
     <Content Include="mstile-150x150.png" />
