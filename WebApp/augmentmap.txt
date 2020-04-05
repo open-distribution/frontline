@@ -1,0 +1,94 @@
+  //sheffield
+                var sheffieldLat = 53.378644;
+                var sheffieldLng = -1.470580;
+                var sheffieldLocation = [sheffieldLat, sheffieldLng];
+                L.circle(sheffieldLocation, 10000, {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.5
+                }).addTo(mymap).bindPopup("Sheffield 432 Needs");
+
+                //birmingham
+                var birminghamLat = 52.478968;
+                var birminghamLng = -1.884918;
+                var birminghamLocation = [birminghamLat, birminghamLng];
+                L.circle(birminghamLocation, 30000, {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.5
+                }).addTo(mymap).bindPopup("Birmingham 607 Needs");
+
+                //london
+                var londonLat = 51.499212;
+                var londonLng = -0.105451;
+                var londonLocation = [londonLat, londonLng];
+                londonCircle = L.circle(londonLocation, 50000, {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.5
+                }).addTo(mymap).bindPopup("London 1237 Needs");
+
+                //Barts
+                L.marker(bartsLocation, {
+                    icon: L.icon({
+                        iconUrl: requirementsIcon
+                        , iconAnchor: [15, 40] //x = 50% of pixel width of custom img, y = 100% pixel height
+                        , popupAnchor: [0, -45] // relative to the iconAnchor
+                    })
+                }).addTo(mymap).bindPopup("<strong>#frontline</strong> #N16_0RH #PPE #Masks");
+
+                //offset a tiny bit
+                L.marker([51.51836, -0.0594], {
+                    icon: L.icon({
+                        iconUrl: solvedIcon
+                        , iconAnchor: [15, 40] //x = 50% of pixel width of custom img, y = 100% pixel height
+                        , popupAnchor: [0, -45] // relative to the iconAnchor
+                    })
+                }).addTo(mymap).bindPopup("<strong>#frontline</strong>  #BN11ND #FaceShields #Masks #Gloves");
+
+                //Barts
+                L.circle(bartsLocation, 800, {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.3
+                }).addTo(mymap).bindPopup("Face Shields needed @Barts Hospital, London");
+
+                //CharingX
+                L.circle(charingXLocation, 300, {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.7
+                }).addTo(mymap).bindPopup("Masks needed @ Charing Cross Hospital, London");
+
+                L.circle(charingXLocation, 900, {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.3
+                }).addTo(mymap).bindPopup("27 needs @ Charing Cross Hospital, London");
+
+                //homerton
+                L.circle(homertonLocation, 300, {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.7
+                }).addTo(mymap).bindPopup("Hommerton");
+
+                L.circle(homertonLocation, 900, {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.3
+                }).addTo(mymap).bindPopup("I am a diff circle.");
+
+
+                //Royal Free
+                L.circle(royalFreeLocation, 300, {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.7
+                }).addTo(mymap).bindPopup("I am a circle.");
+
+                L.circle(royalFreeLocation, 900, {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.3
+                }).addTo(mymap).bindPopup("I am a diff circle.");
