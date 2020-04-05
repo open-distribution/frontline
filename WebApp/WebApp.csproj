@@ -108,6 +108,7 @@
     <Content Include="README.md" />
     <Content Include="style.less" />
     <Content Include="site.webmanifest" />
+    <None Include="Properties\PublishProfiles\frontline.agileclarity.com.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
