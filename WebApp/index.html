@@ -445,13 +445,8 @@
                 return needsListValuesKey;
             }
 
-            function renderToMap(allFeaturesData) {
+            function fetchAndAugment(thing, url) {
 
-            }
-
-            function asyncFunction(item, resolve) {
-                console.log(item);
-                return;
             }
 
             //vue
@@ -512,119 +507,146 @@
 
                         var map = mymap;
 
-                        //var firstCallFeatures = [];
-
-                        //let requests = [1, 2, 3].map((item) => {
-                        //    return new Promise((resolve) => {
-                        //        asyncFunction(item, resolve);
-                        //    });
-                        //})
-
-                        //Promise.all(requests).then(function () { console.log('done'); });
-
-
                         var urls = [
                             "https://frontlinehelp.api.ushahidi.io/api/v3/posts/116" //red
                             , "https://frontlinehelp.api.ushahidi.io/api/v3/posts/94" //green
                         ];
 
-                        // separate function to make code more clear
-                        const grabContent = url => fetch(url)
-                            .then(res => res.text())
-                            .then(html => console.log(html));
+                        var urls2 = [];
+                        var collectedHtml = [];
 
-            Promise
-                .all(urls.map(grabContent))
-                .then(() => console.log(`Urls ${urls} were grabbed`))
+                        const grabContent = (url) => {
+                            urls2.push(url);
+                            return fetch(url).then(res => res.json()).then(html => {
+                                collectedHtml.push(html);
+                                console.log(html)
+                            });
+                        };
+
+                        Promise
+                            .all(urls.map(grabContent))
+                            .then(() => {
+                                console.log(`Urls ${urls} were grabbed`)
+                                console.log(`urls2 ${urls2} were grabbed`)
+                                console.log(`collectedHtml ${collectedHtml} were grabbed`)
+                                console.log(collectedHtml)
+                            }
+                            );
 
 
 
 
-            //fetch(url)
-            //    .then(
-            //        function (response) {
-            //            if (response.status !== 200) {
-            //                console.log(`Fetch problem Status Code: ${response.status}`);
-            //                return;
-            //            }
+                        //this works
+                        //var urls = [
+                        //    "https://frontlinehelp.api.ushahidi.io/api/v3/posts/116" //red
+                        //    , "https://frontlinehelp.api.ushahidi.io/api/v3/posts/94" //green
+                        //];
 
-            //            response.json().then(function (data) {
-            //                //console.log(data);
-            //                var markerOptionsDefault = {
-            //                    radius: 8,
-            //                    fillColor: "#ff7800",
-            //                    color: "#000",
-            //                    weight: 1,
-            //                    opacity: 1,
-            //                    fillOpacity: 0.8
-            //                };
+                        //// separate function to make code more clear
+                        //const grabContent = url => fetch(url)
+                        //    .then(res => res.text())
+                        //    .then(html => console.log(html));
 
-            //                firstCallFeatures = data.features.slice();
+                        //Promise
+                        //    .all(urls.map(grabContent))
+                        //    .then(() => console.log(`Urls ${urls} were grabbed`))
 
-            //            });
-            //        }
-            //    )
-            //    .catch(function (err) {
-            //        console.log('Fetch Error :-S', err);
-            //    });
-        },
-        loadDataInternal: function (url) {
-            var self = this;
-            fetch(url)
-                .then(
-                    function (response) {
-                        if (response.status !== 200) {
-                            console.log(`Fetch problem Status Code: ${response.status}`);
-                            return;
-                        }
-                        response.json().then(function (data) {
-                            console.log(data);
-                            data.forEach(function (item) {
-                                self.needsData.push(item);
-                            })
-                            self.needsFeedReady = true;
-                        });
-                    }
-                )
-                .catch(function (err) {
-                    console.log('Fetch Error :-S', err);
-                });
-        },
-        loadData: function () {
-            this.loadDataInternal('./data.json');
-        },
-        loadMoreData: function () {
-            this.loadDataInternal('./data1.json');
-        },
-        loadEvenMoreData: function () {
-            this.loadDataInternal('./data2.json');
-        },
-        loadLastData: function () {
-            this.loadDataInternal('./data3.json');
-        },
-        hackTime: function (dateValue) {
-            return new moment(dateValue).format("H:mm:ss");
-        },
-        hackDateTime: function (dateValue) {
-            return new moment(dateValue).format("DD/MM/YYYY H:mm:ss");
-        }
+
+
+
+
+                        //adding more data into the functions
+                        //fetch("https://frontlinehelp.api.ushahidi.io/api/v3/posts/116")
+                        //    .then(r => r.json().then(data => ({ status: r.status, body: data })))
+                        //    .then(obj => console.log(obj));
+
+
+
+                        //fetch(url)
+                        //    .then(
+                        //        function (response) {
+                        //            if (response.status !== 200) {
+                        //                console.log(`Fetch problem Status Code: ${response.status}`);
+                        //                return;
+                        //            }
+
+                        //            response.json().then(function (data) {
+                        //                //console.log(data);
+                        //                var markerOptionsDefault = {
+                        //                    radius: 8,
+                        //                    fillColor: "#ff7800",
+                        //                    color: "#000",
+                        //                    weight: 1,
+                        //                    opacity: 1,
+                        //                    fillOpacity: 0.8
+                        //                };
+
+                        //                firstCallFeatures = data.features.slice();
+
+                        //            });
+                        //        }
+                        //    )
+                        //    .catch(function (err) {
+                        //        console.log('Fetch Error :-S', err);
+                        //    });
                     },
-        mounted: function () {
-            var self = this;
-            document.getElementById("body").className = '';
+                    loadDataInternal: function (url) {
+                        var self = this;
+                        fetch(url)
+                            .then(
+                                function (response) {
+                                    if (response.status !== 200) {
+                                        console.log(`Fetch problem Status Code: ${response.status}`);
+                                        return;
+                                    }
+                                    response.json().then(function (data) {
+                                        console.log(data);
+                                        data.forEach(function (item) {
+                                            self.needsData.push(item);
+                                        })
+                                        self.needsFeedReady = true;
+                                    });
+                                }
+                            )
+                            .catch(function (err) {
+                                console.log('Fetch Error :-S', err);
+                            });
+                    },
+                    loadData: function () {
+                        this.loadDataInternal('./data.json');
+                    },
+                    loadMoreData: function () {
+                        this.loadDataInternal('./data1.json');
+                    },
+                    loadEvenMoreData: function () {
+                        this.loadDataInternal('./data2.json');
+                    },
+                    loadLastData: function () {
+                        this.loadDataInternal('./data3.json');
+                    },
+                    hackTime: function (dateValue) {
+                        return new moment(dateValue).format("H:mm:ss");
+                    },
+                    hackDateTime: function (dateValue) {
+                        return new moment(dateValue).format("DD/MM/YYYY H:mm:ss");
+                    }
+                },
+                mounted: function () {
+                    var self = this;
+                    document.getElementById("body").className = '';
+                }
+            });
+
+            //fake twitter load
+            //hacky simulation of APIs giving new data (Yes I know the order's wrong way round)
+            //setTimeout(appVm.loadData, 1500);
+            //setTimeout(appVm.loadMoreData, 3500);
+            //setTimeout(appVm.loadEvenMoreData, 4500);
+            //setTimeout(appVm.loadLastData, 4900);
+
+
+
         }
-                });
-
-                //fake twitter load
-                //hacky simulation of APIs giving new data (Yes I know the order's wrong way round)
-                //setTimeout(appVm.loadData, 1500);
-                //setTimeout(appVm.loadMoreData, 3500);
-                //setTimeout(appVm.loadEvenMoreData, 4500);
-                //setTimeout(appVm.loadLastData, 4900);
-
-
-
-            }
 
         (function () {
 
