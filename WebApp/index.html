@@ -293,6 +293,23 @@
             var mymap = L.map('map_container').setView(mapCentre, mapZoom);
             setupAttributions();
             mymap.on('zoomend', zoomedHandler);
+
+            mymap.on('popupopen', function (e) {
+                //console.log(e.popup);
+                //console.log(e.popup._source);
+
+                //console.log('popupopen has popup:');
+                //console.log(e.popup);
+                //console.log('popupopen has _source' + e.popup._source);
+                //console.log('popupopen has _source._popUpUrl' + e.popup._source._popUpUrl);
+
+                //console.log(e.popup._content);
+                //e.popup._content = e.popup._source._popUpUrl;
+                //console.log(e.popup._content);
+
+                //alert(e.popup._source._myId);
+            });
+
             augmentMap();
             var londonCircle = {};
 
@@ -328,22 +345,51 @@
 
             function onEachFeature(feature, layer) {
                 // does this feature have a property named popupContent?
-                console.log(layer);
+                //console.log(layer);
 
                 var html = "";
 
                 if (feature.properties) {
 
+
                     var typeAsColor = feature.properties["marker-color"];
                     var typeTitle = "N/A";
-                    if (typeAsColor == "#00966B")//green 
+                    var needsListValuesKey = "";
+                    if (typeAsColor == "#00966B")//green
                     {
                         typeTitle = "Solution";
+                        needsListValuesKey = "7180b854-c51e-4f0a-b5b6-4f30e27c87cc";
                     }
-                    else if(typeAsColor == "#A51A1A")//red 
+                    else if (typeAsColor == "#A51A1A")//red
                     {
                         typeTitle = "Need";
+                        needsListValuesKey = "f3817f67-4a2e-4fda-bb83-df3909d5e588";
                     }
+
+                    var needsListHtml = "NEEDS : N/A";
+
+
+                    //fetch(feature.properties.url)
+                    //        .then(
+                    //            function (response) {
+                    //                if (response.status !== 200) {
+                    //                    console.log(`Fetch problem Status Code: ${response.status}`);
+                    //                    return;
+                    //                }
+                    //                response.json().then(function (data) {
+                    //                    console.log("fetching props url");
+                    //                    needsListHtml = "<ul>";
+                    //                    console.log(data.values[needsListValuesKey]);
+                    //                    //data.values[needsListValuesKey].forEach(function (item) {
+                    //                    //    needsListHtml += `<li>${item}</li>`;
+                    //                    //});
+                    //                    needsListHtml += "</ul>";
+                    //                });
+                    //            }
+                    //        )
+                    //        .catch(function (err) {
+                    //            console.log('Fetch Error :-S', err);
+                    //        });
 
                     html = `<h1>${typeTitle}</h1>`;
 
@@ -354,11 +400,23 @@
                     if (feature.properties.description) {
                         html += `<p>${feature.properties.description}</p>`;
                     }
+
+                    html += needsListHtml;
+
+                    //html += feature.;
                 }
 
                 if (html.length > 0) {
+
+
                     layer.bindPopup(html);
+                    //layer.bindPopup(function (layer2) {
+                    //    //return "Some string";
+                    //    return "Some <h1>HTML</h1>";
+                    //});
                 }
+
+
             }
 
             function styleEachMarker(feature) {
@@ -455,6 +513,8 @@
                                         console.log(`Fetch problem Status Code: ${response.status}`);
                                         return;
                                     }
+
+
                                     response.json().then(function (data) {
                                         //console.log(data);
 
@@ -492,16 +552,11 @@
 
 
                                         data.features.forEach(function (item) {
-
-                                            console.log("item");
-
                                             L.geoJSON(item, {
-                                                //style: styleEachMarker,
                                                 pointToLayer: function (feature, latlng) {
-                                                    console.log("pointToLayer");
-
+                                                    //console.log("pointToLayer");
                                                     if (feature.properties["marker-color"]) {
-                                                       return L.circleMarker(latlng, {
+                                                        var marker = L.circleMarker(latlng, {
                                                             radius: 8,
                                                             fillColor: feature.properties["marker-color"],
                                                             color: "#000",
@@ -509,9 +564,8 @@
                                                             opacity: 1,
                                                             fillOpacity: 0.8
                                                         });
-                                                        //console.log("returning color " + feature.properties["marker-color"]);
-                                                        //return { color: "green" };
-                                                        //return { "color":  };
+                                                        marker._popUpUrl = feature.properties.url;
+                                                        return marker;
                                                     }
                                                     else {
                                                         console.log("pointToLayer FAIL");
@@ -520,11 +574,7 @@
                                                 },
                                                 onEachFeature: onEachFeature
                                             }).addTo(map);
-                                            //self.geojsonData.push(item);
                                         })
-
-
-
                                     });
                                 }
                             )
