@@ -13,26 +13,17 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
-    <script src="https://kit.fontawesome.com/e10dd0382c.js" crossorigin="anonymous"></script>
-
-    <!-- //TODO:Prod 826KB so work out which variations we use and get just them -->
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
           integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
           crossorigin="" />
-
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
             integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
             crossorigin=""></script>
-
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-    <link rel="stylesheet/less" type="text/css" href="style.less" />
-    <script src="3.9.0.less.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="moment.js"></script>
-
-    <!--<link href="style.css" rel="stylesheet" />-->
 </head>
 <body id="body" class="not_yet_ready">
 
@@ -369,7 +360,7 @@
             });
 
             //hacky simulation of APIs giving new data (Yes I know the order's wrong way round)
-            setTimeout(appVm.loadData, 1500); 
+            setTimeout(appVm.loadData, 1500);
             setTimeout(appVm.loadMoreData, 3500);
             setTimeout(appVm.loadEvenMoreData, 4500);
             setTimeout(appVm.loadLastData, 4900);
@@ -378,7 +369,7 @@
             var solvedIcon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAoCAYAAADpE0oSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxEAAAsRAX9kX5EAAAN5SURBVFhHtZhJaBRBFIYrLigiSnBBRYWoiHgyEuJyUEaDARFxCehF8KCIiKCSgwcdtBPEiwEPevBoBAnu68Gooxe3RPHgBoIbQQXjDi5xwf+v1+XMZLqWZCYffJWqyqRfV3V11ZuUKR+R4mcmwYWwBlbCCtgfki74DN6Fl+A1lVav8NOJO3CkA+6AS+EIdgXwFp6Ge3EDL3VPAsmBIzUY5WaYhkPZ1Qu+Qt70IVzlh+7JwUxXlkgNQXkQboO8gd4yCC6CE1RKtaqM+qV7Y/JHLCM9Alfqduk4Cddg5N+kqVS/+KdhO1wh1ZLCa+6UqpAdcaRqUXJRFDO9Ln7COoz6PBsSONLP+has0u2+4z6cheBdZqqXw9Cgf+EL2AZvw+dxXwgzYB0rZfFoL0BOtY+HcDe8Cj+wA5TD+bARTmeHhyuwloGnonIHDmevg4twNaaJ72chkRqGkquXO5yLL7CaUz0T+oJyOtdZg5K0vuBaaN2tYniDlQxcrZtumnDhN3HdTlp1oNwjDSd6xNzwXfAQOCPVILheCrbIblQw8EipW3kNP0o1iE+QI3dRzsC0lHBvGCBVKwMZ9J3UrYyHo6QaBD/Lv3HRycBcsS5496ukGgQ/6xtxBwNzB/JRj/fUvzlEahrKrdJw0s7A3PbMLmSD2UczLmx/AyI1EWUzHK3bdng0tnHn4mI4C5ew18N7uA8eg2ZtjIU8vznSkPToOqwxp9MylKd0PYzP0AQeA3uSHnHbbTGv0jnYLtUguMVOie1JUGaix1mRwGn1B2UDzMuLSgyv3RDHyts8uNUxA+krWiBnVpNNfUikJqPk68UztpRw252D0f5P9PPT2wz25JReuYth7mwUAw+ZDQh6Q5pC0sUPQx76peIoPCHVLPlTbYjUOJQ3ITeFYngK52K0ndLMYptOPpN6WMwqZzq7JSkoKfwKQzLaR3je3P5CMpQk9iPogbhegG8B7YIPpNoj7kFmnVbcgdN6ha+H9iSvECZ9G/G3zESsJE91LhmkMSn9uQXS4aURQbmSnYS+q02QibiPVsjTy0vy65SEHPL8fmXLwXlizcZon0jTjX+qDRm8Fin9bwae291n6jfchKCXpekndKoNfHb8mtId5t3e55pL+FQbIp1l8CAxaRA3/iqM1pet5hE+1YaM+o4p57OeB/n1lBnFY/4qHKX+Af57rdvHZ3ClAAAAAElFTkSuQmCC";
 
             //places
-            var bartsLat = 51.518205;//In London - Large as not on equator 
+            var bartsLat = 51.518205;//In London - Large as not on equator
             var bartsLng = -0.059105;//In London - Approaching Zero as ~GMT
             var bartsLocation = [bartsLat, bartsLng];
 
@@ -424,7 +415,7 @@
 
             function zoomedHandler(eventData) {
                 console.log(`Zoomed to ${mymap.getZoom()}`)
-                if (mymap.getZoom() >= zoomThreshold) 
+                if (mymap.getZoom() >= zoomThreshold)
                 {
                     console.log('removing city scale items...');
                     //seems we should use layers for this - this doesn't work ? maybe //https://gis.stackexchange.com/questions/178595/how-to-show-hide-markers-that-are-inside-a-function-using-js
@@ -541,24 +532,6 @@
 
 
     </script>
-
-
-    <!--GOOGLE MAPS WORKS ALSO LEAFLETJS seems a little buggy e.g. zoooming and panning can lead to  things we put on it being in wrong place !!!!! NOT GOOD - or did I do something stoopid? -->
-    <!--<script>
-
-        // Initialize and add the map
-        function initMap() {
-            // The location of Uluru
-            var uluru = { lat: -25.344, lng: 131.036 };
-            // The map, centered at Uluru
-            var map = new google.maps.Map(
-                document.getElementById('map_container'), { zoom: 4, center: uluru });
-            // The marker, positioned at Uluru
-            var marker = new google.maps.Marker({ position: uluru, map: map });
-        }
-    </script>
-
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXZEoUFjO5k5xVDwd9kX3qwUQsj5C6zNg&callback=initMap"></script>-->
 
 </body>
 </html>
