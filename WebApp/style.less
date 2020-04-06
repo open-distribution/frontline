@@ -273,14 +273,13 @@ body {
             #map {
                 width: 70%;
                 border: solid red @border_thickness_test;
-                //needed
+                //for inset / dashboard look
                 margin-top: 10px;
                 margin-right: 15px;
 
                 #map_inner {
                     background-size: cover;
                     height: 100%;
-                    /*.box_4;*/
                     #map_container {
                         border: solid purple @border_thickness_test;
                         width: 600px;
@@ -379,7 +378,7 @@ body {
     }
 
     footer {
-        min-height: 60px;
+        height: 75px;
 
         p {
             text-align: center;
@@ -578,7 +577,6 @@ h1.bad {
     .contributors;
     background-image: url(/images/ucl.png);
 }
-//#map_inner
 
 #map_container{
     transition:all 1s ease-in-out;
@@ -590,7 +588,7 @@ h1.bad {
 }
 
 #dash_controls {
-    /*display: none;*/
+    height:0px;
     opacity: 0;
     text-align: center;
 
@@ -598,16 +596,14 @@ h1.bad {
         font-size: 1.2em;
     }
 
-    transition: all 0s;
+    transition: opacity 0s;
 }
 
 #dash_controls.visible {
-    /*display: block;*/
     opacity: 1;
     position: absolute;
-    bottom: 75px;
-    /*border: solid 1px red;*/
+    bottom: 80px;
     height: 100px;
     width: 100%;
-    transition: all 2.5s ease-in-out;
+    transition: opacity 2.5s ease-in-out;
 }
