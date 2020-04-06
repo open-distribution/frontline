@@ -67,35 +67,46 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="0 PRIVATE\augmentmap.txt" />
     <Content Include="3.9.0.less.js" />
     <Content Include="3.9.0.less.min.js" />
     <Content Include="android-chrome-192x192.png" />
     <Content Include="android-chrome-512x512.png" />
     <Content Include="api.js" />
     <Content Include="apple-touch-icon.png" />
+    <Content Include="0 PRIVATE\BCSNotes.txt" />
     <Content Include="browserconfig.xml" />
     <Content Include="favicon-16x16.png" />
     <Content Include="favicon-32x32.png" />
     <Content Include="favicon.ico" />
     <Content Include="images\3M.jpg" />
+    <Content Include="images\beep.png" />
     <Content Include="images\bonnie_castillo.jpg" />
     <Content Include="images\dalai_lama.jpg" />
     <Content Include="images\david_schneider.jpg" />
     <Content Include="images\emmanuel_oyemade.jpg" />
     <Content Include="images\eureka.jpg" />
     <Content Include="images\falguni_dave.jpg" />
+    <Content Include="images\frontline_logo.png" />
+    <Content Include="0 PRIVATE\frontline_logo_2.png" />
+    <Content Include="0 PRIVATE\frontline_logo_small.png" />
+    <Content Include="images\innovation_bubble.png" />
     <Content Include="images\just_gloves.jpg" />
-    <Content Include="images\logo.png" />
+    <Content Include="0 PRIVATE\logo.png" />
     <Content Include="images\logo_trans.png" />
     <Content Include="images\logo_tweets.jpg" />
-    <Content Include="images\map.jpg" />
-    <Content Include="index - Copy.html" />
+    <Content Include="images\oval.png" />
+    <Content Include="images\the_fourth_angel.png" />
+    <Content Include="images\the_social_element.png" />
+    <Content Include="images\ucl.png" />
+    <Content Include="0 PRIVATE\index - Copy.html" />
     <Content Include="index.html" />
     <Content Include="moment.js" />
     <Content Include="mstile-150x150.png" />
     <Content Include="safari-pinned-tab.svg" />
+    <Content Include="script.js" />
     <Content Include="style.css" />
-    <Content Include="ushahidi.js" />
+    <Content Include="0 PRIVATE\ushahidi.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -103,11 +114,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LICENSE" />
-    <Content Include="data.json" />
-    <Content Include="data1.json" />
-    <Content Include="data2.json" />
-    <Content Include="data3.json" />
-    <Content Include="geojson.json" />
+    <Content Include="0 PRIVATE\data.json" />
+    <Content Include="0 PRIVATE\data1.json" />
+    <Content Include="0 PRIVATE\data2.json" />
+    <Content Include="0 PRIVATE\data3.json" />
+    <Content Include="0 PRIVATE\geojson.json" />
     <None Include="packages.config" />
     <Content Include="README.md" />
     <Content Include="style.less" />

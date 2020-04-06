@@ -1,18 +1,33 @@
-﻿function getUshahidiData(theMap) {
+﻿var frontlineSettings = {
+    mainUrl: "https://frontlinehelp.api.ushahidi.io/api/v3/posts/geojson"
+    , mediaUrlRoot: "https://frontlinehelp.api.ushahidi.io/api/v3/media/"
+    , mediaValuesKey: "aaf4c9d9-899c-4050-a39a-1bccf441791a"
+
+    , bad: {
+        color: "#A51A1A" //red
+        , needsListValuesKey: "f3817f67-4a2e-4fda-bb83-df3909d5e588"
+        , popupTitle: "Need"
+    }
+
+    , good: {
+        color: "#00966B" //green
+        , needsListValuesKey: "175ae465-02b2-44f0-a07c-8eea2b723395"
+        , popupTitle: "Solution"
+    }
+};
+
+function getUshahidiData(theMap) {
 
     var features = [];
     var featuresAndUrls = [];
     var featuresAndDataById = {};
-
-    var mainUrl = "https://frontlinehelp.api.ushahidi.io/api/v3/posts/geojson";
-    var mediaUrlRoot = "https://frontlinehelp.api.ushahidi.io/api/v3/media/";
 
     const grabSecondaryContent = (objData) => {
         return fetch(objData.url).then(res => res.json())
             .then(data2 => {
                 var mediaId = getMediaId(data2);
                 if (mediaId !== undefined) {
-                    mediaUrl = mediaUrlRoot + mediaId;
+                    mediaUrl = frontlineSettings.mediaUrlRoot + mediaId;
                     return fetch(mediaUrl)
                         .then(res => res.json())
                         .then(mediaData => {
@@ -28,86 +43,50 @@
             });
     };
 
-    fetch(mainUrl).then(response => response.json())
+
+    fetch(frontlineSettings.mainUrl).then(response => response.json())
         .then(function (data) {
             features = data.features.slice();
             features.forEach(feat =>
-
                 featuresAndUrls.push({
                     url: feat.properties.url,
                     feature: feat
                 })
-
             );
 
             Promise.all(featuresAndUrls.map(grabSecondaryContent)).then(() => {
-                console.log("All Calls Done");
-
+                console.log("All API Calls Done");
                 for (const id in featuresAndDataById) {
-                    console.log(id);
-                    var thisFeature = featuresAndDataById[id].feature;
-                    var thisFeaturesAjaxData = featuresAndDataById[id].ajaxData;
-                    var thisFeaturesImageUrl = featuresAndDataById[id].imgUrl;
-                    L.geoJSON(thisFeature, {
+                    L.geoJSON(featuresAndDataById[id].feature, {
                         pointToLayer: function (feature, latlng) {
                             return getMarker(feature, latlng);
                         },
                         onEachFeature: (f, l) => {
-                            handleFeature(f, l, thisFeaturesAjaxData, thisFeaturesImageUrl);
+                            setPopupContent(f, l, featuresAndDataById[id].ajaxData, featuresAndDataById[id].imgUrl);
                         }
                     }).addTo(theMap);
                 }
             });
         });
+
+
+    throw new Error("hereitis");
 }
 
-
-
-function storeCollectedInfo(theobject, theFeaturesAndDataById) {
-    theFeaturesAndDataById[theobject.feature.properties.id] = theobject;
-}
-
-const mediaValuesKey = "aaf4c9d9-899c-4050-a39a-1bccf441791a";
-
-function getMediaId(sourceAjaxData) {
-    var respVal = undefined;
-    if (mediaValuesKey in sourceAjaxData.values) {
-        respVal = sourceAjaxData.values[mediaValuesKey];
-    }
-    return respVal;
-}
-
-
-function handleFeature(feature, layer, ajaxData, featureImgUrl) {
+function setPopupContent(feature, layer, ajaxData, featureImgUrl) {
     var html = "";
-
     if (feature.properties) {
-        var typeAsColor = feature.properties["marker-color"];
-        var typeTitle = "N/A";
-        if (typeAsColor === "#00966B")//green
-        {
-            typeTitle = "Solution";
-            needsListValuesKey = "175ae465-02b2-44f0-a07c-8eea2b723395";
-        }
-        else if (typeAsColor === "#A51A1A")//red
-        {
-            typeTitle = "Need";
-            needsListValuesKey = "f3817f67-4a2e-4fda-bb83-df3909d5e588";
-        }
-
-        html = `<h1>${typeTitle}</h1>`;
-
+        var typeName = getTypeFromColor(feature);
+        html = `<h1 class="${typeName}">${frontlineSettings[typeName].popupTitle}</h1>`;
         if (feature.properties.title) {
             html += `<h2>${feature.properties.title}</h2>`;
         }
-
         if (feature.properties.description) {
             html += `<p>${feature.properties.description}</p>`;
         }
 
-        html += getNeedsHtml(needsListValuesKey, ajaxData);
+        html += getNeedsHtml(frontlineSettings[typeName].needsListValuesKey, ajaxData);
     }
-
     if (featureImgUrl !== null) {
         html += `<img src='${featureImgUrl}' style="width:100px;height:auto;" />`;
     }
@@ -138,4 +117,29 @@ function getMarkerProps(someFeature) {
         opacity: 1,
         fillOpacity: 0.8
     };
+}
+
+function getTypeFromColor(aFeature) {
+    var color = aFeature.properties["marker-color"];
+    if (color === frontlineSettings.good.color) {
+        return "good";
+    }
+    else if (color === frontlineSettings.bad.color) {
+        return "bad";
+    }
+    else {
+        throw new Error("feature color was not coded for " + color);
+    }
+}
+
+function storeCollectedInfo(theobject, theFeaturesAndDataById) {
+    theFeaturesAndDataById[theobject.feature.properties.id] = theobject;
+}
+
+function getMediaId(sourceAjaxData) {
+    var respVal = undefined;
+    if (frontlineSettings.mediaValuesKey in sourceAjaxData.values) {
+        respVal = sourceAjaxData.values[frontlineSettings.mediaValuesKey];
+    }
+    return respVal;
 }
