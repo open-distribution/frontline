@@ -105,7 +105,7 @@ header {
 }
 header #title_bar {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   padding: 1rem 1% 0 1%;
 }
@@ -120,8 +120,6 @@ header #title_bar {
 }
 header #title_bar #icons {
   border: solid red 0px;
-  /*margin-left: 30px; BCS todo*/
-  margin-right: 30px;
   font-size: 0.8em;
   vertical-align: top;
 }
@@ -145,8 +143,6 @@ header #title_bar #icons #facebook {
 header #title_bar #title {
   font-size: 2em;
   margin: 0;
-  margin-bottom: 0px;
-  margin-right: 2%;
   font-weight: normal;
 }
 header #title_bar #title span.hashtag_style {
@@ -333,8 +329,6 @@ main {
   color: #0a150d;
   background-color: #ffffff;
   width: 48%;
-  /*display: flex;*/
-  /*?? this came out surely not in use? */
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -503,81 +497,21 @@ h1.bad {
 }
 .beep {
   background-image: url(/images/beep.png);
-  height: 40px;
-  width: 80px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-size: contain;
-  margin-right: 2vw;
-}
-.beep:hover {
-  -webkit-animation: tada 2s linear infinite;
-  animation: tada 2s linear infinite;
 }
 .innovation_bubble {
   background-image: url(/images/innovation_bubble.png);
-  height: 40px;
-  width: 80px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-size: contain;
-  margin-right: 2vw;
-}
-.innovation_bubble:hover {
-  -webkit-animation: tada 2s linear infinite;
-  animation: tada 2s linear infinite;
 }
 .the_fourth_angel {
-  height: 40px;
-  width: 80px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-size: contain;
-  margin-right: 2vw;
   background-image: url(/images/the_fourth_angel.png);
 }
-.the_fourth_angel:hover {
-  -webkit-animation: tada 2s linear infinite;
-  animation: tada 2s linear infinite;
-}
 .the_social_element {
-  height: 40px;
-  width: 80px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-size: contain;
-  margin-right: 2vw;
   background-image: url(/images/the_social_element.png);
 }
-.the_social_element:hover {
-  -webkit-animation: tada 2s linear infinite;
-  animation: tada 2s linear infinite;
-}
 .oval {
-  height: 40px;
-  width: 80px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-size: contain;
-  margin-right: 2vw;
   background-image: url(/images/oval.png);
 }
-.oval:hover {
-  -webkit-animation: tada 2s linear infinite;
-  animation: tada 2s linear infinite;
-}
 .ucl {
-  height: 40px;
-  width: 80px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-size: contain;
-  margin-right: 2vw;
   background-image: url(/images/ucl.png);
-}
-.ucl:hover {
-  -webkit-animation: tada 2s linear infinite;
-  animation: tada 2s linear infinite;
 }
 #map_container {
   transition: all 1s ease-in-out;
