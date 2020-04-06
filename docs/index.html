@@ -1,208 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>#FrontLine | Voices of Heroes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#FrontLine | Voices of Health Care Workers</title>
 
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
-	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-	<meta name="msapplication-TileColor" content="#da532c">
-	<meta name="theme-color" content="#ffffff">
-	<script src="https://kit.fontawesome.com/e10dd0382c.js" crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <script src="https://kit.fontawesome.com/e10dd0382c.js" crossorigin="anonymous"></script>
 
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-		  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-		  crossorigin="" />
-	<style>
-		/* deliberate inclusion of minimal CSS for speed of initial styling */
-		@font-face {
-			font-family: 'DM Sans';
-			font-style: normal;
-			font-weight: normal;
-			src: local('DM Sans Medium'), url('fonts/DMSans-Regular.woff') format('woff');
-		}
-		@font-face {
-			font-family: 'DM Sans';
-			font-style: normal;
-			font-weight: 500;
-			src: local('DM Sans Medium'), url('fonts/DMSans-Medium.woff') format('woff');
-		}
-		@font-face {
-			font-family: 'DM Sans';
-			font-style: normal;
-			font-weight: bold;
-			src: local('DM Sans Bold'), url('fonts/DMSans-Bold.woff') format('woff');
-		}
-		html, body {
-			font-family: 'DM Sans';
-			font-weight: normal;
-			background: #00966b;
-			color: #fff;
-		}
-	</style>
-	<link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+          crossorigin="" />
+    <style>
+        /* deliberate inclusion of minimal CSS for speed of initial styling */
+        @font-face {
+            font-family: 'DM Sans';
+            font-style: normal;
+            font-weight: normal;
+            src: local('DM Sans Medium'), url('fonts/DMSans-Regular.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'DM Sans';
+            font-style: normal;
+            font-weight: 500;
+            src: local('DM Sans Medium'), url('fonts/DMSans-Medium.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'DM Sans';
+            font-style: normal;
+            font-weight: bold;
+            src: local('DM Sans Bold'), url('fonts/DMSans-Bold.woff') format('woff');
+        }
+        html, body {
+            font-family: 'DM Sans';
+            font-weight: normal;
+            background: #00966b;
+            color: #fff;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="style.css" />
 
-	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-			integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-			crossorigin=""></script>
-	<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
-	<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+            crossorigin=""></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
 
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<script src="https://platform.twitter.com/widgets.js" charset="utf-8" crossorigin="anonymous"></script>
-	<script src="api.js"></script>
-	<script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://platform.twitter.com/widgets.js" charset="utf-8" crossorigin="anonymous"></script>
+    <script src="api.js"></script>
+    <script src="script.js"></script>
 </head>
 <body id="body" class="not_yet_ready">
 
-	<header>
+    <header>
 
-		<div id="title_bar">
+        <div id="title_bar">
 
-			<span id="icons">
-				<a id="logo" href="#" title="Home"><span class="logo"></span></a>
+            <span id="icons">
+                <a id="logo" href="https://frontline.live" title="Home"><span class="logo"></span></a>
 
-				<a id="twitter" href="https://twitter.com/hashtag/FrontLine" title="View tweets" class="faa-parent animated-hover"><span class="faa-tada fa-stack fa-2x"><i class="fas fa-circle fa-stack-2x"></i><i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a>
+                <a id="twitter" href="https://twitter.com/frontlinehelpuk" title="View tweets" class="faa-parent animated-hover"><span class="faa-tada fa-stack fa-2x"><i class="fas fa-circle fa-stack-2x"></i><i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a>
 
-				<a id="facebook" href="https://www.facebook.com/frontline/" title="View facebook page
-(I know this is a TV show link just as an e.g.)" class="faa-parent animated-hover"><i class="faa-tada fab fa-facebook fa-4x"></i></a>
-			</span>
+                <!-- TODO enable with facebook page when approved
+                <a id="facebook"
+                    href="https://www.facebook.com/"
+                    title="View facebook page"
+                    class="faa-parent animated-hover"><i class="faa-tada fab fa-facebook fa-4x"></i></a>
+                -->
+            </span>
 
-			<h1 id="title">Giving <span class="hashtag_style">#Frontline</span> Heroes a Voice</h1>
+            <h1 id="title">Giving <span class="hashtag_style">#Frontline</span> Health Care Workers a Voice</h1>
 
-		</div>
+        </div>
 
-		<nav>
-			<ol>
-				<li><a href="/about">About</a></li>
-				<li><a href="/suppliers">Suppliers</a></li>
-				<li><a href="/contact-us">Contact Us</a></li>
-			</ol>
-		</nav>
-	</header>
+        <nav>
+            <ol>
+                <li>
+                    <a href="/about.html">
+                        About Frontline
+                    </a>
+                </li>
+                <li>
+                    <a href="https://frontlinehelp.ushahidi.io/posts/create/6" target="_blank">
+                        Request PPE
+                    </a>
+                </li>
+                <li>
+                    <a href="https://frontlinehelp.ushahidi.io/posts/create/2" target="_blank">
+                        Offer supplies
+                    </a>
+                </li>
+                <li>
+                    <a href="https://frontlinehelp.ushahidi.io/posts/create/5" target="_blank">
+                        Offer to help
+                    </a>
+                </li>
+            </ol>
+        </nav>
+    </header>
 
 
-	<main>
-		<div id="core_content">
-			<div id="intro">
+    <main>
+        <div id="core_content">
+            <div id="intro">
 
-				<h1>We're Here to Help</h1>
+                <h1>We're Here to Help</h1>
 
 
-				<div id="request">
+                <div id="request">
 
-					<div id="request_text" title="Tweet a message with #frontline #yourpostcode #yourneed e.g.
+                    <div id="request_text" title="Tweet a message with #frontline #yourpostcode #yourneed e.g.
 #frontline #HR12ER #masks">
-						<p>So we can promote your need for protective gear, tweet a selfie with ALL the following hashtags</p>
-						<p class="indent">
-							<strong>#frontline</strong><br />
-							<strong>#yourpostcode</strong><br />
-							<strong>#yourneed</strong>
-						</p>
-					</div>
+                        <p>So we can promote your need for protective gear, tweet a selfie with ALL the following hashtags</p>
+                        <p class="indent">
+                            <strong>#frontline</strong><br />
+                            <strong>#yourpostcode</strong><br />
+                            <strong>#yourneed</strong>
+                        </p>
+                    </div>
 
-				</div>
-
-
-
-
-				<h2>We'll Do Our Best</h2>
+                </div>
 
 
 
 
-				<div id="response">
-
-					<p>If you can't tweet <a href="/contact-us">Contact Us</a> with the same format and hashtags</p>
-
-				</div>
-			</div>
-
-			<div id="map">
-				<div id="map_inner">
-					<div id="map_container" style="width:100%;height:100%;">
-
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div id="twitter_feeds">
+                <h2>We'll Do Our Best</h2>
 
 
 
 
+                <div id="response">
+
+                    <p>If you can't tweet <a href="https://frontlinehelp.ushahidi.io/posts/create/6">Contact Us</a> with the same format and hashtags</p>
+
+                </div>
+            </div>
+
+            <div id="map">
+                <div id="map_inner">
+                    <div id="map_container" style="width:100%;height:100%;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="twitter_feeds">
+            <div id="feeds" class="visible">
+                <div id="need" class="feed">
+                    <h2>Needs</h2>
+                    <div class="tweets">
+                        <a class="twitter-timeline"
+                    data-height="600"
+                    href="https://twitter.com/frontlinehelpuk/likes?ref_src=twsrc%5Etfw">
+                    Tweets Liked by @frontlinehelpuk</a>
+                    </div>
+                </div>
+                <div id="patterns" class="feed">
+                    <h2>Doing Our Best</h2>
+                    <div class="tweets">
+                        <a class="twitter-timeline"
+                    data-height="600"
+                    href="https://twitter.com/frontlinehelpuk/lists/related-projects?ref_src=twsrc%5Etfw">
+                    Related projects frontlinehelpuk</a>
+                    </div>
+                </div>
+                <div id="supplied" class="feed">
+                    <h2>Problems Solved</h2>
+                    <div class="tweets">
+                        <a class="twitter-timeline"
+                    data-height="600"
+                    href="https://twitter.com/frontlinehelpuk?ref_src=twsrc%5Etfw">
+                    Tweets by frontlinehelpuk</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dash_controls" :class="{ visible : dashboardMode }">
+                <p>Condensed feeds etc can go here</p>
+                <i class="fas fa-cog fa-spin fa-2x"></i>
+            </div>
 
 
-			<div id="feeds" class="visible">
-				<div id="need" class="feed">
-					<h2>Needs</h2>
-					<div class="tweets">
-						<a class="twitter-timeline"
-					data-height="600"
-					href="https://twitter.com/frontlinehelpuk/likes?ref_src=twsrc%5Etfw">
-					Tweets Liked by @frontlinehelpuk</a>
-					</div>
-				</div>
-				<div id="patterns" class="feed">
-					<h2>Doing Our Best</h2>
-					<div class="tweets">
-						<a class="twitter-timeline"
-					data-height="600"
-					href="https://twitter.com/frontlinehelpuk/lists/related-projects?ref_src=twsrc%5Etfw">
-					Related projects frontlinehelpuk</a>
-					</div>
-				</div>
-				<div id="supplied" class="feed">
-					<h2>Problems Solved</h2>
-					<div class="tweets">
-						<a class="twitter-timeline"
-					data-height="600"
-					href="https://twitter.com/frontlinehelpuk?ref_src=twsrc%5Etfw">
-					Tweets by frontlinehelpuk</a>
-					</div>
-				</div>
-			</div>
+        </div>
+    </main>
+    <footer>
+        <h3>Project partners</h3>
+        <p>
+            <!--Logos need optimising-->
+            <a href="https://wearebeep.com/" target="_blank" class="contributors beep" title="Beep"></a>
+            <a href="https://innovationbubble.eu/" target="_blank" class="contributors innovation_bubble" title="Innovation Bubble"></a>
+            <a href="https://thefourthangel.com/" target="_blank" class="contributors the_fourth_angel" title="The Fourth Angel"></a>
+            <a href="https://thesocialelement.agency/" target="_blank" class="contributors the_social_element" title="The Social Element"></a>
+            <!--I couldn't find Oval on google -->
+            <!--<a href="#" target="_blank" class="contributors oval" title="Oval"></a>-->
+            <!-- ULC logo needs sorting -->
+            <a href="https://www.ucl.ac.uk/" target="_blank" class="contributors ucl" title="UCL"></a>
+        </p>
 
-			<div id="dash_controls" :class="{ visible : dashboardMode }">
-				<p>Condensed feeds etc can go here</p>
-				<i class="fas fa-cog fa-spin fa-2x"></i>
-			</div>
+        <p>
 
+            This site is open source.
+            <a href="https://github.com/open-distribution/frontline/">Improve this page</a>
 
-		</div>
-	</main>
-	<footer>
+        </p>
+    </footer>
 
-		<!--This site is open source.
-		<a href="https://github.com/open-distribution/frontline/">Improve this page</a>-->
-		<p>
-			<!--Logos need optimising-->
-			<a href="https://wearebeep.com/" target="_blank" class="beep" title="Beep"></a>
-			<a href="https://innovationbubble.eu/" target="_blank" class="innovation_bubble" title="Innovation Bubble"></a>
-			<a href="https://thefourthangel.com/" target="_blank" class="the_fourth_angel" title="The Fourth Angel"></a>
-			<a href="https://thesocialelement.agency/" target="_blank" class="the_social_element" title="The Social Element"></a>
-			<!--I couldn't find Oval on google -->
-			<!--<a href="#" target="_blank" class="oval" title="Oval"></a>-->
-			<!-- ULC logo needs sorting -->
-			<a href="https://www.ucl.ac.uk/" target="_blank" class="ucl" title="UCL"></a>
-		</p>
+    <script>
 
-	</footer>
+        (function () {
 
-	<script>
+            setTimeout(setupFrontline, 250);
 
-		(function () {
+        })();
 
-			setTimeout(setupFrontline, 250);
-
-		})();
-
-	</script>
+    </script>
 
 </body>
 </html>

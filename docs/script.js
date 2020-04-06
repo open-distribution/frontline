@@ -10,7 +10,8 @@ function setupFrontline() {
     var centreLocation = [centreLat, centreLng];
     var mapZoom = 7;//large = more zoom
     var mymap = L.map('map_container', {
-        fullscreenControl: {
+        scrollWheelZoom: false
+        , fullscreenControl: {
             position: 'bottomleft'
             , pseudoFullscreen: true //fullscreen to page width and height
             , title: {
@@ -88,7 +89,7 @@ function setupFrontline() {
 
     function handleErrors(error, url, line) {
         var msgDetail = `${error} LINE : ${line} URL : ${url}`;
-        console.log("Error Caught : " + msgDetail); //we could ping these to a server if we wanted 
+        console.log("Error Caught : " + msgDetail); //we could ping these to a server if we wanted
         if (debugMode) {
             alert(msgDetail); //so we catch issues early when doing RAD
         }
