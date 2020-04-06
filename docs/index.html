@@ -1,355 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>#FrontLine | Voices of Heroes</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>#FrontLine | Voices of Heroes</title>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <script src="https://kit.fontawesome.com/e10dd0382c.js" crossorigin="anonymous"></script>
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+	<script src="https://kit.fontawesome.com/e10dd0382c.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-          crossorigin="" />
-    <style>
-        /* deliberate inclusion of minimal CSS for speed of initial styling */
-        @font-face {
-            font-family: 'DM Sans';
-            font-style: normal;
-            font-weight: normal;
-            src: local('DM Sans Medium'), url('fonts/DMSans-Regular.woff') format('woff');
-        }
-        @font-face {
-            font-family: 'DM Sans';
-            font-style: normal;
-            font-weight: 500;
-            src: local('DM Sans Medium'), url('fonts/DMSans-Medium.woff') format('woff');
-        }
-        @font-face {
-            font-family: 'DM Sans';
-            font-style: normal;
-            font-weight: bold;
-            src: local('DM Sans Bold'), url('fonts/DMSans-Bold.woff') format('woff');
-        }
-        html, body {
-            font-family: 'DM Sans';
-            font-weight: normal;
-            background: #00966b;
-            color: #fff;
-        }
-    </style>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+		  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+		  crossorigin="" />
+	<style>
+		/* deliberate inclusion of minimal CSS for speed of initial styling */
+		@font-face {
+			font-family: 'DM Sans';
+			font-style: normal;
+			font-weight: normal;
+			src: local('DM Sans Medium'), url('fonts/DMSans-Regular.woff') format('woff');
+		}
+		@font-face {
+			font-family: 'DM Sans';
+			font-style: normal;
+			font-weight: 500;
+			src: local('DM Sans Medium'), url('fonts/DMSans-Medium.woff') format('woff');
+		}
+		@font-face {
+			font-family: 'DM Sans';
+			font-style: normal;
+			font-weight: bold;
+			src: local('DM Sans Bold'), url('fonts/DMSans-Bold.woff') format('woff');
+		}
+		html, body {
+			font-family: 'DM Sans';
+			font-weight: normal;
+			background: #00966b;
+			color: #fff;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="style.css" />
 
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-            crossorigin=""></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/moment@2.24.0/min/moment.min.js"></script>
-    <script src="https://platform.twitter.com/widgets.js" charset="utf-8" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+			integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+			crossorigin=""></script>
+	<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+	<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://platform.twitter.com/widgets.js" charset="utf-8" crossorigin="anonymous"></script>
+	<script src="api.js"></script>
+	<script src="script.js"></script>
 </head>
-<body id="body">
+<body id="body" class="not_yet_ready">
 
-    <header>
+	<header>
 
-        <div id="title_bar">
+		<div id="title_bar">
 
-            <span id="icons">
-                <a id="logo" href="#" title="Home"><span class="logo"></span></a>
+			<span id="icons">
+				<a id="logo" href="#" title="Home"><span class="logo"></span></a>
 
-                <a id="twitter" href="https://twitter.com/hashtag/FrontLine" title="View tweets" class="faa-parent animated-hover"><span class="faa-tada fa-stack fa-2x"><i class="fas fa-circle fa-stack-2x"></i><i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a>
+				<a id="twitter" href="https://twitter.com/hashtag/FrontLine" title="View tweets" class="faa-parent animated-hover"><span class="faa-tada fa-stack fa-2x"><i class="fas fa-circle fa-stack-2x"></i><i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a>
 
-                <a id="facebook" href="https://www.facebook.com/frontline/" title="View facebook page
+				<a id="facebook" href="https://www.facebook.com/frontline/" title="View facebook page
 (I know this is a TV show link just as an e.g.)" class="faa-parent animated-hover"><i class="faa-tada fab fa-facebook fa-4x"></i></a>
-            </span>
+			</span>
 
-            <h1 id="title">Giving <span class="hashtag_style">#Frontline</span> Heroes a Voice</h1>
+			<h1 id="title">Giving <span class="hashtag_style">#Frontline</span> Heroes a Voice</h1>
 
-        </div>
+		</div>
 
-        <nav>
-            <ol>
-                <li><a href="/about">About</a></li>
-                <li><a href="/suppliers">Suppliers</a></li>
-                <li><a href="/contact-us">Contact Us</a></li>
-            </ol>
-        </nav>
-    </header>
-
-
-    <main>
-        <div id="core_content">
-            <div id="intro">
-
-                <h1>We're Here to Help</h1>
+		<nav>
+			<ol>
+				<li><a href="/about">About</a></li>
+				<li><a href="/suppliers">Suppliers</a></li>
+				<li><a href="/contact-us">Contact Us</a></li>
+			</ol>
+		</nav>
+	</header>
 
 
-                <div id="request">
+	<main>
+		<div id="core_content">
+			<div id="intro">
 
-                    <div id="request_text" title="Tweet a message with #frontline #yourpostcode #yourneed e.g.
+				<h1>We're Here to Help</h1>
+
+
+				<div id="request">
+
+					<div id="request_text" title="Tweet a message with #frontline #yourpostcode #yourneed e.g.
 #frontline #HR12ER #masks">
-                        <p>So we can promote your need for protective gear, tweet a selfie with ALL the following hashtags</p>
-                        <p class="indent">
-                            <strong>#frontline</strong><br />
-                            <strong>#yourpostcode</strong><br />
-                            <strong>#yourneed</strong>
-                        </p>
-                    </div>
+						<p>So we can promote your need for protective gear, tweet a selfie with ALL the following hashtags</p>
+						<p class="indent">
+							<strong>#frontline</strong><br />
+							<strong>#yourpostcode</strong><br />
+							<strong>#yourneed</strong>
+						</p>
+					</div>
 
-                </div>
-
-
-
-
-                <h2>We’ll Do Our Best</h2>
+				</div>
 
 
 
 
-                <div id="response">
-
-                    <p>If you can't tweet, <a href="/contact-us">Contact Us</a> with the same format and hashtags</p>
-
-                </div>
-            </div>
-
-            <div id="map">
-                <div id="map_inner">
-                    <div id="map_container" style="width:100%;height:100%;">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="twitter_feeds">
-            <div id="feeds">
-                <div id="need" class="feed">
-                    <h2>What You Need</h2>
-                    <div class="tweets">
-                    <!--
-                        <a href="https://twitter.com/intent/tweet?screen_name=frontlinehelpuk&ref_src=twsrc%5Etfw"
-                            class="twitter-mention-button"
-                            data-size="large"
-                            data-dnt="true"
-                            data-show-count="false">
-                            Tweet to @frontlinehelpuk</a>
-                    -->
-                        <a class="twitter-timeline"
-                            data-height="600"
-                            href="https://twitter.com/frontlinehelpuk/likes?ref_src=twsrc%5Etfw">
-                            Tweets Liked by @frontlinehelpuk</a>
-                    </div>
-                </div>
-                <div id="patterns" class="feed">
-                    <h2>Supply and demand for PPE</h2>
-                    <div class="tweets">
-                        <a class="twitter-timeline"
-                            data-height="600"
-                            href="https://twitter.com/frontlinehelpuk/lists/related-projects?ref_src=twsrc%5Etfw">
-                            Related projects frontlinehelpuk</a>
-                    </div>
-                </div>
-                <div id="supplied" class="feed">
-                    <h2>Frontline thanks</h2>
-                    <div class="tweets">
-                        <a class="twitter-timeline"
-                            data-height="600"
-                            href="https://twitter.com/frontlinehelpuk?ref_src=twsrc%5Etfw">
-                            Tweets by frontlinehelpuk</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-    <footer>
-
-            This site is open source.
-            <a href="https://github.com/open-distribution/frontline/">Improve this page</a>
-
-    </footer>
-
-    <script>
+				<h2>We'll Do Our Best</h2>
 
 
-        function setup() {
-
-            var requirementsIcon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAoCAYAAADpE0oSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxEAAAsRAX9kX5EAAALHSURBVFhHvZc9bE5RGMdvlbaa+GYgTaUlNGKxlMVEIhHxkfhoOlVithlEBxOLWAw2JCbC0EgTaQwdBY0BA5IWKQ2KIqLqo35/52l625xz77l97+uf/PKe95z/8zzvae8997k1SY4mk0SeVtgBO2ELtEAtSBMwCAPQB/0EvOJz7qJoK1yCUZiMZAQuwlpLEy+CGuAEfAVf8hi+wHFosLTZwtgIl+EX+BIWQTmUq9HS+4VBO70BviSVcBPCxVk8DX/MXDZnrcxMsbALvqeMZTMOe6ycExO1cN8M1eQh1FlZZpLkYGoxj98wBPfgLgzanM/ro3OqqHZ7O7WQxWM4BCugxlgOB+AJ+GJmcwdqVXgDjNlkFr2w6N+v9Yi1xaCkvtg0n2GjAjpSkyH051xtNYLC0wQvLCaLjnn4211Yps5z/o7YOCg8w3yccd8y1a7COvCzpIdAjxtGqRfG3TCoFhVe6cZBvYFPbhilMdDOs7RMhUWZ0mN0vhsGtUBF37txUE2wyg2jJK9isjSqwkNuHJR+/RE3jJK8eTse1i3QOetS96FGYJMFBYWnDd5aTBZHZV4HH1KTIQYgeAew1gwx5/032KwAHXu3bDIP7fwkrIclhnZ5CmLbo35w/woG+1MLMeiIfW4UbY+mrxe+/K/H4gOY6k6dmNgLE2aoBsq9z8pNi0nt+rqZqsFV8B9WLOgK/2jGMnkNzVbGLwzH4KcFlMEPOGzpw8JUBz0WVAZXYOYFFRLGNfDSAivhGeQ9/aaFWai3quQqVzu722UsKAIvpBIV5ZylKS6C1U0+SiWLRef6UkszN5FgG+jNz1fAh7rImD4uXyTqTiXOo9vCKhfJ9Ooa0zP3wUILK0ck1OMvq/HXWpvZyxWJu8B3qmmuy2zli+T1cM2KpdHLfL3ZqiMK6BbTK81UUZ1wRbrQuYtCW+EpvIPtNl1ASfIX/A3niLh/yFIAAAAASUVORK5CYII=";
-            var solvedIcon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAoCAYAAADpE0oSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxEAAAsRAX9kX5EAAAN5SURBVFhHtZhJaBRBFIYrLigiSnBBRYWoiHgyEuJyUEaDARFxCehF8KCIiKCSgwcdtBPEiwEPevBoBAnu68Gooxe3RPHgBoIbQQXjDi5xwf+v1+XMZLqWZCYffJWqyqRfV3V11ZuUKR+R4mcmwYWwBlbCCtgfki74DN6Fl+A1lVav8NOJO3CkA+6AS+EIdgXwFp6Ge3EDL3VPAsmBIzUY5WaYhkPZ1Qu+Qt70IVzlh+7JwUxXlkgNQXkQboO8gd4yCC6CE1RKtaqM+qV7Y/JHLCM9Alfqduk4Cddg5N+kqVS/+KdhO1wh1ZLCa+6UqpAdcaRqUXJRFDO9Ln7COoz6PBsSONLP+has0u2+4z6cheBdZqqXw9Cgf+EL2AZvw+dxXwgzYB0rZfFoL0BOtY+HcDe8Cj+wA5TD+bARTmeHhyuwloGnonIHDmevg4twNaaJ72chkRqGkquXO5yLL7CaUz0T+oJyOtdZg5K0vuBaaN2tYniDlQxcrZtumnDhN3HdTlp1oNwjDSd6xNzwXfAQOCPVILheCrbIblQw8EipW3kNP0o1iE+QI3dRzsC0lHBvGCBVKwMZ9J3UrYyHo6QaBD/Lv3HRycBcsS5496ukGgQ/6xtxBwNzB/JRj/fUvzlEahrKrdJw0s7A3PbMLmSD2UczLmx/AyI1EWUzHK3bdng0tnHn4mI4C5ew18N7uA8eg2ZtjIU8vznSkPToOqwxp9MylKd0PYzP0AQeA3uSHnHbbTGv0jnYLtUguMVOie1JUGaix1mRwGn1B2UDzMuLSgyv3RDHyts8uNUxA+krWiBnVpNNfUikJqPk68UztpRw252D0f5P9PPT2wz25JReuYth7mwUAw+ZDQh6Q5pC0sUPQx76peIoPCHVLPlTbYjUOJQ3ITeFYngK52K0ndLMYptOPpN6WMwqZzq7JSkoKfwKQzLaR3je3P5CMpQk9iPogbhegG8B7YIPpNoj7kFmnVbcgdN6ha+H9iSvECZ9G/G3zESsJE91LhmkMSn9uQXS4aURQbmSnYS+q02QibiPVsjTy0vy65SEHPL8fmXLwXlizcZon0jTjX+qDRm8Fin9bwae291n6jfchKCXpekndKoNfHb8mtId5t3e55pL+FQbIp1l8CAxaRA3/iqM1pet5hE+1YaM+o4p57OeB/n1lBnFY/4qHKX+Af57rdvHZ3ClAAAAAElFTkSuQmCC";
-
-            //places
-            var bartsLat = 51.518205;//In London - Large as not on equator
-            var bartsLng = -0.059105;//In London - Approaching Zero as ~GMT
-            var bartsLocation = [bartsLat, bartsLng];
-
-            var charingXLat = 51.487194;
-            var charingXLng = -0.220704;
-            var charingXLocation = [charingXLat, charingXLng];
-
-            var homertonLat = 51.549840;
-            var homertonLng = -0.044681;
-            var homertonLocation = [homertonLat, homertonLng];
-
-            var royalFreeLat = 51.549840;
-            var royalFreeLng = -0.044681;
-            var royalFreeLocation = [royalFreeLat, royalFreeLng];
-
-            var centreLat = 52.606039;
-            var centreLng = -1.537400;
-            var centreLocation = [centreLat, centreLng];
-
-            //map
-            var mapZoom = 7;//large = more zoom
-            var mapCentre = centreLocation;
-
-            var mymap = L.map(
-                'map_container',
-                {
-                    scrollWheelZoom: false
-                }
-            ).setView(mapCentre, mapZoom);
-            setupAttributions();
-            mymap.on('zoomend', zoomedHandler);
-            augmentMap();
-            var londonCircle = {};
-
-            function setupAttributions() {
-                L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-                    maxZoom: 18,
-                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                    id: 'mapbox/streets-v11',
-                    tileSize: 512,
-                    zoomOffset: -1
-                }).addTo(mymap);
-            }
-
-            var zoomThreshold = 8;
-
-            function zoomedHandler(eventData) {
-                console.log(`Zoomed to ${mymap.getZoom()}`)
-                if (mymap.getZoom() >= zoomThreshold)
-                {
-                    console.log('removing city scale items...');
-                    //seems we should use layers for this - this doesn't work ? maybe //https://gis.stackexchange.com/questions/178595/how-to-show-hide-markers-that-are-inside-a-function-using-js
-                    //if (londonCircle !== undefined) {
-                    mymap.removeLayer(londonCircle);
-                    //}
-                }
-            }
-
-            function augmentMap() {
-
-                //sheffield
-                var sheffieldLat = 53.378644;
-                var sheffieldLng = -1.470580;
-                var sheffieldLocation = [sheffieldLat, sheffieldLng];
-                L.circle(sheffieldLocation, 10000, {
-                    color: 'red',
-                    fillColor: '#f03',
-                    fillOpacity: 0.5
-                }).addTo(mymap).bindPopup("Sheffield 432 Needs");
-
-                //birmingham
-                var birminghamLat = 52.478968;
-                var birminghamLng = -1.884918;
-                var birminghamLocation = [birminghamLat, birminghamLng];
-                L.circle(birminghamLocation, 30000, {
-                    color: 'red',
-                    fillColor: '#f03',
-                    fillOpacity: 0.5
-                }).addTo(mymap).bindPopup("Birmingham 607 Needs");
-
-                //london
-                var londonLat = 51.499212;
-                var londonLng = -0.105451;
-                var londonLocation = [londonLat, londonLng];
-                londonCircle = L.circle(londonLocation, 50000, {
-                    color: 'red',
-                    fillColor: '#f03',
-                    fillOpacity: 0.5
-                }).addTo(mymap).bindPopup("London 1237 Needs");
-
-                //Barts
-                L.marker(bartsLocation, {
-                    icon: L.icon({
-                        iconUrl: requirementsIcon
-                        , iconAnchor: [15, 40] //x = 50% of pixel width of custom img, y = 100% pixel height
-                        , popupAnchor: [0, -45] // relative to the iconAnchor
-                    })
-                }).addTo(mymap).bindPopup("<strong>#frontline</strong> #N16_0RH #PPE #Masks");
-
-                //offset a tiny bit
-                L.marker([51.51836, -0.0594], {
-                    icon: L.icon({
-                        iconUrl: solvedIcon
-                        , iconAnchor: [15, 40] //x = 50% of pixel width of custom img, y = 100% pixel height
-                        , popupAnchor: [0, -45] // relative to the iconAnchor
-                    })
-                }).addTo(mymap).bindPopup("<strong>#frontline</strong>  #BN11ND #FaceShields #Masks #Gloves");
-
-                //Barts
-                L.circle(bartsLocation, 800, {
-                    color: 'red',
-                    fillColor: '#f03',
-                    fillOpacity: 0.3
-                }).addTo(mymap).bindPopup("Face Shields needed @Barts Hospital, London");
-
-                //CharingX
-                L.circle(charingXLocation, 300, {
-                    color: 'red',
-                    fillColor: '#f03',
-                    fillOpacity: 0.7
-                }).addTo(mymap).bindPopup("Masks needed @ Charing Cross Hospital, London");
-
-                L.circle(charingXLocation, 900, {
-                    color: 'red',
-                    fillColor: '#f03',
-                    fillOpacity: 0.3
-                }).addTo(mymap).bindPopup("27 needs @ Charing Cross Hospital, London");
-
-                //homerton
-                L.circle(homertonLocation, 300, {
-                    color: 'red',
-                    fillColor: '#f03',
-                    fillOpacity: 0.7
-                }).addTo(mymap).bindPopup("Hommerton");
-
-                L.circle(homertonLocation, 900, {
-                    color: 'red',
-                    fillColor: '#f03',
-                    fillOpacity: 0.3
-                }).addTo(mymap).bindPopup("I am a diff circle.");
 
 
-                //Royal Free
-                L.circle(royalFreeLocation, 300, {
-                    color: 'red',
-                    fillColor: '#f03',
-                    fillOpacity: 0.7
-                }).addTo(mymap).bindPopup("I am a circle.");
+				<div id="response">
 
-                L.circle(royalFreeLocation, 900, {
-                    color: 'red',
-                    fillColor: '#f03',
-                    fillOpacity: 0.3
-                }).addTo(mymap).bindPopup("I am a diff circle.");
-            };
-        }
+					<p>If you can't tweet <a href="/contact-us">Contact Us</a> with the same format and hashtags</p>
 
-        (function () {
+				</div>
+			</div>
 
-            setTimeout(setup, 250);
+			<div id="map">
+				<div id="map_inner">
+					<div id="map_container" style="width:100%;height:100%;">
 
-        })();
+					</div>
+				</div>
+			</div>
+		</div>
 
-    </script>
+		<div id="twitter_feeds">
+
+
+
+
+
+
+			<div id="feeds" class="visible">
+				<div id="need" class="feed">
+					<h2>Needs</h2>
+					<div class="tweets">
+						<a class="twitter-timeline"
+					data-height="600"
+					href="https://twitter.com/frontlinehelpuk/likes?ref_src=twsrc%5Etfw">
+					Tweets Liked by @frontlinehelpuk</a>
+					</div>
+				</div>
+				<div id="patterns" class="feed">
+					<h2>Doing Our Best</h2>
+					<div class="tweets">
+						<a class="twitter-timeline"
+					data-height="600"
+					href="https://twitter.com/frontlinehelpuk/lists/related-projects?ref_src=twsrc%5Etfw">
+					Related projects frontlinehelpuk</a>
+					</div>
+				</div>
+				<div id="supplied" class="feed">
+					<h2>Problems Solved</h2>
+					<div class="tweets">
+						<a class="twitter-timeline"
+					data-height="600"
+					href="https://twitter.com/frontlinehelpuk?ref_src=twsrc%5Etfw">
+					Tweets by frontlinehelpuk</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="dash_controls" :class="{ visible : dashboardMode }">
+				<p>Condensed feeds etc can go here</p>
+				<i class="fas fa-cog fa-spin fa-2x"></i>
+			</div>
+
+
+		</div>
+	</main>
+	<footer>
+
+		<!--This site is open source.
+		<a href="https://github.com/open-distribution/frontline/">Improve this page</a>-->
+		<p>
+			<!--Logos need optimising-->
+			<a href="https://wearebeep.com/" target="_blank" class="beep" title="Beep"></a>
+			<a href="https://innovationbubble.eu/" target="_blank" class="innovation_bubble" title="Innovation Bubble"></a>
+			<a href="https://thefourthangel.com/" target="_blank" class="the_fourth_angel" title="The Fourth Angel"></a>
+			<a href="https://thesocialelement.agency/" target="_blank" class="the_social_element" title="The Social Element"></a>
+			<!--I couldn't find Oval on google -->
+			<!--<a href="#" target="_blank" class="oval" title="Oval"></a>-->
+			<!-- ULC logo needs sorting -->
+			<a href="https://www.ucl.ac.uk/" target="_blank" class="ucl" title="UCL"></a>
+		</p>
+
+	</footer>
+
+	<script>
+
+		(function () {
+
+			setTimeout(setupFrontline, 250);
+
+		})();
+
+	</script>
 
 </body>
 </html>
