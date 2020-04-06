@@ -9,8 +9,18 @@
     var centreLng = -1.537400;
     var centreLocation = [centreLat, centreLng];
     var mapZoom = 7;//large = more zoom
-    var mymap = L.map('map_container').setView(centreLocation, mapZoom);
+    var mymap = L.map('map_container', {
+        fullscreenControl: {
+            position: 'bottomleft'
+            , pseudoFullscreen: true //fullscreen to page width and height
+            , title: {
+                'false': 'Fullscreen Dashboard',
+                'true': 'Exit Fullscreen'
+            }
+        }
+    }).setView(centreLocation, mapZoom);
     setupAttributions();
+
 
     //vue
     var appVm = new Vue({
@@ -20,7 +30,8 @@
             needsFeedReady: false,
             geojsonData: [],
             geojsonDataSecondary: [],
-            featuresAndUrls: []
+            featuresAndUrls: [],
+            dashboardMode: false
         },
         methods: {
             fetchData: function () {
@@ -37,6 +48,10 @@
             var self = this;
             document.getElementById("body").className = '';
             self.fetchData();
+
+            mymap.on('fullscreenchange', function () {
+                    self.dashboardMode = mymap.isFullscreen();
+            });
         }
     });
 

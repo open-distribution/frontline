@@ -68,9 +68,6 @@ function getUshahidiData(theMap) {
                 }
             });
         });
-
-
-    throw new Error("hereitis");
 }
 
 function setPopupContent(feature, layer, ajaxData, featureImgUrl) {

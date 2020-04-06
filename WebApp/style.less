@@ -544,9 +544,14 @@ h1.bad {
     height: 40px;
     width: 80px;
     display: inline-block;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     background-size: contain;
-    margin-right:2vw;
+    margin-right: 2vw;
+
+    &:hover {
+        -webkit-animation: tada 2s linear infinite;
+        animation: tada 2s linear infinite;
+    }
 }
 
 .beep {
@@ -572,4 +577,37 @@ h1.bad {
 .ucl {
     .contributors;
     background-image: url(/images/ucl.png);
+}
+//#map_inner
+
+#map_container{
+    transition:all 1s ease-in-out;
+}
+
+.leaflet-container.leaflet-fullscreen-on {
+    width: 100% !important;
+    height: 80% !important;
+}
+
+#dash_controls {
+    /*display: none;*/
+    opacity: 0;
+    text-align: center;
+
+    p {
+        font-size: 1.2em;
+    }
+
+    transition: all 0s;
+}
+
+#dash_controls.visible {
+    /*display: block;*/
+    opacity: 1;
+    position: absolute;
+    bottom: 75px;
+    /*border: solid 1px red;*/
+    height: 100px;
+    width: 100%;
+    transition: all 2.5s ease-in-out;
 }
