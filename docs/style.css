@@ -24,13 +24,13 @@ body.not_yet_ready .anti_fouc {
 }
 .major_title {
   font-size: 2em;
-  padding: 0px 32px;
-  border-radius: 24px;
+  padding: 0px 20px;
+  border-radius: 18px;
 }
 .minor_title {
   font-size: 1.5em;
-  padding: 0px 16px;
-  border-radius: 12px;
+  padding: 2px 14px 0px 14px;
+  border-radius: 13px;
 }
 .act_as_btn {
   cursor: pointer;
@@ -120,6 +120,7 @@ header #title_bar {
 }
 header #title_bar #icons {
   border: solid red 0px;
+  /*margin-left: 30px; BCS todo*/
   margin-right: 30px;
   font-size: 0.8em;
   vertical-align: top;
@@ -144,6 +145,8 @@ header #title_bar #icons #facebook {
 header #title_bar #title {
   font-size: 2em;
   margin: 0;
+  margin-bottom: 0px;
+  margin-right: 2%;
   font-weight: normal;
 }
 header #title_bar #title span.hashtag_style {
@@ -207,7 +210,8 @@ main {
 }
 #core_content #intro {
   width: 30%;
-  padding: 0 1%;
+  padding: 0 2vw;
+  /* BCS wanted give text a little more space */
   border: solid green 0px;
 }
 @media screen and (max-width: 880px) {
@@ -224,8 +228,8 @@ main {
   color: #00966B;
   display: inline-block;
   font-size: 2em;
-  padding: 0px 32px;
-  border-radius: 24px;
+  padding: 0px 20px;
+  border-radius: 18px;
   margin-bottom: 0px;
   margin-top: 15px;
 }
@@ -235,8 +239,8 @@ main {
   color: #00966B;
   display: inline-block;
   font-size: 1.5em;
-  padding: 0px 16px;
-  border-radius: 12px;
+  padding: 2px 14px 0px 14px;
+  border-radius: 13px;
   margin-bottom: 0px;
   margin-top: 0px;
 }
@@ -264,6 +268,8 @@ main {
 #core_content #map {
   width: 70%;
   border: solid red 0px;
+  margin-top: 10px;
+  margin-right: 15px;
 }
 @media screen and (max-width: 880px) {
   #core_content #map {
@@ -284,6 +290,8 @@ main {
   margin: 0;
   padding: 0;
   box-sizing: content-box;
+  box-shadow: 0px 0px 7px 2px rgba(255, 255, 255, 0.5), 0px 0px 7px 2px rgba(76, 175, 80, 0.5);
+  border: solid 1px rgba(76, 175, 80, 0.5);
 }
 #twitter_feeds {
   border: solid 0px blue;
@@ -325,6 +333,8 @@ main {
   color: #0a150d;
   background-color: #ffffff;
   width: 48%;
+  /*display: flex;*/
+  /*?? this came out surely not in use? */
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -346,8 +356,8 @@ main {
   width: 48px;
 }
 #twitter_feeds #feeds .tweet .body {
-  display: inline-block;
-  width: 66%;
+  display: flex;
+  flex-direction: column;
 }
 #twitter_feeds #feeds .tweet .body .date_time {
   color: gray;
@@ -472,4 +482,133 @@ a {
 .list-leave-to {
   opacity: 0;
   transform: translateY(30px);
+}
+h1.good {
+  color: #00966B;
+}
+h1.bad {
+  color: #A51A1A;
+}
+.contributors {
+  height: 40px;
+  width: 80px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 2vw;
+}
+.contributors:hover {
+  -webkit-animation: tada 2s linear infinite;
+  animation: tada 2s linear infinite;
+}
+.beep {
+  background-image: url(/images/beep.png);
+  height: 40px;
+  width: 80px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 2vw;
+}
+.beep:hover {
+  -webkit-animation: tada 2s linear infinite;
+  animation: tada 2s linear infinite;
+}
+.innovation_bubble {
+  background-image: url(/images/innovation_bubble.png);
+  height: 40px;
+  width: 80px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 2vw;
+}
+.innovation_bubble:hover {
+  -webkit-animation: tada 2s linear infinite;
+  animation: tada 2s linear infinite;
+}
+.the_fourth_angel {
+  height: 40px;
+  width: 80px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 2vw;
+  background-image: url(/images/the_fourth_angel.png);
+}
+.the_fourth_angel:hover {
+  -webkit-animation: tada 2s linear infinite;
+  animation: tada 2s linear infinite;
+}
+.the_social_element {
+  height: 40px;
+  width: 80px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 2vw;
+  background-image: url(/images/the_social_element.png);
+}
+.the_social_element:hover {
+  -webkit-animation: tada 2s linear infinite;
+  animation: tada 2s linear infinite;
+}
+.oval {
+  height: 40px;
+  width: 80px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 2vw;
+  background-image: url(/images/oval.png);
+}
+.oval:hover {
+  -webkit-animation: tada 2s linear infinite;
+  animation: tada 2s linear infinite;
+}
+.ucl {
+  height: 40px;
+  width: 80px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 2vw;
+  background-image: url(/images/ucl.png);
+}
+.ucl:hover {
+  -webkit-animation: tada 2s linear infinite;
+  animation: tada 2s linear infinite;
+}
+#map_container {
+  transition: all 1s ease-in-out;
+}
+#map_container.leaflet-container.leaflet-fullscreen-on {
+  width: 100% !important;
+  height: 80% !important;
+}
+#dash_controls {
+  height: 0px;
+  opacity: 0;
+  text-align: center;
+  transition: opacity 0s;
+}
+#dash_controls p {
+  font-size: 1.2em;
+}
+#dash_controls.visible {
+  opacity: 1;
+  position: absolute;
+  bottom: 9%;
+  height: 100px;
+  width: 100%;
+  transition: opacity 2.5s ease-in-out;
+}
+#feeds {
+  opacity: 0;
+  transition: all 0s;
+}
+#feeds.visible {
+  opacity: 1;
+  height: auto;
+  transition: all 2.5s ease-in-out;
 }

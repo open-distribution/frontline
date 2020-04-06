@@ -5,6 +5,8 @@
 @color_green_light: #4EB697;
 @color_highlight: #156d84;
 
+@color_red_main: #A51A1A;
+
 @color_font: #ffffff;
 @color_background: @color_green_main;
 @color_background_darkish: #077d5b;
@@ -48,14 +50,14 @@ body.not_yet_ready {
 
 .major_title {
     font-size: 2em;
-    padding: 0px 32px;
-    border-radius: 24px;
+    padding: 0px 20px;
+    border-radius: 18px;
 }
 
 .minor_title {
     font-size: 1.5em;
-    padding: 0px 16px;
-    border-radius: 12px;
+    padding:2px 14px 0px 14px;
+    border-radius: 13px;
 }
 
 .act_as_btn {
@@ -156,6 +158,7 @@ header {
 
         #icons {
             border: solid red @border_thickness_test;
+            /*margin-left: 30px; BCS todo*/
             margin-right: 30px;
             font-size: 0.8em;
             vertical-align: top;
@@ -181,6 +184,8 @@ header {
         #title {
             font-size: 2em;
             margin: 0;
+            margin-bottom: 0px;
+            margin-right: 2%;
             font-weight: normal;
 
             span.hashtag_style {
@@ -252,7 +257,7 @@ main {
 
     #intro {
         width: 30%;
-        padding: 0 1%;
+        padding: 0 2vw; /* BCS wanted give text a little more space */
         border: solid green @border_thickness_test;
 
         @media @max880 {
@@ -302,8 +307,12 @@ main {
     #map {
         width: 70%;
         border: solid red @border_thickness_test;
+        //for "dash" style
+        margin-top: 10px;
+        margin-right: 15px;
 
-        @media @max880  {
+
+        @media @max880 {
             width: 100%;
             height: 400px;
         }
@@ -321,6 +330,9 @@ main {
                 margin: 0;
                 padding: 0;
                 box-sizing: content-box;
+                //quick stab at insetting the map a little
+                box-shadow: 0px 0px 7px 2px rgba(255, 255, 255, 0.5), 0px 0px 7px 2px rgba(76, 175, 80, 0.5);
+                border: solid 1px rgba(76, 175, 80, 0.5);
             }
         }
     }
@@ -367,6 +379,7 @@ main {
             color: @color_font_dark;
             background-color: @color_font;
             width: 48%;
+                    /*display: flex;*/ /*?? this came out surely not in use? */
             padding: 10px;
             border-radius: 5px;
             margin-bottom: 10px;
@@ -386,8 +399,11 @@ main {
             }
 
             .body {
-                display: inline-block;
-                width: 66%;
+                        display: flex;
+                        flex-direction: column;
+
+                        .main {
+                        }
 
                 .date_time {
                     color: @color_font_light;
@@ -505,8 +521,6 @@ a {
     animation: tada 3s linear infinite;
 }
 
-
-
 .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
 }
@@ -523,4 +537,99 @@ a {
 .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
     opacity: 0;
     transform: translateY(30px);
+}
+
+
+h1.good {
+    color: @color_green_main;
+}
+
+h1.bad {
+    color: @color_red_main;
+}
+
+.contributors {
+    height: 40px;
+    width: 80px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: 2vw;
+
+    &:hover {
+        -webkit-animation: tada 2s linear infinite;
+        animation: tada 2s linear infinite;
+    }
+}
+
+.beep {
+    background-image: url(/images/beep.png);
+    .contributors;
+}
+
+.innovation_bubble {
+    background-image: url(/images/innovation_bubble.png);
+    .contributors;
+}
+
+.the_fourth_angel {
+    .contributors;
+    background-image: url(/images/the_fourth_angel.png);
+}
+
+.the_social_element {
+    .contributors;
+    background-image: url(/images/the_social_element.png);
+}
+
+.oval {
+    .contributors;
+    background-image: url(/images/oval.png);
+}
+
+.ucl {
+    .contributors;
+    background-image: url(/images/ucl.png);
+}
+
+
+#map_container {
+    transition: all 1s ease-in-out;
+}
+
+#map_container.leaflet-container.leaflet-fullscreen-on {
+    width: 100% !important;
+    height: 80% !important;
+}
+
+#dash_controls {
+    height: 0px;
+    opacity: 0;
+    text-align: center;
+
+    p {
+        font-size: 1.2em;
+    }
+
+    transition: opacity 0s;
+}
+
+#dash_controls.visible {
+    opacity: 1;
+    position: absolute;
+    bottom: 9%;
+    height: 100px;
+    width: 100%;
+    transition: opacity 2.5s ease-in-out;
+}
+
+#feeds {
+    opacity: 0;
+    transition: all 0s;
+}
+
+#feeds.visible {
+    opacity: 1;
+    height:auto;
+    transition: all 2.5s ease-in-out;
 }
