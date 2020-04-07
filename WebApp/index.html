@@ -42,6 +42,10 @@
     <script src="help.js"></script>
     <script src="code.js"></script>
 
+    <link href="https://unpkg.com/leaflet.markercluster@1.0.5/dist/MarkerCluster.css" rel="stylesheet" />
+    <link href="https://unpkg.com/leaflet.markercluster@1.0.5/dist/MarkerCluster.Default.css" rel="stylesheet" />
+    <script src="https://unpkg.com/leaflet.markercluster@1.0.5/dist/leaflet.markercluster.js"></script>
+
 </head>
 <body id="body" class="not_yet_ready">
 
@@ -136,6 +140,8 @@
 
 
                     <div class="tweets">
+                        
+                       <!-- <svg class="iconic" style="fill:#A51A1A;"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/44fed91f69f09c95876314a8e23f311e.svg#map-marker"></use></svg>-->
 
                         <i v-if="!needsFeedReady" class="fas fa-cog fa-spin fa-4x"></i>
 

@@ -11,6 +11,10 @@ class Settings {
     static debugMode: boolean = true;
 }
 
+class Images {
+    static mapNeed: string = "";
+}
+
 class Help {
     static handleErrors(error, url?, line?) {
         var msgDetail = `${error} LINE : ${line} URL : ${url}`;
@@ -60,6 +64,42 @@ class Help {
 
     static isNullOrEmpty(val: any): boolean {
         return Help.isNullOrUndef(val) || val === '' || val === 'null' || val === 'undefined';
+    }
+
+    static getProp(key: any, obj:any, defaultVal:any = null) {
+        return (key in obj)? obj[key] : defaultVal;
+    }
+
+    static getItem2<T>(ary:any, i:number, defaultVal:any = null){
+        return !Help.isNullOrUndef(ary)? ary[i] : defaultVal;
+    }
+
+    static getItem<T>(key: any, obj:any, i:number, defaultVal:any = null){
+        var t = Help.getProp(key, obj, defaultVal);
+        if(t) {
+            return t[i];
+        }
+        return defaultVal;
+    }
+
+    static contains<T>(arr: Array<T>, item: T): boolean {
+        if (Array.isArray(arr)) {
+            return arr.indexOf(item) > -1;;
+        }
+        return false;
+    }
+
+    static hasClass(element, cls) {
+        return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+    }
+
+    static objectsEqualByValue(obj1, obj2): boolean {
+        return JSON.stringify(obj1) === JSON.stringify(obj2);
+        //cheap and easy, if order of keys diff then will be diff. cref:https://stackoverflow.com/questions/1068834/object-comparison-in-javascript
+    }
+
+    static deepCloneObject(obj) {
+        return JSON.parse(JSON.stringify(obj));
     }
 
     static isValidDate(val: any) {

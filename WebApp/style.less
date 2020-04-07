@@ -648,6 +648,34 @@ span.label{
 
     .date_time {
         color: grey;
-        text-align:right;
+        text-align: right;
     }
+
+    ul {
+        margin-top: 0px;
+    }
+}
+
+
+.leaflet-container .custom-map-marker svg.iconic {
+    position:static;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    stroke: rgba(0,0,0,.24);
+    stroke-width: .24;
+    -webkit-filter: drop-shadow(0 8px 6px rgba(0,0,0,.64));
+    filter: drop-shadow(0 8px 6px rgba(0,0,0,.64))
+}
+
+.leaflet-container .custom-map-marker .iconic-bg {
+    display: inline-block;
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    z-index: -1;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    margin-left: -8px
 }

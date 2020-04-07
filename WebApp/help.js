@@ -9,6 +9,9 @@ class Settings {
 }
 Settings.needsUrl = "https://frontlinehelp.api.ushahidi.io/api/v3/posts/?form=6";
 Settings.debugMode = true;
+class Images {
+}
+Images.mapNeed = "";
 class Help {
     static handleErrors(error, url, line) {
         var msgDetail = `${error} LINE : ${line} URL : ${url}`;
@@ -50,6 +53,36 @@ class Help {
     }
     static isNullOrEmpty(val) {
         return Help.isNullOrUndef(val) || val === '' || val === 'null' || val === 'undefined';
+    }
+    static getProp(key, obj, defaultVal = null) {
+        return (key in obj) ? obj[key] : defaultVal;
+    }
+    static getItem2(ary, i, defaultVal = null) {
+        return !Help.isNullOrUndef(ary) ? ary[i] : defaultVal;
+    }
+    static getItem(key, obj, i, defaultVal = null) {
+        var t = Help.getProp(key, obj, defaultVal);
+        if (t) {
+            return t[i];
+        }
+        return defaultVal;
+    }
+    static contains(arr, item) {
+        if (Array.isArray(arr)) {
+            return arr.indexOf(item) > -1;
+            ;
+        }
+        return false;
+    }
+    static hasClass(element, cls) {
+        return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+    }
+    static objectsEqualByValue(obj1, obj2) {
+        return JSON.stringify(obj1) === JSON.stringify(obj2);
+        //cheap and easy, if order of keys diff then will be diff. cref:https://stackoverflow.com/questions/1068834/object-comparison-in-javascript
+    }
+    static deepCloneObject(obj) {
+        return JSON.parse(JSON.stringify(obj));
     }
     static isValidDate(val) {
         let respVal = false;
