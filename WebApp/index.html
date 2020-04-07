@@ -33,9 +33,14 @@
 
     <link rel="stylesheet/less" type="text/css" href="style.less" />
     <script src="3.9.0.less.min.js"></script>
+
     <script src="moment.js"></script>
+
     <script src="api.js"></script>
     <script src="script.js"></script>
+    <script src="setup.js"></script>
+    <script src="help.js"></script>
+    <script src="code.js"></script>
 
 </head>
 <body id="body" class="not_yet_ready">
@@ -88,7 +93,6 @@
                     </div>
 
                 </div>
-
 
 
 
@@ -280,7 +284,8 @@
 
         (function () {
 
-            setTimeout(setupFrontline, 250);
+            //setTimeout(setupFrontline, 250);
+            setTimeout(setupFrontlineApp, 250);
 
         })();
 
