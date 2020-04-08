@@ -1,29 +1,59 @@
-﻿
+﻿//function ensureMasonry() {
+//    console.log("ensureMasonry");
+//    if(twitterLoaded && !masonryLoaded) {
+//        setupMasonry();
+//    }
+//    else {
+//        console.log("t : " + twitterLoaded + " m : " + masonryLoaded);
+//        jQuery('#published_tweets').masonry('layout');
+//    }
+//}
+
+//function setupMasonry() {
+//    Help.log("setupMasonry start");
+//    var $grid = new Masonry(document.getElementById("published_tweets"), {
+//        itemSelector: '.grid-item',
+//        columnWidth: 260
+//    });
+
+//    $grid.on('layoutComplete', function (event, laidOutItems) {
+//        masonryLoaded = true;
+//        Help.log('Masonry layout complete with ' + laidOutItems.length + ' items');
+//    });
+
+//    $('#published_tweets').addClass("loaded");
+//    $('#published_tweets').masonry('layout');
+//    Help.log("setupMasonry end");
+//}
+
+
+function initMasonry() {
+
+    if(!masonryLoaded) {
+        // init Masonry
+        var $grid = $('#published_tweets').masonry({
+            itemSelector: '.grid-item',
+            columnWidth: 260
+        });
+
+        $grid.on('layoutComplete', function (event, laidOutItems) {
+            console.log('Masonry layout complete with ' + laidOutItems.length + ' items');
+            masonryLoaded = true;
+        });
+    }
+
+    $('#published_tweets').masonry('layout');
+}
 
 function setupFrontlineApp() {
-
     setupEarlyErrors();
-    //vue
-    var vmFeeds = new Vue({
-        el: '#twitter_feeds',
-        data: {
-            needsFeedReady: false,
-            dashboardMode: false
-        }
-    });
-
     var mapInstance = setupMap();
-
-    let tweetsContainer = document.getElementById("published_tweets");
-
-    var $grid = null;
-
+    var tweetsContainer = document.getElementById("published_tweets");
     Api.getData().then((d) => {
         var markers = L.markerClusterGroup();
-        vmFeeds.needsFeedReady = true;
+        $("#loadingCog").fadeOut("slow");
         d.forEach(n => {
             if (n.hasTweet()) {
-                addTweet(n.tweetId, tweetsContainer);
                 addTweet(n.tweetId, tweetsContainer);
             }
             var marker = L.marker(n.location, {
@@ -34,21 +64,49 @@ function setupFrontlineApp() {
         mapInstance.addLayer(markers);
     }).then(x => {
 
-        $grid = $('.grid').masonry({
-            itemSelector: '.grid-item',
-            columnWidth: 300
-        });
+        initMasonry();
+        //// init Masonry
+        //var $grid = $('#published_tweets').masonry({
+        //    itemSelector: '.grid-item',
+        //    columnWidth: 260
+        //});
 
-        $grid.on('layoutComplete', function (event, laidOutItems) {
-            console.log('Masonry layout complete with ' + laidOutItems.length + ' items');
-        });
+        //$grid.masonry('layout');
 
-        setTimeout(function () {
-            console.log("RIGHT " + $countTweets);
-            $grid.masonry();
-            $('#published_tweets').addClass("loaded");
-        }, 600);
+        //$grid.on('layoutComplete', function (event, laidOutItems) {
+        //    console.log('Masonry layout complete with ' + laidOutItems.length + ' items');
+        //    masonryLoaded = true;
+        //});
 
+        // layout Masonry after each image loads
+        //$grid.imagesLoaded().progress( function() {
+        
+        //});
+
+
+        //$grid.masonry({
+        //    // options...
+        //});
+
+        //setTimeout(function () {
+        //    Help.log("Tweets finished ?");
+
+        //    var $grid = new Masonry(tweetsContainer, {
+        //        // options
+        //        itemSelector: '.grid-item',
+        //        columnWidth: 260
+        //    });
+
+        //    $grid.on('layoutComplete', function (event, laidOutItems) {
+        //        Help.log('Masonry layout complete with ' + laidOutItems.length + ' items');
+        //    });
+
+        //    //$grid.masonry();
+        //    $('#published_tweets').addClass("loaded");
+
+        //    Help.log("Tweets finished ?");
+
+        //}, Settings.twitterLoadDelay);
     });
 
     function addTweet(tweetId, container) {
@@ -63,21 +121,17 @@ function setupFrontlineApp() {
         twttr.widgets.createTweet(tweetId, tweetContainer, {
             conversation: 'none'
             , cards: 'hidden'
-            , width: 290
+            , width: 250
         })
             .then(function (tweet) {
                 let style = tweet.shadowRoot.firstElementChild;
-                let css = document.createTextNode(`.EmbeddedTweet .CallToAction { display: none; } .EmbeddedTweet .TweetInfo { display: none; }`);
+                let css = document.createTextNode(`.EmbeddedTweet .CallToAction { display: none; } .EmbeddedTweet .TweetInfo { display: none; } .Tweet-body.e-entry-content { font-size:12px; }`);
                 style.appendChild(css);
                 $countTweets--;
             });
     }
 
     function setupMap() {
-        var centreLat = 54.606039;
-        var centreLng = -1.537400;
-        var centreLocation = [centreLat, centreLng];
-        var mapZoom = 5;
         var flMap = L.map('map_container', {
             fullscreenControl: {
                 position: 'bottomleft'
@@ -87,35 +141,30 @@ function setupFrontlineApp() {
                     'true': 'Exit Fullscreen'
                 }
             }
-        }).setView(centreLocation, mapZoom);
+        }).setView([Settings.mapDefaultLat, Settings.mapDefaultLng], Settings.mapZoomDefault);
         setupAttributions(flMap);
         flMap.on('fullscreenchange', function () {
-            vmFeeds.dashboardMode = flMap.isFullscreen();
-            //TODO:PROD remove
-            //DOM manipulation as twitter and vue will not play nice.
-            //when the feeds are from twitters API and custom rendered can sort this with vue instead
             var feedsDiv = document.getElementById("feeds");
             if (flMap.isFullscreen()) {
                 feedsDiv.className = "";
                 feedsDiv.style.display = "none";
+                $("#loadingCog").fadeOut();
             }
             else {
                 feedsDiv.className = "visible";
                 feedsDiv.style.display = "flex";
+                $("#loadingCog").fadeIn();
             }
-
-
         });
         return flMap;
     }
 
     function pointIcon(color, size, className) {
-        // Test string to make sure that it does not contain injection
         color = (color && /^[a-zA-Z0-9#]+$/.test(color)) ? color : '#959595';
         size = size || [32, 32];
         return L.divIcon({
             className: 'custom-map-marker ' + className,
-            html: '<svg class="iconic" style="fill:' + color + ';"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="44fed91f69f09c95876314a8e23f311e.svg#map-marker"></use></svg>', 
+            html: '<svg class="iconic" style="fill:' + color + ';"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="44fed91f69f09c95876314a8e23f311e.svg#map-marker"></use></svg>',
             iconSize: size,
             iconAnchor: [size[0] / 2, size[1]],
             popupAnchor: [0, 0 - size[1]]
@@ -136,9 +185,6 @@ function setupFrontlineApp() {
 
     function setupEarlyErrors() {
         window.onerror = Help.handleErrors;
-        Vue.config.errorHandler = function (err, vm, info) {
-            Help.handleErrors(err, "N/A", "N/A");
-        };
     }
 }
 

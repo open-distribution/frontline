@@ -9,6 +9,10 @@
 class Settings {
     static needsUrl: string = "https://frontlinehelp.api.ushahidi.io/api/v3/posts/?form=6";
     static debugMode: boolean = true;
+    static mapZoomDefault: number = 5;
+    static mapDefaultLat: number = 53.606039;
+    static mapDefaultLng: number = -1.537400;
+    static twitterLoadDelay: number = 1500;
 }
 
 class Images {

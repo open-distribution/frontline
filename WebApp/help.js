@@ -9,6 +9,10 @@ class Settings {
 }
 Settings.needsUrl = "https://frontlinehelp.api.ushahidi.io/api/v3/posts/?form=6";
 Settings.debugMode = true;
+Settings.mapZoomDefault = 5;
+Settings.mapDefaultLat = 53.606039;
+Settings.mapDefaultLng = -1.537400;
+Settings.twitterLoadDelay = 1500;
 class Images {
 }
 Images.mapNeed = "";

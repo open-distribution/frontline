@@ -28,7 +28,7 @@ class Api {
             res.needs = p.values[Keys.needs];
             res.otherNeeds = Help.getItem(p.values[Keys.otherNeeds], 0);
             res.tweetId = Help.getItem(p.values[Keys.tweetId], 0);
-            Help.log(`Created NeedsPoint ${p.id}`);
+            //Help.log(`Created NeedsPoint ${p.id}`);
         }
         catch (e) {
             Help.handleErrors(e);

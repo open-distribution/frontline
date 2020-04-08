@@ -109,11 +109,15 @@
     <Content Include="images\ucl.png" />
     <Content Include="index.html" />
     <Content Include="jquery-1.12.4.min.js" />
+    <Content Include="masonry.pkgd.js" />
     <Content Include="moment.js" />
     <Content Include="mstile-150x150.png" />
     <Content Include="safari-pinned-tab.svg" />
     <Content Include="setup.js" />
     <Content Include="style.css" />
+    <Content Include="style.min.css">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +125,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LICENSE" />
+    <Content Include="fonts\DMSans-Bold.woff" />
+    <Content Include="fonts\DMSans-Medium.woff" />
+    <Content Include="fonts\DMSans-Regular.woff" />
     <None Include="packages.config" />
     <Content Include="README.md" />
     <Content Include="style.less" />
