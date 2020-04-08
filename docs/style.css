@@ -263,7 +263,7 @@ main {
   margin-bottom: 0px;
   margin-top: 0px;
 }
-#intro ul {
+#intro ul.hashtag_list {
   list-style: none;
   font-weight: bold;
   line-height: 1.5;
