@@ -31,7 +31,6 @@
         function buildTweet(tweetId, tweetContainer) {
             twttr.widgets.createTweet(tweetId, tweetContainer, {
                 conversation: 'none'
-                , cards: 'hidden'
                 , width: 250
             }).then(function (tweet) {
                 let style = tweet.shadowRoot.firstElementChild;
