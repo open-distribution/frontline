@@ -2,19 +2,40 @@
 
 Frontline Live Homepage
 
+
 ## Build step
 
 Install less and typescript
 
-    npm i -g less
-    npm i -g typescript
+    npm i -g less typescript
 
 Run compile step from within `docs` folder
 
     lessc style.less style.css
-    tsc *.ts
+    tsc code.ts
 
-Initially - commit `style.css` and built `*.js` files and push to deploy. (TODO Travis integration)
+Initially - commit `style.css` and built `*.js` files and push to deploy.
+
+TODO - consider taking a step down to use plain old CSS/JS for simplicity, maintainability,
+transferability.
+
+
+## Dotnet core app
+
+The `Frontline.sln` and `Frontline` config and C# code aim to provide a live-reload dev
+environment.
+
+Similar setup on MacOSX/Linux without dotnet install - change directory into the `docs` folder
+then run:
+
+    python -m http.server
+
+to serve the static files on http://localhost:8000 and
+
+    watch lessc style.less style.css
+
+to continually rebuild the stylesheets while developing.
+
 
 
 ## Ushahidi API
