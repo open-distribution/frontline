@@ -11,16 +11,13 @@ function twitterOnLoaded() {
 }
 
 function ensureMasonry() {
+    initMasonry();
     setTimeout(function () {
         initMasonry();
         setTimeout(function () {
             initMasonry();
-            setTimeout(function () {
-                initMasonry();
-            }, 3500);
-        }, 1000);
-    }, 550);
-    initMasonry();
+        }, 3500);
+    }, 1000);
 }
 
 function initMasonry() {
@@ -67,7 +64,7 @@ function setupFrontlineApp() {
             ensureMasonry();
             //var $grid = $('#published_tweets');
             // layout Masonry after each image loads
-            imagesLoaded('#published_tweets', function() {
+            imagesLoaded('#published_tweets', function () {
                 console.log("images loaded");
                 $('#published_tweets').masonry('layout');
             });
