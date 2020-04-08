@@ -4,15 +4,17 @@ Frontline Live Homepage
 
 ## Build step
 
-Install less
+Install less and typescript
 
     npm i -g less
+    npm i -g typescript
 
-Run compile step
+Run compile step from within `docs` folder
 
     lessc style.less style.css
+    tsc *.ts
 
-Initially - commit `style.css` and push to deploy. (TODO Travis integration)
+Initially - commit `style.css` and built `*.js` files and push to deploy. (TODO Travis integration)
 
 
 ## Ushahidi API
