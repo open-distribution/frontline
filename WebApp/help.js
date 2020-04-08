@@ -8,11 +8,17 @@ Keys.tweetId = "2b3a5248-dfb7-4a9d-b0dc-dc76e92b1ac7";
 class Settings {
 }
 Settings.needsUrl = "https://frontlinehelp.api.ushahidi.io/api/v3/posts/?form=6";
+//static needsUrl: string = "https://frontlinehelp.api.ushahidi.io/api/v3/posts/?form=6&q=person";
 Settings.debugMode = true;
 class Images {
 }
 Images.mapNeed = "";
 class Help {
+    static log(msg) {
+        if (Settings.debugMode) {
+            console.log(msg);
+        }
+    }
     static handleErrors(error, url, line) {
         var msgDetail = `${error} LINE : ${line} URL : ${url}`;
         console.log("Error Caught : " + msgDetail); //we could ping these to a server if we wanted 
@@ -32,7 +38,7 @@ class Help {
     }
     static htmlList(s) {
         var respVal = "";
-        if (s.length > 0) {
+        if (!Help.isNullOrUndef(s) && s.length > 0) {
             respVal = "<ul>";
             s.forEach(v => respVal += `<li>${v}</li>`);
             respVal += "</ul>";
@@ -55,17 +61,25 @@ class Help {
         return Help.isNullOrUndef(val) || val === '' || val === 'null' || val === 'undefined';
     }
     static getProp(key, obj, defaultVal = null) {
-        return (key in obj) ? obj[key] : defaultVal;
+        return Help.hasProp(key, obj) ? obj[key] : defaultVal;
     }
-    static getItem2(ary, i, defaultVal = null) {
+    static tryGetProp(key, obj, result) {
+        let respVal = false;
+        if (Help.hasProp(key, obj)) {
+            result.value = Help.getProp(key, obj);
+            respVal = true;
+        }
+        return respVal;
+    }
+    static hasProp(key, obj) {
+        return (key in obj);
+    }
+    static getItem(ary, i, defaultVal = null) {
         return !Help.isNullOrUndef(ary) ? ary[i] : defaultVal;
     }
-    static getItem(key, obj, i, defaultVal = null) {
-        var t = Help.getProp(key, obj, defaultVal);
-        if (t) {
-            return t[i];
-        }
-        return defaultVal;
+    //see https://stackoverflow.com/a/2672411/661584
+    static hasIndex(arr, i) {
+        return (arr[i] != null);
     }
     static contains(arr, item) {
         if (Array.isArray(arr)) {
@@ -92,6 +106,11 @@ class Help {
             }
         }
         return respVal;
+    }
+}
+class TryGetResult {
+    constructor() {
+        this.value = null;
     }
 }
 class ApiHelp {

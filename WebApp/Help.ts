@@ -8,6 +8,7 @@
 
 class Settings {
     static needsUrl: string = "https://frontlinehelp.api.ushahidi.io/api/v3/posts/?form=6";
+    //static needsUrl: string = "https://frontlinehelp.api.ushahidi.io/api/v3/posts/?form=6&q=person";
     static debugMode: boolean = true;
 }
 
@@ -16,6 +17,13 @@ class Images {
 }
 
 class Help {
+
+    static log(msg) {
+        if (Settings.debugMode) {
+            console.log(msg);
+        }
+    }
+
     static handleErrors(error, url?, line?) {
         var msgDetail = `${error} LINE : ${line} URL : ${url}`;
         console.log("Error Caught : " + msgDetail); //we could ping these to a server if we wanted 
@@ -39,7 +47,7 @@ class Help {
 
     static htmlList(s: any) {
         var respVal = "";
-        if(s.length > 0) {
+        if(!Help.isNullOrUndef(s) && s.length > 0) {
             respVal = "<ul>";
             s.forEach(v => respVal += `<li>${v}</li>`);
             respVal += "</ul>";
@@ -67,19 +75,29 @@ class Help {
     }
 
     static getProp(key: any, obj:any, defaultVal:any = null) {
-        return (key in obj)? obj[key] : defaultVal;
+        return Help.hasProp(key, obj)? obj[key] : defaultVal;
     }
 
-    static getItem2<T>(ary:any, i:number, defaultVal:any = null){
+    static tryGetProp<T>(key: any, obj:any, result: TryGetResult<T>): boolean {
+        let respVal = false;
+        if (Help.hasProp(key, obj)) {
+            result.value = Help.getProp(key, obj);
+            respVal = true;
+        }
+        return respVal;
+    }
+
+    static hasProp(key: any, obj:any) : boolean {
+        return (key in obj);
+    }
+
+    static getItem<T>(ary:any, i:number, defaultVal:any = null){
         return !Help.isNullOrUndef(ary)? ary[i] : defaultVal;
     }
 
-    static getItem<T>(key: any, obj:any, i:number, defaultVal:any = null){
-        var t = Help.getProp(key, obj, defaultVal);
-        if(t) {
-            return t[i];
-        }
-        return defaultVal;
+    //see https://stackoverflow.com/a/2672411/661584
+    static hasIndex<T>(arr: Array<T>, i : number) : boolean {
+        return (arr[i] != null);
     }
 
     static contains<T>(arr: Array<T>, item: T): boolean {
@@ -111,16 +129,17 @@ class Help {
         }
         return respVal;
     }
+
+  
 }
 
 
-   
-
- 
-
-
-
-
+class TryGetResult<T> {
+    value: T | undefined | null;
+    constructor() {
+        this.value = null;
+    }
+}
 
 
 

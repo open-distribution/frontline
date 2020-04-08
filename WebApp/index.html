@@ -46,6 +46,42 @@
     <link href="https://unpkg.com/leaflet.markercluster@1.0.5/dist/MarkerCluster.Default.css" rel="stylesheet" />
     <script src="https://unpkg.com/leaflet.markercluster@1.0.5/dist/leaflet.markercluster.js"></script>
 
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.js"></script>
+
+
+    <script>
+
+        var globalStash = { tweetsLoaded: false };
+
+        window.twttr = (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function (f) {
+                t._e.push(f);
+            };
+
+            return t;
+        }(document, "script", "twitter-wjs"));
+
+        //When widget is ready, run masonry
+        twttr.ready(function (twttr) {
+            console.log("TWITTER LOADED");
+            twttr.events.bind('loaded', function (event) {
+                console.log("tweetsLoaded");
+                globalStash.tweetsLoaded = true;
+            });
+        });
+      
+
+    </script>
 </head>
 <body id="body" class="not_yet_ready">
 
@@ -125,33 +161,51 @@
 
         <div id="twitter_feeds">
 
-            <div id="feeds">
+            <div id="feeds" class="visible">
 
                 <div id="need">
                     <h2>Needs</h2>
 
                     <div class="tweets">
-                        
-                       <!-- <svg class="iconic" style="fill:#A51A1A;"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/44fed91f69f09c95876314a8e23f311e.svg#map-marker"></use></svg>-->
 
-                        <i v-if="!needsFeedReady" class="fas fa-cog fa-spin fa-4x"></i>
+                        <!--data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 300, "gutter":20 }'-->
 
-                        <div v-if="needsFeedReady" class="anti_fouc">
-                            <transition-group name="list" tag="div">
-                                <div v-for="(need, index) in needsData" class="tweet list-item" :title="hackDateTime(need.dateTime)" v-bind:key="index">
-                                    <div class="image">
-                                        <img :src="need.imageSrc" />
-                                    </div>
-                                    <div class="body">
-                                        <span class="main" v-html="need.mainHtml">
-                                        </span>
-                                        <span class="date_time">
-                                            {{ hackTime(need.dateTime) }}
-                                        </span>
-                                    </div>
-                                </div>
-                            </transition-group>
+                        <div id="published_tweets" class="grid">
+
                         </div>
+
+                        <!--<div class="grid-item">ONE</div>
+                        <div class="grid-item">TWO</div>
+                        <div class="grid-item">THREE</div>-->
+                        <!--<div class="grid-item"><blockquote class="twitter-tweet"><a href="https://twitter.com/ziegfiroyt/status/1247582639596490756"></a></blockquote></div>
+                        <div class="grid-item"><blockquote class="twitter-tweet"><a href="https://twitter.com/ziegfiroyt/status/1247459761324515329"></a></blockquote></div>
+                        <div class="grid-item"><blockquote class="twitter-tweet"><a href="https://twitter.com/ziegfiroyt/status/1247593175214063616"></a></blockquote></div>
+                        <div class="grid-item"><blockquote class="twitter-tweet"><a href="https://twitter.com/ziegfiroyt/status/1247591902196699136"></a></blockquote></div>
+                        <div class="grid-item"><blockquote class="twitter-tweet"><a href="https://twitter.com/ziegfiroyt/status/1247292125567483911"></a></blockquote></div>
+                        <div class="grid-item"><blockquote class="twitter-tweet"><a href="https://twitter.com/ziegfiroyt/status/1247586398464507906"></a></blockquote></div>-->
+
+                        
+                        <!--<i v-if="!needsFeedReady" class="fas fa-cog fa-spin fa-4x"></i>-->
+                        <!--//v-if="needsFeedReady" class="anti_fouc"-->
+                        <!--<div id="published_tweets" class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 300, "gutter":20 }'>
+
+    </div>-->
+                        <!--<div v-if="needsFeedReady" class="anti_fouc">
+        <transition-group name="list" tag="div">
+            <div v-for="(need, index) in needsData" class="tweet list-item" :title="hackDateTime(need.dateTime)" v-bind:key="index">
+                <div class="image">
+                    <img :src="need.imageSrc"/>
+                </div>
+                <div class="body">
+                    <span class="main" v-html="need.mainHtml">
+                    </span>
+                    <span class="date_time">
+                        {{ hackTime(need.dateTime) }}
+                    </span>
+                </div>
+            </div>
+        </transition-group>
+    </div>-->
 
                     </div>
                 </div>
@@ -160,93 +214,10 @@
 
 
                 <div id="patterns">
-                    <h2>Doing Our Best</h2>
+                    <h2>Our Voice</h2>
+                    
+                    <a id="btn_start">Masonry</a>
 
-                    <div class="tweets">
-                        <div class="tweet">
-                            <div class="image">
-                                <img src="/images/logo_tweets.jpg" />
-                            </div>
-                            <div class="body">
-                                <span class="main" title="07:03 04/04/2020">
-                                    Masks and Gloves needed @Broadgreen Hospital, Liverpool
-                                </span>
-                            </div>
-                        </div>
-
-
-                        <div class="tweet">
-                            <div class="image">
-                                <img src="/images/logo_tweets.jpg" />
-                            </div>
-                            <div class="body">
-                                <span class="main" title="22:47 03/04/2020">
-                                    Face Shields needed @Field Farm House Residential Home, Hereford
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="tweet">
-                            <div class="image">
-                                <img src="/images/logo_tweets.jpg" />
-                            </div>
-                            <div class="body">
-                                <span class="main" title="07:21 04/04/2020">
-                                    Latex Gloves run out at @University College Hospital, London
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="supplied">
-                    <h2>Problems Solved</h2>
-
-                    <div class="tweets">
-                        <div class="tweet">
-                            <div class="image">
-                                <img src="/images/3M.jpg" />
-                            </div>
-                            <div class="body">
-                                <span class="main" title="07:19 04/04/2020">
-                                    Thanks to @3M #LatexGloves and #95MMasks have reached @A&E_Ward at Kings College Hospital, London
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="tweet">
-                            <div class="image">
-                                <img src="/images/just_gloves.jpg" />
-                            </div>
-                            <div class="body">
-                                <span class="main" title="07:19 04/04/2020">
-                                    Thanks to @JustGloves #LatexGloves have reached @A&E_Ward at Kings College Hospital, London
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="tweet">
-                            <div class="image">
-                                <img src="/images/emmanuel_oyemade.jpg" />
-                            </div>
-                            <div class="body">
-                                <span class="main" title="07:19 04/04/2020">
-                                    Thanks to @EmmanuelOyemade #FaceShields have reached @AnneCarer at Charing Cross Hospital, London
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="tweet">
-                            <div class="image">
-                                <img src="/images/eureka.jpg" />
-                            </div>
-                            <div class="body">
-                                <span class="main" title="07:19 04/04/2020">
-                                    Thanks to @Eureka #Gloves have reached @SamanthaLowes at Birmingham City Hospital, Birmingham
-                                </span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
             </div>
