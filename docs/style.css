@@ -376,6 +376,26 @@ footer {
 .fa-stack {
   vertical-align: top;
 }
+#title_bar #icons .faa-parent--instagram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  height: 4em;
+  width: 4em;
+  border-radius: 50%;
+}
+#title_bar #icons .faa-parent--instagram:hover {
+  text-decoration: none;
+  -webkit-animation: tada 2s linear infinite;
+  animation: tada 2s linear infinite;
+  color: transparent;
+  background-color: #076f51;
+}
+#title_bar #icons .faa-parent--instagram i {
+  color: #00966B;
+  font-size: 3em;
+}
 a {
   color: #ffffff;
 }
@@ -438,11 +458,42 @@ a {
     transform: scale(1) rotate(0);
   }
 }
+@keyframes tada-instagram {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  10%,
+  20% {
+    -webkit-transform: scale(0.8) rotate(-8deg);
+    transform: scale(0.8) rotate(-8deg);
+  }
+  30%,
+  50%,
+  70% {
+    -webkit-transform: scale(1.1) rotate(8deg);
+    transform: scale(1.1) rotate(8deg);
+  }
+  40%,
+  60% {
+    -webkit-transform: scale(1.1) rotate(-8deg);
+    transform: scale(1.1) rotate(-8deg);
+  }
+  80%,
+  100% {
+    -webkit-transform: scale(1) rotate(0);
+    transform: scale(1) rotate(0);
+  }
+}
 .faa-tada.animated,
 .faa-tada.animated-hover:hover,
 .faa-parent.animated-hover:hover > .faa-tada {
   -webkit-animation: tada 2s linear infinite;
   animation: tada 2s linear infinite;
+}
+.faa-parent.animated-hover.faa-parent--instagram:hover > .faa-tada {
+  -webkit-animation: tada 2s linear infinite;
+  animation: tada-instagram 2s linear infinite;
 }
 .faa-tada.animated.faa-fast,
 .faa-tada.animated-hover.faa-fast:hover,
