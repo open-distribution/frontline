@@ -1,0 +1,21 @@
+﻿var requirementsIcon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAoCAYAAADpE0oSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxEAAAsRAX9kX5EAAALHSURBVFhHvZc9bE5RGMdvlbaa+GYgTaUlNGKxlMVEIhHxkfhoOlVithlEBxOLWAw2JCbC0EgTaQwdBY0BA5IWKQ2KIqLqo35/52l625xz77l97+uf/PKe95z/8zzvae8997k1SY4mk0SeVtgBO2ELtEAtSBMwCAPQB/0EvOJz7qJoK1yCUZiMZAQuwlpLEy+CGuAEfAVf8hi+wHFosLTZwtgIl+EX+BIWQTmUq9HS+4VBO70BviSVcBPCxVk8DX/MXDZnrcxMsbALvqeMZTMOe6ycExO1cN8M1eQh1FlZZpLkYGoxj98wBPfgLgzanM/ro3OqqHZ7O7WQxWM4BCugxlgOB+AJ+GJmcwdqVXgDjNlkFr2w6N+v9Yi1xaCkvtg0n2GjAjpSkyH051xtNYLC0wQvLCaLjnn4211Yps5z/o7YOCg8w3yccd8y1a7COvCzpIdAjxtGqRfG3TCoFhVe6cZBvYFPbhilMdDOs7RMhUWZ0mN0vhsGtUBF37txUE2wyg2jJK9isjSqwkNuHJR+/RE3jJK8eTse1i3QOetS96FGYJMFBYWnDd5aTBZHZV4HH1KTIQYgeAew1gwx5/032KwAHXu3bDIP7fwkrIclhnZ5CmLbo35w/woG+1MLMeiIfW4UbY+mrxe+/K/H4gOY6k6dmNgLE2aoBsq9z8pNi0nt+rqZqsFV8B9WLOgK/2jGMnkNzVbGLwzH4KcFlMEPOGzpw8JUBz0WVAZXYOYFFRLGNfDSAivhGeQ9/aaFWai3quQqVzu722UsKAIvpBIV5ZylKS6C1U0+SiWLRef6UkszN5FgG+jNz1fAh7rImD4uXyTqTiXOo9vCKhfJ9Ooa0zP3wUILK0ck1OMvq/HXWpvZyxWJu8B3qmmuy2zli+T1cM2KpdHLfL3ZqiMK6BbTK81UUZ1wRbrQuYtCW+EpvIPtNl1ASfIX/A3niLh/yFIAAAAASUVORK5CYII=";
+var solvedIcon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAoCAYAAADpE0oSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxEAAAsRAX9kX5EAAAN5SURBVFhHtZhJaBRBFIYrLigiSnBBRYWoiHgyEuJyUEaDARFxCehF8KCIiKCSgwcdtBPEiwEPevBoBAnu68Gooxe3RPHgBoIbQQXjDi5xwf+v1+XMZLqWZCYffJWqyqRfV3V11ZuUKR+R4mcmwYWwBlbCCtgfki74DN6Fl+A1lVav8NOJO3CkA+6AS+EIdgXwFp6Ge3EDL3VPAsmBIzUY5WaYhkPZ1Qu+Qt70IVzlh+7JwUxXlkgNQXkQboO8gd4yCC6CE1RKtaqM+qV7Y/JHLCM9Alfqduk4Cddg5N+kqVS/+KdhO1wh1ZLCa+6UqpAdcaRqUXJRFDO9Ln7COoz6PBsSONLP+has0u2+4z6cheBdZqqXw9Cgf+EL2AZvw+dxXwgzYB0rZfFoL0BOtY+HcDe8Cj+wA5TD+bARTmeHhyuwloGnonIHDmevg4twNaaJ72chkRqGkquXO5yLL7CaUz0T+oJyOtdZg5K0vuBaaN2tYniDlQxcrZtumnDhN3HdTlp1oNwjDSd6xNzwXfAQOCPVILheCrbIblQw8EipW3kNP0o1iE+QI3dRzsC0lHBvGCBVKwMZ9J3UrYyHo6QaBD/Lv3HRycBcsS5496ukGgQ/6xtxBwNzB/JRj/fUvzlEahrKrdJw0s7A3PbMLmSD2UczLmx/AyI1EWUzHK3bdng0tnHn4mI4C5ew18N7uA8eg2ZtjIU8vznSkPToOqwxp9MylKd0PYzP0AQeA3uSHnHbbTGv0jnYLtUguMVOie1JUGaix1mRwGn1B2UDzMuLSgyv3RDHyts8uNUxA+krWiBnVpNNfUikJqPk68UztpRw252D0f5P9PPT2wz25JReuYth7mwUAw+ZDQh6Q5pC0sUPQx76peIoPCHVLPlTbYjUOJQ3ITeFYngK52K0ndLMYptOPpN6WMwqZzq7JSkoKfwKQzLaR3je3P5CMpQk9iPogbhegG8B7YIPpNoj7kFmnVbcgdN6ha+H9iSvECZ9G/G3zESsJE91LhmkMSn9uQXS4aURQbmSnYS+q02QibiPVsjTy0vy65SEHPL8fmXLwXlizcZon0jTjX+qDRm8Fin9bwae291n6jfchKCXpekndKoNfHb8mtId5t3e55pL+FQbIp1l8CAxaRA3/iqM1pet5hE+1YaM+o4p57OeB/n1lBnFY/4qHKX+Af57rdvHZ3ClAAAAAElFTkSuQmCC";
+
+
+
+   <!--GOOGLE MAPS WORKS ALSO LEAFLETJS seems a little buggy e.g. zoooming and panning can lead to  things we put on it being in wrong place !!!!! NOT GOOD - or did I do something stoopid? -->
+    <!--<script>
+
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            var uluru = { lat: -25.344, lng: 131.036 };
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map_container'), { zoom: 4, center: uluru });
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({ position: uluru, map: map });
+        }
+    </script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=APIKEY&callback=initMap"></script>-->
