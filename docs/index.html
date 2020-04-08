@@ -13,6 +13,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <style>
+        /* deliberate inclusion of minimal CSS for speed of initial styling */
         @font-face {
             font-family: 'DM Sans';
             font-style: normal;
@@ -22,17 +23,11 @@
         @font-face {
             font-family: 'DM Sans';
             font-style: normal;
-            font-weight: 500;
-            src: local('DM Sans Medium'), url('fonts/DMSans-Medium.woff') format('woff');
-        }
-        @font-face {
-            font-family: 'DM Sans';
-            font-style: normal;
             font-weight: bold;
             src: local('DM Sans Bold'), url('fonts/DMSans-Bold.woff') format('woff');
         }
         html, body {
-            font-family: 'DM Sans';
+            font-family: 'DM Sans', Helvetica, Verdana, sans-serif;
             font-weight: normal;
             background: #00966b;
             color: #fff;
@@ -144,6 +139,6 @@
             <a href="https://github.com/open-distribution/frontline/">Improve this page</a>
         </p>
     </footer>
-    <script src="setup.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
