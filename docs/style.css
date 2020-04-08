@@ -144,9 +144,9 @@ header #title_bar {
 }
 header #title_bar .logo {
   vertical-align: top;
-  background: url(images/logo-frontline.png);
-  width: 51px;
-  height: 48px;
+  background: url(images/frontline.jpg);
+  width: 100px;
+  height: 100px;
   background-size: cover;
   display: inline-block;
 }
