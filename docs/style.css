@@ -347,8 +347,9 @@ main {
   box-shadow: 1px 7px 8px rgba(0, 0, 0, 0.95), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 .grid {
-  column-count: 3;
-  column-gap: 10px;
+  text-align: center;
+  column-width: 250px;
+  column-gap: 5px;
   overflow: hidden;
 }
 .grid-item {
