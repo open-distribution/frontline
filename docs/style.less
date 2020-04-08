@@ -170,23 +170,24 @@ header {
         }
 
         .logo {
-            vertical-align: top;
             background: url(images/frontline.jpg);
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
             background-size: cover;
             display: inline-block;
         }
 
         #icons {
-            font-size: 0.8em;
-            vertical-align: top;
+            font-size: 0.75em;
 
             @media @max880 {
                 margin: 0;
             }
-
-            #twitter, #facebook {
+            a {
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .faa-parent {
                 margin-left: 10px;
 
                 &:hover {

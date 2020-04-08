@@ -143,28 +143,28 @@ header #title_bar {
   }
 }
 header #title_bar .logo {
-  vertical-align: top;
   background: url(images/frontline.jpg);
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   background-size: cover;
   display: inline-block;
 }
 header #title_bar #icons {
-  font-size: 0.8em;
-  vertical-align: top;
+  font-size: 0.75em;
 }
 @media screen and (max-width: 880px) {
   header #title_bar #icons {
     margin: 0;
   }
 }
-header #title_bar #icons #twitter,
-header #title_bar #icons #facebook {
+header #title_bar #icons a {
+  display: inline-block;
+  vertical-align: middle;
+}
+header #title_bar #icons .faa-parent {
   margin-left: 10px;
 }
-header #title_bar #icons #twitter:hover,
-header #title_bar #icons #facebook:hover {
+header #title_bar #icons .faa-parent:hover {
   color: #076f51;
 }
 header #title_bar #title {
