@@ -18,12 +18,6 @@
 
 @color_background_light: #fbfbfb;
 
-body.not_yet_ready {
-    .anti_fouc {
-        display: none;
-    }
-}
-
 /* MIXINS */
 
 .noselect {
@@ -245,154 +239,180 @@ header {
     overflow: hidden;
     border: solid @border_thickness_test blue;
     padding-top: 0px;
+}
+#core_content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: stretch;
 
-    #core_content {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: stretch;
+    #intro {
+        width: 30%;
+        padding-left: 2%;
+        border: solid green @border_thickness_test;
 
-        #intro {
-            width: 30%;
-            padding-left: 2%;
+        h1 {
+            .major_title;
+            margin-bottom: 0px;
+            margin-top: 15px;
+        }
+
+        h2 {
+            .minor_title;
+            margin-bottom: 0px;
+            margin-top: 0px;
+        }
+
+        #request, #response {
             border: solid green @border_thickness_test;
-
-            h1 {
-                .major_title;
-                margin-bottom: 0px;
-                margin-top: 15px;
-            }
-
-            h2 {
-                .minor_title;
-                margin-bottom: 0px;
-                margin-top: 0px;
-            }
-
-            #request, #response {
-                border: solid green @border_thickness_test;
-                display: flex;
-                justify-content: flex-start;
-
-                #request_text {
-                    border: solid gray @border_thickness_test;
-                    display: inline;
-                }
-            }
-
-
-            #request {
-                margin-bottom: 10px;
-
-                p {
-                    font-size: 1.5em;
-                }
-            }
-
-            #response {
-
-                p {
-                    font-size: 1em;
-                    margin-right: 100px;
-                }
-            }
-        }
-
-        #map {
-            width: 70%;
-            border: solid red @border_thickness_test;
-            //for inset / dashboard look
-            margin-top: 10px;
-            margin-right: 15px;
-
-            #map_inner {
-                background-size: cover;
-                height: 100%;
-
-                #map_container {
-                    border: solid purple @border_thickness_test;
-                    width: 600px;
-                    height: 400px;
-                    position: relative;
-                    outline: none;
-                    margin: 0;
-                    padding: 0;
-                    box-sizing: content-box;
-                    // inset map a little
-                    box-shadow: 0px 0px 7px 2px rgba(255, 255, 255, 0.5), 0px 0px 7px 2px rgba(76, 175, 80, 0.5);
-                    border: solid 1px rgba(76, 175, 80, 0.5);
-                }
-            }
-        }
-    }
-
-    #twitter_feeds {
-        border: solid @border_thickness_test blue;
-        margin-top: 0px;
-
-        #feeds {
-            border: solid @border_thickness_test blue;
             display: flex;
+            justify-content: flex-start;
 
-            h2 {
-                margin-bottom: 10px;
+            #request_text {
+                border: solid gray @border_thickness_test;
+                display: inline;
             }
+        }
 
-            #need {
-                border: solid @border_thickness_test red;
-                width: 80%;
+
+        #request {
+            margin-bottom: 10px;
+
+            p {
+                font-size: 1.5em;
             }
+        }
 
-            #patterns {
-                border: solid @border_thickness_test yellow;
-                width: 20%;
-            }
+        #response {
 
-            .tweets {
-                i.fa-spin {
-                    z-index: 99999;
-                    position: absolute;
-                    top: 30%;
-                    left: 50%;
-                }
-            }
-
-
-            .tweet {
-                float: left;
-                font-size: 0.8em;
-                color: @color_font_dark;
-                background-color: @color_font;
-                width: 48%;
-                display: flex;
-                padding: 10px;
-                border-radius: 5px;
-                margin-bottom: 10px;
-                margin-right: 2%;
-                .box_4;
-                .act_as_btn;
-
-                .image {
-                    margin-right: 20px;
-
-                    img {
-                        .box_3;
-                        .img-circle;
-                        width: 48px;
-                    }
-                }
-
-                .body {
-                    display: flex;
-                    flex-direction: column;
-
-                    .date_time {
-                        color: @color_font_light;
-                    }
-                }
+            p {
+                font-size: 1em;
+                margin-right: 100px;
             }
         }
     }
+
+    #map {
+        width: 70%;
+        border: solid red @border_thickness_test;
+        //for inset / dashboard look
+        margin-top: 10px;
+        margin-right: 15px;
+
+        #map_inner {
+            background-size: cover;
+            height: 100%;
+
+            #map_container {
+                border: solid purple @border_thickness_test;
+                width: 600px;
+                height: 100%;
+                position: relative;
+                outline: none;
+                margin: 0;
+                padding: 0;
+                box-sizing: content-box;
+                // inset map a little
+                box-shadow: 0px 0px 7px 2px rgba(255, 255, 255, 0.5), 0px 0px 7px 2px rgba(76, 175, 80, 0.5);
+                border: solid 1px rgba(76, 175, 80, 0.5);
+                transition: all 1s ease-in-out;
+            }
+        }
+    }
+}
+
+#twitter_feeds {
+    border: solid @border_thickness_test blue;
+    margin-top: 0px;
+}
+
+#published_tweets {
+    font-size: 5px !important;
+
+    &.loaded {
+        .grid-item {
+            opacity: 1;
+        }
+    }
+}
+
+#feeds {
+    border: solid @border_thickness_test blue;
+    display: flex;
+
+    h2 {
+        margin-bottom: 10px;
+    }
+
+    #need {
+        border: solid @border_thickness_test red;
+        width: 80%;
+    }
+
+    #patterns {
+        border: solid @border_thickness_test yellow;
+        width: 20%;
+    }
+
+    .tweets {
+        i.fa-spin {
+            z-index: 99999;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+        }
+    }
+
+
+    .tweet {
+        float: left;
+        font-size: 0.8em;
+        color: @color_font_dark;
+        background-color: @color_font;
+        width: 48%;
+        display: flex;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        margin-right: 2%;
+        .box_4;
+        .act_as_btn;
+
+        .image {
+            margin-right: 20px;
+
+            img {
+                .box_3;
+                .img-circle;
+                width: 48px;
+            }
+        }
+
+        .body {
+            display: flex;
+            flex-direction: column;
+
+            .date_time {
+                color: @color_font_light;
+            }
+        }
+    }
+}
+
+.twitter-tweet {
+    .box_5;
+}
+
+.grid {
+    column-count: 3;
+    column-gap: 10px;
+    overflow: hidden;
+}
+
+.grid-item {
+    width: 250px;
+    display: inline-block;
+    margin: -10px 10px 0 0; /* Some gutter, account for twitter-widget style */
 }
 
 footer {
@@ -415,7 +435,11 @@ a {
     color: @color_font;
 }
 
-/* TADA https://l-lin.github.io/font-awesome-animation/ */
+/**
+ * Animations
+ *
+ * TADA from https://l-lin.github.io/font-awesome-animation/
+ */
 @-webkit-keyframes tada {
     0% {
         -webkit-transform: scale(1);
@@ -491,6 +515,18 @@ a {
     animation: tada 3s linear infinite;
 }
 
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 1.5s;
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+
+
+/**
+ * Map popups
+ */
 h1.good {
     color: @color_green_main;
 }
@@ -499,60 +535,9 @@ h1.bad {
     color: @color_red_main;
 }
 
-.contributors {
-    height: 40px;
-    width: 80px;
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center center;
-    margin-right: 0.5rem;
-
-    &:hover {
-        -webkit-animation: tada 2s linear infinite;
-        animation: tada 2s linear infinite;
-    }
-}
-
-.beep {
-    background-image: url(/images/beep.png);
-}
-
-.innovation_bubble {
-    background-image: url(/images/innovation_bubble.png);
-}
-
-.the_fourth_angel {
-    background-image: url(/images/the_fourth_angel.png);
-}
-
-.the_social_element {
-    background-image: url(/images/the_social_element.png);
-}
-
-.oval {
-    background-image: url(/images/oval.png);
-}
-
-.ucl {
-    background-image: url(/images/ucl.png);
-}
-
-.ushahidi {
-    background-image: url(/images/ushahidi-wordmark.svg);
-}
-
-#map_container {
-    transition: all 1s ease-in-out;
-}
-
 .leaflet-container.leaflet-fullscreen-on {
     width: 100% !important;
     height: 80% !important;
-}
-
-span.label {
-    color: blue;
 }
 
 .leaflet-popup-content {
@@ -606,46 +591,49 @@ span.label {
 }
 
 
-.twitter-tweet {
-    .box_5;
-}
 
-.grid {
-    column-count: 3;
-    column-gap: 10px;
-    overflow: hidden;
-}
-
-.grid-item {
-    width: 250px;
+/**
+ * Footer
+ */
+.contributors {
+    height: 40px;
+    width: 80px;
     display: inline-block;
-    margin: -10px 10px 0 0; /* Some gutter, account for twitter-widget style */
-}
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    margin-right: 0.5rem;
 
-#published_tweets {
-    font-size: 5px !important;
-
-    &.loaded {
-        .grid-item {
-            opacity: 1;
-        }
+    &:hover {
+        -webkit-animation: tada 2s linear infinite;
+        animation: tada 2s linear infinite;
     }
 }
 
-.grid:after {
-    content: '';
-    display: block;
-    clear: both;
+.beep {
+    background-image: url(/images/beep.png);
 }
 
-#testCog {
-    border: solid @border_thickness_test blue;
+.innovation_bubble {
+    background-image: url(/images/innovation_bubble.png);
 }
 
-.fade-enter-active, .fade-leave-active {
-    transition: opacity 1.5s;
+.the_fourth_angel {
+    background-image: url(/images/the_fourth_angel.png);
 }
 
-.fade-enter, .fade-leave-to {
-    opacity: 0;
+.the_social_element {
+    background-image: url(/images/the_social_element.png);
+}
+
+.oval {
+    background-image: url(/images/oval.png);
+}
+
+.ucl {
+    background-image: url(/images/ucl.png);
+}
+
+.ushahidi {
+    background-image: url(/images/ushahidi-wordmark.svg);
 }

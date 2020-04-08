@@ -57,42 +57,24 @@
     <script src="masonry.pkgd.js"></script>
     <link href='style.css' rel='stylesheet' />
     <script src="https://platform.twitter.com/widgets.js"></script>
-    <script>
-        // var twitterLoaded = false;
-        // var masonryLoaded = false;
-        // window.twttr = (function (d, s, id) {
-        //     var js, fjs = d.getElementsByTagName(s)[0],
-        //         t = window.twttr || {};
-        //     if (d.getElementById(id)) return t;
-        //     js = d.createElement(s);
-        //     js.id = id;
-        //     js.src = "https://platform.twitter.com/widgets.js";
-        //     fjs.parentNode.insertBefore(js, fjs);
-        //     t._e = [];
-        //     t.ready = function (f) {
-        //         t._e.push(f);
-        //     };
-        //     return t;
-        // }(document, "script", "twitter-wjs"));
-        // twttr.ready(function (twttr) {
-        //     twttr.events.bind('loaded', function (event) {
-        //         twitterOnLoaded();
-        //     });
-        // });
-    </script>
 </head>
-<body id="body" class="not_yet_ready">
-
+<body id="body">
     <header>
-
         <div id="title_bar">
             <span id="icons">
-                <a id="logo" title="Home"><span class="logo"></span></a>
+                <a id="logo" href="/" title="Home"><span class="logo"></span></a>
+
                 <a id="twitter" href="https://twitter.com/FrontlineMap" title="View tweets" class="faa-parent animated-hover"><span class="faa-tada fa-stack fa-2x"><i class="fas fa-circle fa-stack-2x"></i><i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a>
+
+                <!-- TODO enable with facebook page when approved
+                <a id="facebook"
+                    href="https://www.facebook.com/"
+                    title="View facebook page"
+                    class="faa-parent animated-hover"><i class="faa-tada fab fa-facebook fa-4x"></i></a>
+                -->
             </span>
             <h1 id="title">Giving Health Care Workers a Voice <span class="hashtag_style">#FrontlineMap</span></h1>
         </div>
-
         <nav>
             <ol>
                 <li><a href="/about.html">About</a></li>
@@ -104,16 +86,13 @@
     </header>
 
     <div id="main_content">
-
         <div id="core_content">
-
             <div id="intro">
-
                 <h1>We're Here to Help</h1>
 
                 <div id="request">
-                    <div id="request_text" title="Tweet a message with #frontlineMap #yourpostcode #yourneed e.g.
-#frontline #HR12ER #masks">
+                    <div id="request_text"
+                        title="Tweet a message with #frontlineMap #yourpostcode #yourneed e.g. #frontline #HR12ER #masks">
                         <p>So we can promote your need for protective gear, tweet a selfie with ALL the following hashtags</p>
                         <p class="indent">
                             <strong>#frontlineMap</strong><br />
@@ -124,7 +103,6 @@
                 </div>
 
                 <h2>We'll Do Our Best</h2>
-
                 <div id="response">
                     <p>If you can't tweet <a href="https://frontlinehelp.ushahidi.io/posts/create/6">Contact Us</a> with the same format and hashtags</p>
                 </div>
@@ -132,7 +110,7 @@
 
             <div id="map">
                 <div id="map_inner">
-                    <div id="map_container" style="width: 100%; height: 100%;"></div>
+                    <div id="map_container"></div>
                 </div>
             </div>
 
@@ -140,15 +118,12 @@
 
         <div id="twitter_feeds">
 
-            <div id="feeds" class="visible">
+            <div id="feeds">
 
                 <div id="need">
                     <h2>Your Needs</h2>
 
                     <div class="tweets">
-
-                        <!-- <i id="loadingCog" class="fas fa-cog fa-spin fa-4x"></i> -->
-
                         <div id="published_tweets" class="grid">
 
                         </div>
@@ -182,13 +157,9 @@
         </p>
     </footer>
     <script>
-
         (function () {
-
-            setTimeout(setupFrontlineApp, 250);
-
+            setupFrontlineApp();
         })();
-
     </script>
 </body>
 </html>

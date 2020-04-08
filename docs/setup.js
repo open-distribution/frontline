@@ -1,53 +1,11 @@
-﻿function vexed() {
-    // $('#published_tweets').masonry('layout');
-}
-
-function twitterOnLoaded() {
-    twitterLoaded = true;
-    // $(document).ready(function () {
-    //     $('#published_tweets').addClass("loaded");
-    //     ensureMasonry();
-    // });
-}
-
-function ensureMasonry() {
-    initMasonry();
-    setTimeout(function () {
-        initMasonry();
-        setTimeout(function () {
-            initMasonry();
-        }, 3500);
-    }, 1000);
-}
-
-function initMasonry() {
-
-    // if (!masonryLoaded) {
-    //     // init Masonry
-    //     var $grid = $('#published_tweets').masonry({
-    //         itemSelector: '.grid-item',
-    //         columnWidth: 260
-    //     });
-
-    //     $grid.on('layoutComplete', function (event, laidOutItems) {
-    //         console.log('Masonry layout complete with ' + laidOutItems.length + ' items');
-    //         masonryLoaded = laidOutItems.length > 0;
-    //     });
-    // }
-
-    // $('#published_tweets').masonry('layout');
-}
-
-function setupFrontlineApp() {
-
-    // $(document).ready(function () {
-
+﻿function setupFrontlineApp() {
         setupEarlyErrors();
+
         var mapInstance = setupMap();
         var tweetsContainer = document.getElementById("published_tweets");
+
         Api.getData().then((d) => {
             var markers = L.markerClusterGroup();
-            // $("#loadingCog").fadeOut("slow");
 
             d.forEach(n => {
                 if (n.hasTweet()) {
@@ -60,14 +18,6 @@ function setupFrontlineApp() {
             });
             mapInstance.addLayer(markers);
 
-        }).then(x => {
-            ensureMasonry();
-            //var $grid = $('#published_tweets');
-            // layout Masonry after each image loads
-            imagesLoaded('#published_tweets', function () {
-                console.log("images loaded");
-                // $('#published_tweets').masonry('layout');
-            });
         });
 
         function addTweet(tweetId, container) {
@@ -83,13 +33,12 @@ function setupFrontlineApp() {
                 conversation: 'none'
                 , cards: 'hidden'
                 , width: 250
-            })
-                .then(function (tweet) {
-                    let style = tweet.shadowRoot.firstElementChild;
-                    let css = document.createTextNode(`.EmbeddedTweet .CallToAction { display: none; } .EmbeddedTweet .TweetInfo { display: none; } .Tweet-body.e-entry-content { font-size:12px; }`);
-                    style.appendChild(css);
-                    $countTweets--;
-                });
+            }).then(function (tweet) {
+                let style = tweet.shadowRoot.firstElementChild;
+                let css = document.createTextNode(`.EmbeddedTweet .CallToAction { display: none; } .EmbeddedTweet .TweetInfo { display: none; } .Tweet-body.e-entry-content { font-size:12px; }`);
+                style.appendChild(css);
+                $countTweets--;
+            });
         }
 
         function setupMap() {
@@ -103,7 +52,9 @@ function setupFrontlineApp() {
                     }
                 }
             }).setView([Settings.mapDefaultLat, Settings.mapDefaultLng], Settings.mapZoomDefault);
+
             setupAttributions(flMap);
+
             flMap.on('fullscreenchange', function () {
                 var feedsDiv = document.getElementById("feeds");
                 if (flMap.isFullscreen()) {
@@ -147,8 +98,4 @@ function setupFrontlineApp() {
         function setupEarlyErrors() {
             window.onerror = Help.handleErrors;
         }
-
-    // });
-
-
 }
