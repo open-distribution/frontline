@@ -445,7 +445,7 @@ a {
 
 .logo {
     vertical-align: top;
-    background: url(images/logo-frontline.png);
+    background: url(/images/logo-frontline.png);
     width: 60px;
     height: 60px;
     background-size: cover;

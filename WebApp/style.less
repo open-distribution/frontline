@@ -146,6 +146,10 @@ html, body {
     color: @color_font;
 }
 
+
+
+
+
 body {
     margin: 0;
     display: flex;
@@ -157,8 +161,9 @@ body {
 
         #title_bar {
             display: flex;
-            align-items: baseline;
+            align-items: center;
             justify-content: space-between;
+            height: 70px;
 
             #icons {
                 border: solid red @border_thickness_test;
@@ -189,6 +194,7 @@ body {
                 margin-bottom: 0px;
                 margin-right: 2%;
                 font-weight: normal;
+
 
                 span.hashtag_style {
                     font-weight: bold;
@@ -337,7 +343,6 @@ body {
                     border: solid @border_thickness_test red;
                     width: 80%;
                     min-width: 300px;
-                    
                 }
 
                 #patterns {
@@ -406,255 +411,262 @@ body {
     }
 }
 
-.fa-inverse {
-    color: @color_background;
-}
-
-.fa-stack {
-    vertical-align: top;
-}
-
-a {
-    color: @color_font;
-}
-
-.logo {
-    vertical-align: top;
-    background: url(images/logo_trans.png);
-    width: 51px;
-    height: 48px;
-    background-size: cover;
-    border: solid red @border_thickness_test;
-    display: inline-block;
-}
-
-/* TADA https://l-lin.github.io/font-awesome-animation/ */
-
-@-webkit-keyframes tada {
-    0% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
+    .fa-inverse {
+        color: @color_background;
     }
 
-    10%, 20% {
-        -webkit-transform: scale(.9) rotate(-8deg);
-        transform: scale(.9) rotate(-8deg);
+    .fa-stack {
+        vertical-align: top;
     }
 
-    30%, 50%, 70% {
-        -webkit-transform: scale(1.3) rotate(8deg);
-        transform: scale(1.3) rotate(8deg);
+    a {
+        color: @color_font;
     }
 
-    40%, 60% {
-        -webkit-transform: scale(1.3) rotate(-8deg);
-        transform: scale(1.3) rotate(-8deg);
+    .logo {
+        vertical-align: top;
+        background: url(images/logo_trans.png);
+        width: 51px;
+        height: 48px;
+        background-size: cover;
+        border: solid red @border_thickness_test;
+        display: inline-block;
+    }
+    /* TADA https://l-lin.github.io/font-awesome-animation/ */
+    @-webkit-keyframes tada {
+        0% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+        10%, 20% {
+            -webkit-transform: scale(.9) rotate(-8deg);
+            transform: scale(.9) rotate(-8deg);
+        }
+
+        30%, 50%, 70% {
+            -webkit-transform: scale(1.3) rotate(8deg);
+            transform: scale(1.3) rotate(8deg);
+        }
+
+        40%, 60% {
+            -webkit-transform: scale(1.3) rotate(-8deg);
+            transform: scale(1.3) rotate(-8deg);
+        }
+
+        80%, 100% {
+            -webkit-transform: scale(1) rotate(0);
+            transform: scale(1) rotate(0);
+        }
     }
 
-    80%, 100% {
-        -webkit-transform: scale(1) rotate(0);
-        transform: scale(1) rotate(0);
+    @keyframes tada {
+        0% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+        10%, 20% {
+            -webkit-transform: scale(.9) rotate(-8deg);
+            transform: scale(.9) rotate(-8deg);
+        }
+
+        30%, 50%, 70% {
+            -webkit-transform: scale(1.3) rotate(8deg);
+            transform: scale(1.3) rotate(8deg);
+        }
+
+        40%, 60% {
+            -webkit-transform: scale(1.3) rotate(-8deg);
+            transform: scale(1.3) rotate(-8deg);
+        }
+
+        80%, 100% {
+            -webkit-transform: scale(1) rotate(0);
+            transform: scale(1) rotate(0);
+        }
     }
-}
 
-@keyframes tada {
-    0% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-    }
-
-    10%, 20% {
-        -webkit-transform: scale(.9) rotate(-8deg);
-        transform: scale(.9) rotate(-8deg);
-    }
-
-    30%, 50%, 70% {
-        -webkit-transform: scale(1.3) rotate(8deg);
-        transform: scale(1.3) rotate(8deg);
-    }
-
-    40%, 60% {
-        -webkit-transform: scale(1.3) rotate(-8deg);
-        transform: scale(1.3) rotate(-8deg);
-    }
-
-    80%, 100% {
-        -webkit-transform: scale(1) rotate(0);
-        transform: scale(1) rotate(0);
-    }
-}
-
-.faa-tada.animated,
-.faa-tada.animated-hover:hover,
-.faa-parent.animated-hover:hover > .faa-tada {
-    -webkit-animation: tada 2s linear infinite;
-    animation: tada 2s linear infinite;
-}
-
-.faa-tada.animated.faa-fast,
-.faa-tada.animated-hover.faa-fast:hover,
-.faa-parent.animated-hover:hover > .faa-tada.faa-fast {
-    -webkit-animation: tada 1s linear infinite;
-    animation: tada 1s linear infinite;
-}
-
-.faa-tada.animated.faa-slow,
-.faa-tada.animated-hover.faa-slow:hover,
-.faa-parent.animated-hover:hover > .faa-tada.faa-slow {
-    -webkit-animation: tada 3s linear infinite;
-    animation: tada 3s linear infinite;
-}
-
-h1.good {
-    color: @color_green_main;
-}
-
-h1.bad {
-    color: @color_red_main;
-}
-
-.contributors {
-    height: 40px;
-    width: 80px;
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-size: contain;
-    margin-right: 2vw;
-
-    &:hover {
+    .faa-tada.animated,
+    .faa-tada.animated-hover:hover,
+    .faa-parent.animated-hover:hover > .faa-tada {
         -webkit-animation: tada 2s linear infinite;
         animation: tada 2s linear infinite;
     }
-}
 
-.beep {
-    .contributors;
-    background-image: url(/images/beep.png);
-}
-
-.innovation_bubble {
-    .contributors;
-    background-image: url(/images/innovation_bubble.png);
-}
-
-.the_fourth_angel {
-    .contributors;
-    background-image: url(/images/the_fourth_angel.png);
-}
-
-.the_social_element {
-    .contributors;
-    background-image: url(/images/the_social_element.png);
-}
-
-.oval {
-    .contributors;
-    background-image: url(/images/oval.png);
-}
-
-.ucl {
-    .contributors;
-    background-image: url(/images/ucl.png);
-}
-
-#map_container {
-    transition: all 1s ease-in-out;
-}
-.leaflet-container.leaflet-fullscreen-on {
-    width: 100% !important;
-    height: 80% !important;
-}
-span.label {
-    color: blue;
-}
-.leaflet-popup-content {
-    p {
-        margin-top: 0px;
-        margin-bottom: 5px;
-        padding-left: 10px;
+    .faa-tada.animated.faa-fast,
+    .faa-tada.animated-hover.faa-fast:hover,
+    .faa-parent.animated-hover:hover > .faa-tada.faa-fast {
+        -webkit-animation: tada 1s linear infinite;
+        animation: tada 1s linear infinite;
     }
 
-    .twitter_link {
-        position: absolute;
-        top: 20px;
-        right: 10px;
+    .faa-tada.animated.faa-slow,
+    .faa-tada.animated-hover.faa-slow:hover,
+    .faa-parent.animated-hover:hover > .faa-tada.faa-slow {
+        -webkit-animation: tada 3s linear infinite;
+        animation: tada 3s linear infinite;
     }
 
-    .label {
+    h1.good {
         color: @color_green_main;
     }
 
-    .date_time {
-        color: grey;
-        text-align: right;
+    h1.bad {
+        color: @color_red_main;
     }
 
-    ul {
-        margin-top: 0px;
-    }
-}
-.leaflet-container .custom-map-marker svg.iconic {
-    position: static;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-    stroke: rgba(0,0,0,.24);
-    stroke-width: .24;
-    -webkit-filter: drop-shadow(0 8px 6px rgba(0,0,0,.64));
-    filter: drop-shadow(0 8px 6px rgba(0,0,0,.64))
-}
-.leaflet-container .custom-map-marker .iconic-bg {
-    display: inline-block;
-    position: absolute;
-    top: 4px;
-    left: 50%;
-    z-index: -1;
-    width: 16px;
-    height: 16px;
-    background-color: #fff;
-    margin-left: -8px
-}
+    .contributors {
+        height: 40px;
+        width: 80px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-right: 2vw;
 
-
-.twitter-tweet {
-    .box_5;
-}
-.grid {
-    width: 100%;
-    height: 400px;
-    margin: 0px auto;
-    min-height: 250px;
-    /*max-height: 600px;*/
-}
-.grid-item {
-    width: 250px;
-    float: left;
-    opacity: 0.1;
-    transition: opacity 1.25s ease-in-out;
-}
-#published_tweets {
-
-    font-size:5px !important;
-
-    &.loaded {
-        .grid-item {
-            opacity: 1;
+        &:hover {
+            -webkit-animation: tada 2s linear infinite;
+            animation: tada 2s linear infinite;
         }
     }
-}
 
-.grid:after {
-    content: '';
-    display: block;
-    clear: both;
-}
-#testCog {
-    border: solid @border_thickness_test blue;
-}
-.fade-enter-active, .fade-leave-active {
-    transition: opacity 1.5s;
-}
+    .beep {
+        .contributors;
+        background-image: url(/images/beep.png);
+    }
 
-.fade-enter, .fade-leave-to {
-    opacity: 0;
-}
+    .innovation_bubble {
+        .contributors;
+        background-image: url(/images/innovation_bubble.png);
+    }
+
+    .the_fourth_angel {
+        .contributors;
+        background-image: url(/images/the_fourth_angel.png);
+    }
+
+    .the_social_element {
+        .contributors;
+        background-image: url(/images/the_social_element.png);
+    }
+
+    .oval {
+        .contributors;
+        background-image: url(/images/oval.png);
+    }
+
+    .ucl {
+        .contributors;
+        background-image: url(/images/ucl.png);
+    }
+
+    #map_container {
+        transition: all 1s ease-in-out;
+    }
+
+    .leaflet-container.leaflet-fullscreen-on {
+        width: 100% !important;
+        height: 80% !important;
+    }
+
+    span.label {
+        color: blue;
+    }
+
+    .leaflet-popup-content {
+        p {
+            margin-top: 0px;
+            margin-bottom: 5px;
+            padding-left: 10px;
+        }
+
+        .twitter_link {
+            position: absolute;
+            top: 20px;
+            right: 10px;
+        }
+
+        .label {
+            color: @color_green_main;
+        }
+
+        .date_time {
+            color: grey;
+            text-align: right;
+        }
+
+        ul {
+            margin-top: 0px;
+        }
+    }
+
+    .leaflet-container .custom-map-marker svg.iconic {
+        position: static;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        stroke: rgba(0,0,0,.24);
+        stroke-width: .24;
+        -webkit-filter: drop-shadow(0 8px 6px rgba(0,0,0,.64));
+        filter: drop-shadow(0 8px 6px rgba(0,0,0,.64))
+    }
+
+    .leaflet-container .custom-map-marker .iconic-bg {
+        display: inline-block;
+        position: absolute;
+        top: 4px;
+        left: 50%;
+        z-index: -1;
+        width: 16px;
+        height: 16px;
+        background-color: #fff;
+        margin-left: -8px
+    }
+
+
+    .twitter-tweet {
+        .box_5;
+    }
+
+    .grid {
+        width: 100%;
+        height: 400px;
+        margin: 0px auto;
+        min-height: 250px;
+        /*max-height: 600px;*/
+    }
+
+    .grid-item {
+        width: 250px;
+        float: left;
+        opacity: 0.1;
+        transition: opacity 1.25s ease-in-out;
+    }
+
+    #published_tweets {
+        font-size: 5px !important;
+
+        &.loaded {
+            .grid-item {
+                opacity: 1;
+            }
+        }
+    }
+
+    .grid:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    #testCog {
+        border: solid @border_thickness_test blue;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity 1.5s;
+    }
+
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
+    }

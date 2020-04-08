@@ -118,8 +118,9 @@ body header {
 }
 body header #title_bar {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
+  height: 70px;
 }
 body header #title_bar #icons {
   border: solid red 0px;
