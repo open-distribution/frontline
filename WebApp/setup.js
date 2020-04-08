@@ -1,6 +1,6 @@
-﻿function setupFrontlineApp() {
+﻿
 
-
+function setupFrontlineApp() {
 
     setupEarlyErrors();
 
@@ -8,7 +8,6 @@
 
     let tweetsContainer = document.getElementById("published_tweets");
 
-    //addTweet("1247224310860783621", tweetsContainer);
     var $grid = null;
 
     Api.getData().then((d) => {
@@ -24,106 +23,25 @@
         });
         mapInstance.addLayer(markers);
     }).then(x => {
-        //console.log("here we go " + $('.published_tweets').length);
-        //$('#published_tweets').masonry({
-        //    itemSelector: '.grid-item',
-        //    columnWidth: 100,
-        //    gutter: 20
-        //});
 
-        //setTimeout(function () {
         console.log("Doing this NOW");
-
-        //$('.grid').masonry({
-        //    itemSelector: '.grid-item',
-        //    columnWidth: 300,
-        //    gutter: 20
-        //});
-        // jQuery
 
         $grid = $('.grid').masonry({
             itemSelector: '.grid-item',
             columnWidth: 300
         });
 
-        //$grid.on('click', '.grid-item', function () {
-        //    // change size of item via class
-        //    $(this).toggleClass('grid-item--gigante');
-        //    // trigger layout
-        //    $grid.masonry();
-        //});
-
         $grid.on('layoutComplete', function (event, laidOutItems) {
             console.log('Masonry layout complete with ' + laidOutItems.length + ' items');
         });
 
-        //$('#btn_start').click((e) => {
-
-        //    // trigger layout
-        //    $grid.masonry();
-
-        //});
-
-
-
-
-        //var $grid = $('.grid').masonry({
-        //    itemSelector: '.grid-item',
-        //    columnWidth: 300,
-        //    gutter: 20
-        //});
-
-        //function onLayout() {
-        //    console.log('layout done');
-        //}
-        //// bind event listener
-        //$grid.on('layoutComplete', onLayout);
-        //// un-bind event listener
-        //$grid.off('layoutComplete', onLayout);
-        //// bind event listener to be triggered just once. note ONE not ON
-        //$grid.one('layoutComplete', function () {
-        //    console.log('layout done, just this one time');
-        //});
-
-
-
-
-        //window.twttr = (function (d, s, id) {
-        //    var js, fjs = d.getElementsByTagName(s)[0],
-        //        t = window.twttr || {};
-        //    if (d.getElementById(id)) return t;
-        //    js = d.createElement(s);
-        //    js.id = id;
-        //    js.src = "https://platform.twitter.com/widgets.js";
-        //    fjs.parentNode.insertBefore(js, fjs);
-
-        //    t._e = [];
-        //    t.ready = function (f) {
-        //        t._e.push(f);
-        //    };
-
-        //    return t;
-        //}(document, "script", "twitter-wjs"));
-
-        //twttr.ready(function (twttr) {
-        //    console.log("TWITTER LOADED");
-        //    twttr.events.bind('loaded', function (event) {
-        //        console.log("here we go " + $('.grid').length);
-        //        $('.grid').masonry({
-        //            itemSelector: '.grid-item',
-        //            columnWidth: 300,
-        //            gutter: 20
-        //        });
-        //    });
-        //});
-
-        //}, 2000);
-
-    }).then(y => {
         setTimeout(function () {
-            console.log("RIGHT");
+            console.log("RIGHT " + $countTweets);
             $grid.masonry();
-        }, 450);
+            $('#published_tweets').addClass("loaded");
+            //    opacity: 0.1;
+        }, 550);
+
     });
 
     function addTweet(tweetId, container) {
@@ -134,13 +52,6 @@
         buildTweet(tweetId, div);
     }
 
-    //buildTweet("1247224310860783621", document.getElementById('unique_container'));
-    //buildTweet("1247274411675267073", document.getElementById('unique_container1'));
-    //buildTweet("1247292125567483911", document.getElementById('unique_container2'));
-    //buildTweet("1247274411675267073", document.getElementById('unique_container3'));
-    //buildTweet("1247224310860783621", document.getElementById('unique_container4'));
-    //buildTweet("1247274411675267073", document.getElementById('unique_container5'));
-
     function buildTweet(tweetId, tweetContainer) {
         twttr.widgets.createTweet(tweetId, tweetContainer, {
             conversation: 'none'
@@ -149,9 +60,10 @@
             //align:left,right,centre
         })
             .then(function (tweet) {
-                //let style = tweet.shadowRoot.firstElementChild;
-                //let css = document.createTextNode(`.EmbeddedTweet .CallToAction { display: none; } .EmbeddedTweet .TweetInfo { display: none; }`);
-                //style.appendChild(css);
+                let style = tweet.shadowRoot.firstElementChild;
+                let css = document.createTextNode(`.EmbeddedTweet .CallToAction { display: none; } .EmbeddedTweet .TweetInfo { display: none; }`);
+                style.appendChild(css);
+                $countTweets--;
             });
     }
 
@@ -274,3 +186,94 @@
 //var icon = L.icon({
 //    iconUrl: iconUrl
 //});
+
+
+
+
+
+
+
+
+
+ //addTweet("1247224310860783621", tweetsContainer);
+
+        //console.log("here we go " + $('.published_tweets').length);
+        //$('#published_tweets').masonry({
+        //    itemSelector: '.grid-item',
+        //    columnWidth: 100,
+        //    gutter: 20
+        //});
+
+        //setTimeout(function () {
+
+        //$('#btn_start').click((e) => {
+
+        //    // trigger layout
+        //    $grid.masonry();
+
+        //});
+        //$grid.on('click', '.grid-item', function () {
+        //    // change size of item via class
+        //    $(this).toggleClass('grid-item--gigante');
+        //    // trigger layout
+        //    $grid.masonry();
+        //});
+
+        //$('.grid').masonry({
+        //    itemSelector: '.grid-item',
+        //    columnWidth: 300,
+        //    gutter: 20
+        //});
+        // jQuery
+
+        //var $grid = $('.grid').masonry({
+        //    itemSelector: '.grid-item',
+        //    columnWidth: 300,
+        //    gutter: 20
+        //});
+
+        //function onLayout() {
+        //    console.log('layout done');
+        //}
+        //// bind event listener
+        //$grid.on('layoutComplete', onLayout);
+        //// un-bind event listener
+        //$grid.off('layoutComplete', onLayout);
+        //// bind event listener to be triggered just once. note ONE not ON
+        //$grid.one('layoutComplete', function () {
+        //    console.log('layout done, just this one time');
+        //});
+
+
+
+
+        //window.twttr = (function (d, s, id) {
+        //    var js, fjs = d.getElementsByTagName(s)[0],
+        //        t = window.twttr || {};
+        //    if (d.getElementById(id)) return t;
+        //    js = d.createElement(s);
+        //    js.id = id;
+        //    js.src = "https://platform.twitter.com/widgets.js";
+        //    fjs.parentNode.insertBefore(js, fjs);
+
+        //    t._e = [];
+        //    t.ready = function (f) {
+        //        t._e.push(f);
+        //    };
+
+        //    return t;
+        //}(document, "script", "twitter-wjs"));
+
+        //twttr.ready(function (twttr) {
+        //    console.log("TWITTER LOADED");
+        //    twttr.events.bind('loaded', function (event) {
+        //        console.log("here we go " + $('.grid').length);
+        //        $('.grid').masonry({
+        //            itemSelector: '.grid-item',
+        //            columnWidth: 300,
+        //            gutter: 20
+        //        });
+        //    });
+        //});
+
+        //}, 2000);

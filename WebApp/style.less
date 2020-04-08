@@ -36,10 +36,12 @@ body.not_yet_ready {
     user-select: none; /* non-prefixed version, currently
                                   not supported by any browser */
 }
+
 .act_as_btn {
     cursor: pointer;
     .noselect;
 }
+
 .act_as_hover {
     cursor: help;
     .noselect;
@@ -73,7 +75,7 @@ body.not_yet_ready {
 
 .minor_title {
     font-size: 1.5em;
-    padding:2px 14px 0px 14px;
+    padding: 2px 14px 0px 14px;
     border-radius: 13px;
 }
 
@@ -297,6 +299,7 @@ body {
                 #map_inner {
                     background-size: cover;
                     height: 100%;
+
                     #map_container {
                         border: solid purple @border_thickness_test;
                         width: 600px;
@@ -340,12 +343,10 @@ body {
                     border: solid @border_thickness_test yellow;
                     width: 32%;
                 }
-
                 /*#supplied {
                     border: solid @border_thickness_test green;
                     width: 32%;
                 }*/
-
                 .tweets {
                     i.fa-spin {
                         margin-left: 45%;
@@ -574,29 +575,34 @@ h1.bad {
     background-image: url(/images/beep.png);
     .contributors;
 }
+
 .innovation_bubble {
     background-image: url(/images/innovation_bubble.png);
     .contributors;
 }
+
 .the_fourth_angel {
     .contributors;
     background-image: url(/images/the_fourth_angel.png);
 }
+
 .the_social_element {
     .contributors;
     background-image: url(/images/the_social_element.png);
 }
+
 .oval {
     .contributors;
     background-image: url(/images/oval.png);
 }
+
 .ucl {
     .contributors;
     background-image: url(/images/ucl.png);
 }
 
-#map_container{
-    transition:all 1s ease-in-out;
+#map_container {
+    transition: all 1s ease-in-out;
 }
 
 .leaflet-container.leaflet-fullscreen-on {
@@ -605,7 +611,7 @@ h1.bad {
 }
 
 #dash_controls {
-    height:0px;
+    height: 0px;
     opacity: 0;
     text-align: center;
 
@@ -625,8 +631,8 @@ h1.bad {
     transition: opacity 2.5s ease-in-out;
 }
 
-span.label{
-    color:blue;
+span.label {
+    color: blue;
 }
 
 .leaflet-popup-content {
@@ -658,7 +664,7 @@ span.label{
 
 
 .leaflet-container .custom-map-marker svg.iconic {
-    position:static;
+    position: static;
     width: 100%;
     height: 100%;
     overflow: visible;
@@ -692,7 +698,7 @@ span.label{
     width:290px;
     display:inline-block;*/
 
-    /*float: left;
+/*float: left;
     margin: 0;
     font-size: 1px;
     margin: 0 !important;*/
@@ -704,19 +710,26 @@ span.label{
     height: 600px;
     /*max-width: 940px;*/
     margin: 0px auto;
-    border:solid 1px red;
-    min-height:100px;
+    border: solid 1px red;
+    min-height: 100px;
 }
 
 .grid-item {
     width: 300px;
     float: left;
+    opacity: 0.1;
+    transition: opacity 1.25s ease-in-out;
 }
 
-#published_tweets{
-    height:600px;
-}
+#published_tweets {
+    height: 600px;
 
+    &.loaded {
+        .grid-item {
+            opacity: 1;
+        }
+    }
+}
 /* clear fix */
 .grid:after {
     content: '';

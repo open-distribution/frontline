@@ -1,4 +1,6 @@
-﻿class Api {
+﻿var $countTweets = 0;
+
+class Api {
 
     static getData() {
         return fetch(Settings.needsUrl).then(response => response.json())
@@ -7,6 +9,7 @@
                 data.results.forEach((p) => {
                     if (NeedsPoint.hasValidLocation(p)) {
                         respVal.push(Api.buildNeed(p));
+                        $countTweets++;
                     }
                     else {
                         Help.log(`${p.id} has bad location`);
