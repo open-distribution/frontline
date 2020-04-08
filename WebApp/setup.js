@@ -3,6 +3,14 @@
 function setupFrontlineApp() {
 
     setupEarlyErrors();
+    //vue
+    var vmFeeds = new Vue({
+        el: '#twitter_feeds',
+        data: {
+            needsFeedReady: false,
+            dashboardMode: false
+        }
+    });
 
     var mapInstance = setupMap();
 
@@ -12,6 +20,7 @@ function setupFrontlineApp() {
 
     Api.getData().then((d) => {
         var markers = L.markerClusterGroup();
+        vmFeeds.needsFeedReady = true;
         d.forEach(n => {
             if (n.hasTweet()) {
                 addTweet(n.tweetId, tweetsContainer);
@@ -23,9 +32,7 @@ function setupFrontlineApp() {
         });
         mapInstance.addLayer(markers);
     }).then(x => {
-
-        console.log("Doing this NOW");
-
+        
         $grid = $('.grid').masonry({
             itemSelector: '.grid-item',
             columnWidth: 300
@@ -39,8 +46,7 @@ function setupFrontlineApp() {
             console.log("RIGHT " + $countTweets);
             $grid.masonry();
             $('#published_tweets').addClass("loaded");
-            //    opacity: 0.1;
-        }, 550);
+        }, 600);
 
     });
 
@@ -83,6 +89,24 @@ function setupFrontlineApp() {
             }
         }).setView(centreLocation, mapZoom);
         setupAttributions(flMap);
+        flMap.on('fullscreenchange', function () {
+            vmFeeds.dashboardMode = flMap.isFullscreen();
+
+            //nasty nasty DOM manipulation as without more fiddling twitter and vue will not play nice.
+            //when the feeds are from twitters API / Ushahidi can sort this with vue instead
+            var feedsDiv = document.getElementById("feeds");
+            if (flMap.isFullscreen())
+            {
+                feedsDiv.className = "";
+                feedsDiv.style.display = "none";
+            }
+            else {
+                feedsDiv.className = "visible";
+                feedsDiv.style.display = "flex";
+            }
+
+
+        });
         return flMap;
     }
 

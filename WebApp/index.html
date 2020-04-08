@@ -79,7 +79,7 @@
                 globalStash.tweetsLoaded = true;
             });
         });
-      
+
 
     </script>
 </head>
@@ -164,49 +164,52 @@
             <div id="feeds" class="visible">
 
                 <div id="need">
-                    <h2>Needs</h2>
+                    <h2>Your Needs</h2>
 
                     <div class="tweets">
 
-                        <!--data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 300, "gutter":20 }'-->
+                        <!--<transition name="fade">
+        <i v-if="!needsFeedReady" class="fas fa-cog fa-spin fa-4x"></i>
+    </transition>-->
+                        <transition name="fade">
+                            <i v-if="!needsFeedReady" id="testCog" class="fas fa-cog fa-spin fa-4x"></i>
+                        </transition>
+                        
 
                         <div id="published_tweets" class="grid">
-                            <div class="grid-item"></div>
-                            <div class="grid-item"></div>
-                        </div>
 
-                        <!--<div class="grid-item">ONE</div>
-                        <div class="grid-item">TWO</div>
-                        <div class="grid-item">THREE</div>-->
-                        <!--<div class="grid-item"><blockquote class="twitter-tweet"><a href="https://twitter.com/ziegfiroyt/status/1247582639596490756"></a></blockquote></div>
-                        <div class="grid-item"><blockquote class="twitter-tweet"><a href="https://twitter.com/ziegfiroyt/status/1247459761324515329"></a></blockquote></div>
-                        <div class="grid-item"><blockquote class="twitter-tweet"><a href="https://twitter.com/ziegfiroyt/status/1247593175214063616"></a></blockquote></div>
-                        <div class="grid-item"><blockquote class="twitter-tweet"><a href="https://twitter.com/ziegfiroyt/status/1247591902196699136"></a></blockquote></div>
-                        <div class="grid-item"><blockquote class="twitter-tweet"><a href="https://twitter.com/ziegfiroyt/status/1247292125567483911"></a></blockquote></div>
-                        <div class="grid-item"><blockquote class="twitter-tweet"><a href="https://twitter.com/ziegfiroyt/status/1247586398464507906"></a></blockquote></div>-->
+                            </div>
 
-                        
-                        <!--<i v-if="!needsFeedReady" class="fas fa-cog fa-spin fa-4x"></i>-->
-                        <!--//v-if="needsFeedReady" class="anti_fouc"-->
-                        <!--<div id="published_tweets" class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 300, "gutter":20 }'>
+                            <!--<div class="grid-item">ONE</div>
+        <div class="grid-item">TWO</div>
+        <div class="grid-item">THREE</div>-->
+                            <!--<div class="grid-item"><blockquote class="twitter-tweet"><a href="https://twitter.com/ziegfiroyt/status/1247582639596490756"></a></blockquote></div>
+        <div class="grid-item"><blockquote class="twitter-tweet"><a href="https://twitter.com/ziegfiroyt/status/1247459761324515329"></a></blockquote></div>
+        <div class="grid-item"><blockquote class="twitter-tweet"><a href="https://twitter.com/ziegfiroyt/status/1247593175214063616"></a></blockquote></div>
+        <div class="grid-item"><blockquote class="twitter-tweet"><a href="https://twitter.com/ziegfiroyt/status/1247591902196699136"></a></blockquote></div>
+        <div class="grid-item"><blockquote class="twitter-tweet"><a href="https://twitter.com/ziegfiroyt/status/1247292125567483911"></a></blockquote></div>
+        <div class="grid-item"><blockquote class="twitter-tweet"><a href="https://twitter.com/ziegfiroyt/status/1247586398464507906"></a></blockquote></div>-->
+                            <!---->
+                            <!--//v-if="needsFeedReady" class="anti_fouc"-->
+                            <!--<div id="published_tweets" class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 300, "gutter":20 }'>
 
-    </div>-->
-                        <!--<div v-if="needsFeedReady" class="anti_fouc">
-        <transition-group name="list" tag="div">
-            <div v-for="(need, index) in needsData" class="tweet list-item" :title="hackDateTime(need.dateTime)" v-bind:key="index">
-                <div class="image">
-                    <img :src="need.imageSrc"/>
+        </div>-->
+                            <!--<div v-if="needsFeedReady" class="anti_fouc">
+            <transition-group name="list" tag="div">
+                <div v-for="(need, index) in needsData" class="tweet list-item" :title="hackDateTime(need.dateTime)" v-bind:key="index">
+                    <div class="image">
+                        <img :src="need.imageSrc"/>
+                    </div>
+                    <div class="body">
+                        <span class="main" v-html="need.mainHtml">
+                        </span>
+                        <span class="date_time">
+                            {{ hackTime(need.dateTime) }}
+                        </span>
+                    </div>
                 </div>
-                <div class="body">
-                    <span class="main" v-html="need.mainHtml">
-                    </span>
-                    <span class="date_time">
-                        {{ hackTime(need.dateTime) }}
-                    </span>
-                </div>
-            </div>
-        </transition-group>
-    </div>-->
+            </transition-group>
+        </div>-->
 
                     </div>
                 </div>
@@ -216,7 +219,7 @@
 
                 <div id="patterns">
                     <h2>Our Voice</h2>
-                    
+
                     <a id="btn_start">Masonry</a>
 
                 </div>

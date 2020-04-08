@@ -232,7 +232,7 @@ body {
 
     #main_content {
         flex: 1;
-        overflow: auto;
+        overflow: hidden;
         border: solid @border_thickness_test blue;
         padding-top: 0px;
 
@@ -322,8 +322,7 @@ body {
         #twitter_feeds {
             border: solid @border_thickness_test blue;
             margin-top: 0px;
-            margin-bottom: 100px;
-
+            /*margin-bottom: 100px;*/
             #feeds {
                 border: solid @border_thickness_test blue;
                 display: flex;
@@ -348,9 +347,14 @@ body {
                     width: 32%;
                 }*/
                 .tweets {
+                    position: relative;
+
                     i.fa-spin {
-                        margin-left: 45%;
-                        margin-top: 10vh;
+                        z-index: 99999;
+                        position: absolute;
+                        top: 30%;
+                        left: 50%;
+                        /*margin-top: 10vh;*/
                     }
                 }
 
@@ -707,11 +711,10 @@ span.label {
 
 .grid {
     width: 100%;
-    height: 600px;
-    /*max-width: 940px;*/
+    height: 400px;
     margin: 0px auto;
-    border: solid 1px red;
-    min-height: 100px;
+    min-height: 400px;
+    max-height: 600px;
 }
 
 .grid-item {
@@ -722,8 +725,6 @@ span.label {
 }
 
 #published_tweets {
-    height: 600px;
-
     &.loaded {
         .grid-item {
             opacity: 1;
@@ -735,4 +736,16 @@ span.label {
     content: '';
     display: block;
     clear: both;
+}
+
+#testCog {
+    border: solid @border_thickness_test blue;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 1.5s;
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
 }
