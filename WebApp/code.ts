@@ -38,7 +38,7 @@ class Api {
             Help.log(`Created NeedsPoint ${p.id}`);
         }
         catch (e) {
-            Help.handleErrors(e); 
+            Help.handleErrors(e);
         }
         return res;
     }
@@ -47,7 +47,7 @@ class Api {
 class NeedsPoint {
     id: number;
     postcode: string;
-    dateTime: string; //"e.g. 2020-04-07T12:37:24+00:00"
+    dateTime: string; 
     location: number[];
     org: string;
     needs: string[];
@@ -57,24 +57,18 @@ class NeedsPoint {
     hasTweet(): boolean { return Help.isGoodString(this.tweetId); }
 
     getPopupContent(): string {
-        try {
-            var twitterLink = this.hasTweet() ? `<a class="twitter_link" target="_blank" title="View related tweet" href="https://twitter.com/i/web/status/${this.tweetId}"><i class='fab fa-twitter fa-2x'></i></a>` : "";
+        var twitterLink = this.hasTweet() ? `<a class="twitter_link" target="_blank" title="View related tweet" href="https://twitter.com/i/web/status/${this.tweetId}"><i class='fab fa-twitter fa-2x'></i></a>` : "";
 
-            var dt = moment(this.dateTime).format("DD/MM/YYYY H:mm");
-            var postedHTml = Help.htmlTag(dt, "div", "class='date_time act_as_hover' title='Published'");
+        var dt = moment(this.dateTime).format("DD/MM/YYYY H:mm");
+        var postedHTml = Help.htmlTag(dt, "div", "class='date_time act_as_hover' title='Published'");
 
-            return `<h1 class="bad">Need</h1>
+        return `<h1 class="bad">Need</h1>
             ${twitterLink}  
             ${Help.labelledTag("Postcode:", this.postcode, "p")}
             ${Help.labelledTag("Organisation:", this.org, "p")}
             ${Help.labelledList("Needs:", this.needs)}
             ${Help.labelledTag("Other Needs:", this.otherNeeds, "p")}
             ${postedHTml}`;
-        }
-        catch (e) {
-            var t = 0; //Help.handleErrors(e); //TODO:prod
-        }
-        return `BAD ${this.id}`;
     }
 
     static hasValidLocation(p) {
@@ -90,16 +84,3 @@ class NeedsPoint {
         return respVal;
     }
 }
-
-
-
-
-//let locAry = new TryGetResult<any[]>();
-//if (Help.tryGetProp(Keys.location, p.values, locAry)) {
-//    var locObj = Help.getItem(locAry.value, 0);
-//}
-//if(Help.tryGetProp())
-//if(Help.hasProp(Keys.location, p.values)) {
-//    var loc = p.values[Keys.location][0];
-//}
-//res.location = [loc.lat, loc.lon];
