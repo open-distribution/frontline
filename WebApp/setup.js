@@ -1,31 +1,21 @@
-﻿//function ensureMasonry() {
-//    console.log("ensureMasonry");
-//    if(twitterLoaded && !masonryLoaded) {
-//        setupMasonry();
-//    }
-//    else {
-//        console.log("t : " + twitterLoaded + " m : " + masonryLoaded);
-//        jQuery('#published_tweets').masonry('layout');
-//    }
-//}
+﻿function twitterOnLoaded() {
+    twitterLoaded = true;
+    $('#published_tweets').addClass("loaded");
+    ensureMasonry();
+}
 
-//function setupMasonry() {
-//    Help.log("setupMasonry start");
-//    var $grid = new Masonry(document.getElementById("published_tweets"), {
-//        itemSelector: '.grid-item',
-//        columnWidth: 260
-//    });
-
-//    $grid.on('layoutComplete', function (event, laidOutItems) {
-//        masonryLoaded = true;
-//        Help.log('Masonry layout complete with ' + laidOutItems.length + ' items');
-//    });
-
-//    $('#published_tweets').addClass("loaded");
-//    $('#published_tweets').masonry('layout');
-//    Help.log("setupMasonry end");
-//}
-
+function ensureMasonry() {
+    setTimeout(function () {
+        initMasonry();
+        setTimeout(function () {
+            initMasonry();
+            setTimeout(function () {
+                initMasonry();
+            }, 3500);
+        }, 1000);
+    }, 550);
+    initMasonry();
+}
 
 function initMasonry() {
 
@@ -63,50 +53,7 @@ function setupFrontlineApp() {
         });
         mapInstance.addLayer(markers);
     }).then(x => {
-
-        initMasonry();
-        //// init Masonry
-        //var $grid = $('#published_tweets').masonry({
-        //    itemSelector: '.grid-item',
-        //    columnWidth: 260
-        //});
-
-        //$grid.masonry('layout');
-
-        //$grid.on('layoutComplete', function (event, laidOutItems) {
-        //    console.log('Masonry layout complete with ' + laidOutItems.length + ' items');
-        //    masonryLoaded = true;
-        //});
-
-        // layout Masonry after each image loads
-        //$grid.imagesLoaded().progress( function() {
-        
-        //});
-
-
-        //$grid.masonry({
-        //    // options...
-        //});
-
-        //setTimeout(function () {
-        //    Help.log("Tweets finished ?");
-
-        //    var $grid = new Masonry(tweetsContainer, {
-        //        // options
-        //        itemSelector: '.grid-item',
-        //        columnWidth: 260
-        //    });
-
-        //    $grid.on('layoutComplete', function (event, laidOutItems) {
-        //        Help.log('Masonry layout complete with ' + laidOutItems.length + ' items');
-        //    });
-
-        //    //$grid.masonry();
-        //    $('#published_tweets').addClass("loaded");
-
-        //    Help.log("Tweets finished ?");
-
-        //}, Settings.twitterLoadDelay);
+        ensureMasonry();
     });
 
     function addTweet(tweetId, container) {

@@ -83,45 +83,7 @@
         ////When widget is ready, run masonry
         twttr.ready(function (twttr) {
             twttr.events.bind('loaded', function (event) {
-                console.log("TWITTER LOADED");
-                ////var masGrid = document.getElementById("published_tweets");
-                //var $container = jQuery('#published_tweets');
-                //$container.masonry('layout');
-
-                twitterLoaded = true;
-                //ensureMasonry();
-                $('#published_tweets').addClass("loaded");
-
-                //$grid.masonry('layout');
-
-                // init Masonry
-                //$('#published_tweets').masonry({
-                //    // options...
-                //    itemSelector: '.grid-item',
-                //    columnWidth: 260
-                //});
-
-                //$('#published_tweets').on('layoutComplete', function (event, laidOutItems) {
-                //    console.log('Masonry layout complete with ' + laidOutItems.length + ' items');
-                //});
-
-                //$('#published_tweets').masonry('layout');
-
-                //$('#published_tweets').masonry('layout');
-
-                console.log("TWITTER LOADED DONE ");
-
-                setTimeout(function () {
-                    initMasonry();
-
-                    setTimeout(function () {
-                        initMasonry();
-                    }, 750);
-
-                }, 450);
-
-                initMasonry();
-
+                twitterOnLoaded();
             });
         });
 
