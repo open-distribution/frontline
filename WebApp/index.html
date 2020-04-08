@@ -57,11 +57,9 @@
     <script src="help.js"></script>
     <script src="code.js"></script>
     <script src="/jquery-1.12.4.min.js"></script>
-    <!--<script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.js"></script>-->
     <script src="/masonry.pkgd.js"></script>
     <link href='/style.css' rel='stylesheet' />
     <script>
-
         var twitterLoaded = false;
         var masonryLoaded = false;
 
@@ -79,14 +77,11 @@
             };
             return t;
         }(document, "script", "twitter-wjs"));
-
-        ////When widget is ready, run masonry
         twttr.ready(function (twttr) {
             twttr.events.bind('loaded', function (event) {
                 twitterOnLoaded();
             });
         });
-
     </script>
 </head>
 <body id="body" class="not_yet_ready">
@@ -99,7 +94,7 @@
                 <a id="logo" title="Home"><span class="logo"></span></a>
                 <a id="twitter" href="https://twitter.com/FrontlineMap" title="View tweets" class="faa-parent animated-hover"><span class="faa-tada fa-stack fa-2x"><i class="fas fa-circle fa-stack-2x"></i><i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a>
             </span>
-            <h1 id="title">Giving <span class="hashtag_style">#Frontline</span> Heroes a Voice</h1>
+            <h1 id="title">Giving Heroes a Voice <span class="hashtag_style">#FrontlineMap</span></h1>
         </div>
 
         <nav>
