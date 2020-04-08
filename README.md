@@ -5,18 +5,17 @@ Frontline Live Homepage
 
 ## Build step
 
-Install less and typescript
+Install less
 
-    npm i -g less typescript
+    npm i -g less
 
 Run compile step from within `docs` folder
 
     lessc style.less style.css
-    tsc code.ts
 
-Initially - commit `style.css` and built `*.js` files and push to deploy.
+Initially - commit `style.css` and push to deploy.
 
-TODO - consider taking a step down to use plain old CSS/JS for simplicity, maintainability,
+TODO - consider taking a step down to use plain old CSS for simplicity, maintainability,
 transferability.
 
 
