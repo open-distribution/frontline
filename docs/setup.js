@@ -1,13 +1,13 @@
 ﻿function vexed() {
-    $('#published_tweets').masonry('layout');
+    // $('#published_tweets').masonry('layout');
 }
 
 function twitterOnLoaded() {
     twitterLoaded = true;
-    $(document).ready(function () {
-        $('#published_tweets').addClass("loaded");
-        ensureMasonry();
-    });
+    // $(document).ready(function () {
+    //     $('#published_tweets').addClass("loaded");
+    //     ensureMasonry();
+    // });
 }
 
 function ensureMasonry() {
@@ -22,32 +22,32 @@ function ensureMasonry() {
 
 function initMasonry() {
 
-    if (!masonryLoaded) {
-        // init Masonry
-        var $grid = $('#published_tweets').masonry({
-            itemSelector: '.grid-item',
-            columnWidth: 260
-        });
+    // if (!masonryLoaded) {
+    //     // init Masonry
+    //     var $grid = $('#published_tweets').masonry({
+    //         itemSelector: '.grid-item',
+    //         columnWidth: 260
+    //     });
 
-        $grid.on('layoutComplete', function (event, laidOutItems) {
-            console.log('Masonry layout complete with ' + laidOutItems.length + ' items');
-            masonryLoaded = laidOutItems.length > 0;
-        });
-    }
+    //     $grid.on('layoutComplete', function (event, laidOutItems) {
+    //         console.log('Masonry layout complete with ' + laidOutItems.length + ' items');
+    //         masonryLoaded = laidOutItems.length > 0;
+    //     });
+    // }
 
-    $('#published_tweets').masonry('layout');
+    // $('#published_tweets').masonry('layout');
 }
 
 function setupFrontlineApp() {
 
-    $(document).ready(function () {
+    // $(document).ready(function () {
 
         setupEarlyErrors();
         var mapInstance = setupMap();
         var tweetsContainer = document.getElementById("published_tweets");
         Api.getData().then((d) => {
             var markers = L.markerClusterGroup();
-            $("#loadingCog").fadeOut("slow");
+            // $("#loadingCog").fadeOut("slow");
 
             d.forEach(n => {
                 if (n.hasTweet()) {
@@ -66,7 +66,7 @@ function setupFrontlineApp() {
             // layout Masonry after each image loads
             imagesLoaded('#published_tweets', function () {
                 console.log("images loaded");
-                $('#published_tweets').masonry('layout');
+                // $('#published_tweets').masonry('layout');
             });
         });
 
@@ -125,7 +125,7 @@ function setupFrontlineApp() {
             size = size || [32, 32];
             return L.divIcon({
                 className: 'custom-map-marker ' + className,
-                html: '<svg class="iconic" style="fill:' + color + ';"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="44fed91f69f09c95876314a8e23f311e.svg#map-marker"></use></svg>',
+                html: '<svg class="iconic" style="fill:' + color + ';"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="marker.svg#map-marker"></use></svg>',
                 iconSize: size,
                 iconAnchor: [size[0] / 2, size[1]],
                 popupAnchor: [0, 0 - size[1]]
@@ -148,8 +148,7 @@ function setupFrontlineApp() {
             window.onerror = Help.handleErrors;
         }
 
-    });
+    // });
 
 
 }
-
