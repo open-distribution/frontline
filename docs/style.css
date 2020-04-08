@@ -265,7 +265,7 @@ main {
 }
 #core_content #intro h1,
 #core_content #intro h2 {
-  width: 100%;
+  min-width: 100%;
 }
 #core_content #intro h2 {
   text-transform: uppercase;
