@@ -62,8 +62,7 @@ function setupFrontlineApp() {
         twttr.widgets.createTweet(tweetId, tweetContainer, {
             conversation: 'none'
             , cards: 'hidden'
-            , width: 290  //max-width set by container 
-            //align:left,right,centre
+            , width: 290  
         })
             .then(function (tweet) {
                 let style = tweet.shadowRoot.firstElementChild;
