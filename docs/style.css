@@ -126,9 +126,6 @@ body {
   flex-flow: column;
   min-height: 100vh;
 }
-header {
-  border: solid red 0px;
-}
 header #title_bar {
   display: flex;
   align-items: center;
@@ -151,11 +148,9 @@ header #title_bar .logo {
   width: 51px;
   height: 48px;
   background-size: cover;
-  border: solid red 0px;
   display: inline-block;
 }
 header #title_bar #icons {
-  border: solid red 0px;
   font-size: 0.8em;
   vertical-align: top;
 }
@@ -166,7 +161,6 @@ header #title_bar #icons {
 }
 header #title_bar #icons #twitter,
 header #title_bar #icons #facebook {
-  border: solid red 0px;
   margin-left: 10px;
 }
 header #title_bar #icons #twitter:hover,
@@ -197,7 +191,6 @@ header nav {
   }
 }
 header nav ol {
-  border: solid purple 0px;
   /* flex items */
   display: flex;
   flex-wrap: wrap;
@@ -213,7 +206,6 @@ header nav ol li a {
   margin-right: 1em;
   display: inline-block;
   text-decoration: none;
-  border: solid blue 0px;
   text-transform: uppercase;
   transition: all 1s ease-out;
   font-family: 'DM Sans', Helvetica, Verdana, sans-serif;
@@ -224,7 +216,6 @@ header nav ol li a:hover {
 main {
   flex: 1;
   overflow: auto;
-  border: solid 0px blue;
   padding-top: 0px;
 }
 #core_content {
@@ -241,7 +232,6 @@ main {
 #core_content #intro {
   width: 30%;
   padding: 0 2% 0 1%;
-  border: solid green 0px;
 }
 @media screen and (max-width: 880px) {
   #core_content #intro {
@@ -280,13 +270,11 @@ main {
 }
 #core_content #intro #request,
 #core_content #intro #response {
-  border: solid green 0px;
   display: flex;
   justify-content: flex-start;
 }
 #core_content #intro #request #request_text,
 #core_content #intro #response #request_text {
-  border: solid gray 0px;
   display: inline;
 }
 #core_content #intro #request {
@@ -301,7 +289,6 @@ main {
 }
 #core_content #map {
   width: 70%;
-  border: solid red 0px;
   margin-right: 1%;
 }
 @media screen and (max-width: 880px) {
@@ -315,7 +302,6 @@ main {
   position: relative;
 }
 #core_content #map #map_inner #map_container {
-  border: solid purple 0px;
   height: 100%;
   position: relative;
   outline: none;
@@ -327,7 +313,6 @@ main {
   transition: all 1s ease-in-out;
 }
 #feeds {
-  border: solid 0px blue;
   display: flex;
   justify-content: space-evenly;
   padding: 0 1%;
