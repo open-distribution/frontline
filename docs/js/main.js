@@ -8,7 +8,7 @@ const USHAHIDI_KEYS = {
     org:  "f381bb54-8325-4728-90bd-a93f3dd4802c",
     needs:  "f3817f67-4a2e-4fda-bb83-df3909d5e588",
     otherNeeds:  "949bbb06-c241-4221-8ab2-fec3042fbff9",
-    tweetId:  "2b3a5248-dfb7-4a9d-b0dc-dc76e92b1ac7",
+    tweetId:  "2b3a5248-dfb7-4a9d-b0dc-dc76e92b1ac7"
 }
 
 /**
@@ -17,10 +17,11 @@ const USHAHIDI_KEYS = {
 const SETTINGS = {
     //  API endpoint to GET needs (submitted to form/survey number 6) 
     needsUrl: "https://frontlinehelp.api.ushahidi.io/api/v3/posts/?form=6",
+    tweetsLimit: 3, 
     debugMode: false,
     mapZoomDefault:  5,
     mapDefaultLat:  53.606039,
-    mapDefaultLng:  -1.537400,
+    mapDefaultLng:  -1.537400
 }
 
 /**
@@ -205,10 +206,10 @@ class NeedsPoint {
     getPopupContent() {
         var twitterLink = this.hasTweet() ? `<a class="twitter_link" target="_blank" title="View related tweet" href="https://twitter.com/i/web/status/${this.tweetId}"><i class='fab fa-twitter fa-2x'></i></a>` : "";
 
-        // TODO - format datetime, maybe don't need full momentjs
-        // var dt = moment(this.dateTime).format("DD/MM/YYYY H:mm");
+        // TODO - format datetime, maybe don't need full momentjs var dt = moment(this.dateTime).format("DD/MM/YYYY H:mm");
         var dt = this.dateTime;
-        var postedHTml = Help.htmlTag(dt, "div", "class='date_time act_as_hover' title='Published'");
+        var dtf = dt.substring(0, 10); 
+        var postedHTml = Help.htmlTag(dtf, "div", "class='date_time act_as_hover' title='Published " + dt + "'");
 
         return `<h1 class="bad">Need</h1>
             ${twitterLink}
@@ -231,7 +232,6 @@ class NeedsPoint {
     }
 }
 
-
 /**
  * Setup app
  *
@@ -248,9 +248,11 @@ function setupFrontlineApp() {
 
     Api.getData().then((d) => {
         var markers = L.markerClusterGroup();
+        var tweetRenderedToFeed = 0;    
 
         d.forEach(n => {
-            if (n.hasTweet()) {
+            if (n.hasTweet() && tweetRenderedToFeed < SETTINGS.tweetsLimit) {
+                tweetRenderedToFeed++;
                 addTweet(n.tweetId, tweetsContainer);
             }
             var marker = L.marker(n.location, {
