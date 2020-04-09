@@ -201,6 +201,10 @@ header nav ol a {
 header nav ol a:hover {
   color: #0a150d;
 }
+h1,
+h2 {
+  white-space: nowrap;
+}
 main {
   flex: 1;
   overflow: auto;
@@ -264,9 +268,16 @@ main {
   color: #f7f0f0;
   margin-left: 0.5rem;
 }
-#intro {
-  width: 30%;
-  padding: 0 2rem 0 1rem;
+@media screen and (min-width:881px) {
+  #intro {
+    padding: 0 2rem 0 1rem;
+    width: 30%;
+  }
+}
+@media screen and (max-width: 880px) {
+  #intro {
+    width: auto;
+  }
 }
 .text_section {
   padding: 1rem 2rem;
