@@ -17,6 +17,8 @@
 @color_background_light: #fbfbfb;
 
 @max880: ~"screen and (max-width: 880px)";
+@wide: ~"screen and (min-width:881px)";
+
 
 
 /* MIXINS */
@@ -233,6 +235,9 @@ header {
     }
 }
 
+h1,h2 {
+  white-space: nowrap;
+}
 
 main {
     flex: 1;
@@ -279,14 +284,21 @@ main {
         li span {
             font-weight: normal;
             color: #f7f0f0;
-            margin-left: 0.5rem;            
-        }    
+            margin-left: 0.5rem;
+        }
     }
 }
 
 #intro{
-    width: 30%;
+
+  @media @wide {
     padding: 0 2rem 0 1rem;
+    width: 30%;
+  }
+
+  @media @max880 {
+      width: auto;
+  }
 }
 
 .text_section {
