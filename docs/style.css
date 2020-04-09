@@ -173,7 +173,7 @@ header #title_bar #title span.hashtag_style {
   white-space: nowrap;
 }
 header nav {
-  margin: 1rem 0 1rem 0;
+  margin: 0 0 1rem 0;
   padding: 0 1%;
 }
 @media screen and (max-width: 880px) {
@@ -193,14 +193,16 @@ header nav ol {
 header nav ol li {
   display: inline-block;
 }
-header nav ol a {
+header nav ol a,
+header nav ol span {
   padding: 0.5em;
   margin-right: 1em;
   text-decoration: none;
   text-transform: uppercase;
   transition: all 1s ease-out;
 }
-header nav ol a:hover {
+header nav ol a:hover,
+header nav ol span {
   color: #0a150d;
 }
 h1,
