@@ -164,14 +164,16 @@ header #title_bar #title {
   font-size: 2em;
   margin: 0;
   font-weight: normal;
+  white-space: normal;
 }
 header #title_bar #title span.hashtag_style {
   font-weight: bold;
   padding: 0px 20px;
   border-radius: 20px;
+  white-space: nowrap;
 }
 header nav {
-  margin: 0 0 1rem 0;
+  margin: 1rem 0 1rem 0;
   padding: 0 1%;
 }
 @media screen and (max-width: 880px) {
@@ -200,6 +202,10 @@ header nav ol a {
 }
 header nav ol a:hover {
   color: #0a150d;
+}
+h1,
+h2 {
+  white-space: nowrap;
 }
 main {
   flex: 1;
@@ -264,9 +270,16 @@ main {
   color: #f7f0f0;
   margin-left: 0.5rem;
 }
-#intro {
-  width: 30%;
-  padding: 0 2rem 0 1rem;
+@media screen and (min-width:881px) {
+  #intro {
+    padding: 0 2rem 0 1rem;
+    width: 30%;
+  }
+}
+@media screen and (max-width: 880px) {
+  #intro {
+    width: auto;
+  }
 }
 .text_section {
   padding: 1rem 2rem;
