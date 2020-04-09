@@ -52,7 +52,7 @@ var Help = /** @class */ (function () {
         return Help.isGoodString(str) ? "<span class=\"label\">" + l + "</span>" + str : "";
     };
     Help.htmlTag = function (s, t, ats) {
-        if (as === void 0) { ats = ""; }
+        if (ats === void 0) { ats = ""; }
         return Help.isGoodString(s) ? "<" + t + " " + ats + ">" + s + "</" + t + ">" : "";
     };
     Help.htmlList = function (s) {
