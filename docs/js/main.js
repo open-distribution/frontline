@@ -194,14 +194,14 @@ class Api {
  * - add to Needs feed as a twitter embed
  */
 class NeedsPoint {
-    id;
-    postcode;
-    dateTime;
-    location;
-    org;
-    needs;
-    otherNeeds;
-    tweetId;
+    // id;
+    // postcode;
+    // dateTime;
+    // location;
+    // org;
+    // needs;
+    // otherNeeds;
+    // tweetId;
 
     hasTweet() { return Help.isGoodString(this.tweetId); }
 
