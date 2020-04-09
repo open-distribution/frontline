@@ -15,11 +15,9 @@ const USHAHIDI_KEYS = {
  * Application settings and configuration
  */
 const SETTINGS = {
-    // API endpoint to GET needs (submitted to form/survey number 6)
+    //  API endpoint to GET needs (submitted to form/survey number 6) 
     needsUrl: "https://frontlinehelp.api.ushahidi.io/api/v3/posts/?form=6",
-    // Debug?
     debugMode: false,
-    // Map zoom and default location
     mapZoomDefault:  5,
     mapDefaultLat:  53.606039,
     mapDefaultLng:  -1.537400,
@@ -53,9 +51,9 @@ var Help = /** @class */ (function () {
         var str = Help.htmlList(s);
         return Help.isGoodString(str) ? "<span class=\"label\">" + l + "</span>" + str : "";
     };
-    Help.htmlTag = function (s, t, as) {
-        if (as === void 0) { as = ""; }
-        return Help.isGoodString(s) ? "<" + t + " " + as + ">" + s + "</" + t + ">" : "";
+    Help.htmlTag = function (s, t, ats) {
+        if (as === void 0) { ats = ""; }
+        return Help.isGoodString(s) ? "<" + t + " " + ats + ">" + s + "</" + t + ">" : "";
     };
     Help.htmlList = function (s) {
         var respVal = "";
@@ -106,7 +104,6 @@ var Help = /** @class */ (function () {
     Help.contains = function (arr, item) {
         if (Array.isArray(arr)) {
             return arr.indexOf(item) > -1;
-            ;
         }
         return false;
     };
