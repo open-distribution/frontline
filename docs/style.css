@@ -171,7 +171,7 @@ header #title_bar #title span.hashtag_style {
   border-radius: 20px;
 }
 header nav {
-  margin: 1rem 0;
+  margin: 0 0 1rem 0;
   padding: 0 1%;
 }
 @media screen and (max-width: 880px) {
@@ -217,12 +217,9 @@ main {
     flex-direction: column;
   }
 }
-#intro {
-  width: 30%;
-  padding: 0 2% 0 1%;
-}
 @media screen and (max-width: 880px) {
-  #intro {
+  #intro,
+  .text_section {
     padding: 0 1%;
     width: 100%;
     max-width: 45rem;
@@ -231,7 +228,8 @@ main {
     margin-right: auto;
   }
 }
-#intro h1 {
+#intro h1,
+.text_section h1 {
   text-transform: uppercase;
   background-color: #ffffff;
   color: #00966B;
@@ -241,11 +239,8 @@ main {
   border-radius: 18px;
   margin: 0;
 }
-#intro h1,
-#intro h2 {
-  min-width: 100%;
-}
-#intro h2 {
+#intro h2,
+.text_section h2 {
   text-transform: uppercase;
   background-color: #ffffff;
   color: #00966B;
@@ -256,11 +251,35 @@ main {
   margin-bottom: 0px;
   margin-top: 0px;
 }
-#intro ul.hashtag_list {
+#intro ul.hashtag_list,
+.text_section ul.hashtag_list {
   list-style: none;
   font-weight: bold;
   line-height: 1.5;
   margin: 1rem 0 2rem;
+}
+#intro ul.hashtag_list li span,
+.text_section ul.hashtag_list li span {
+  font-weight: normal;
+  color: #f7f0f0;
+  margin-left: 0.5rem;
+}
+#intro {
+  width: 30%;
+  padding: 0 2rem 0 1rem;
+}
+.text_section {
+  padding: 1rem 2rem;
+}
+.text_section p {
+  padding-left: 1rem;
+}
+.text_section h1,
+.text_section h2 {
+  margin-top: 2rem;
+}
+.text_section .first_title {
+  margin-top: 0;
 }
 #map {
   width: 70%;

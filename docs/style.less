@@ -203,7 +203,7 @@ header {
     }
 
     nav {
-        margin: 1rem 0;
+        margin: 0 0 1rem 0;
         padding: 0 1%;
 
         @media @max880 {
@@ -251,9 +251,8 @@ main {
     }
 }
 
-#intro {
-    width: 30%;
-    padding: 0 2% 0 1%;
+#intro,
+.text_section {
 
     @media @max880 {
         padding: 0 1%;
@@ -263,10 +262,6 @@ main {
     h1 {
         .major_title;
         margin: 0;
-    }
-
-    h1, h2 {
-        min-width: 100%;
     }
 
     h2 {
@@ -280,6 +275,33 @@ main {
         font-weight: bold;
         line-height: 1.5;
         margin: 1rem 0 2rem;
+
+        li span {
+            font-weight: normal;
+            color: #f7f0f0;
+            margin-left: 0.5rem;            
+        }    
+    }
+}
+
+#intro{
+    width: 30%;
+    padding: 0 2rem 0 1rem;
+}
+
+.text_section {
+    padding: 1rem 2rem;
+
+    p{
+        padding-left:1rem;
+    }
+
+    h1, h2{
+        margin-top: 2rem;
+    }
+
+    .first_title{
+        margin-top: 0;
     }
 }
 
