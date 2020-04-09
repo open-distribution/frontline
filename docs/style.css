@@ -164,14 +164,16 @@ header #title_bar #title {
   font-size: 2em;
   margin: 0;
   font-weight: normal;
+  white-space: normal;
 }
 header #title_bar #title span.hashtag_style {
   font-weight: bold;
   padding: 0px 20px;
   border-radius: 20px;
+  white-space: nowrap;
 }
 header nav {
-  margin: 0 0 1rem 0;
+  margin: 1rem 0 1rem 0;
   padding: 0 1%;
 }
 @media screen and (max-width: 880px) {
