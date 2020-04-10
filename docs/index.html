@@ -11,6 +11,7 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+
     <style>
         /* deliberate inclusion of minimal CSS for speed of initial styling */
         @font-face {
@@ -19,14 +20,12 @@
             font-weight: normal;
             src: local('DM Sans Medium'), url('fonts/DMSans-Regular.woff') format('woff');
         }
-
         @font-face {
             font-family: 'DM Sans';
             font-style: normal;
             font-weight: bold;
             src: local('DM Sans Bold'), url('fonts/DMSans-Bold.woff') format('woff');
         }
-
         html, body {
             font-family: 'DM Sans', Helvetica, Verdana, sans-serif;
             font-weight: normal;
@@ -37,48 +36,54 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
           integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
           crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+            crossorigin=""></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
     <link href="https://unpkg.com/leaflet.markercluster@1.0.5/dist/MarkerCluster.css" rel="stylesheet" />
     <link href="https://unpkg.com/leaflet.markercluster@1.0.5/dist/MarkerCluster.Default.css" rel="stylesheet" />
+    <script src="https://unpkg.com/leaflet.markercluster@1.0.5/dist/leaflet.markercluster.js"></script>
     <script src="https://kit.fontawesome.com/e10dd0382c.js" crossorigin="anonymous"></script>
-    <link href='/style.css' rel='stylesheet' />
+    <link href='style.css' rel='stylesheet' />
+    <script src="https://platform.twitter.com/widgets.js"></script>
 </head>
-<body>
+<body id="body">
     <header>
         <div id="title_bar">
             <span id="icons">
+                <a id="logo" href="/" title="Reload Page"><span class="logo"></span></a>
 
-                <a id="logo" href="/" title="Reload Page"></a>
                 <a id="twitter"
-                   href="https://twitter.com/FrontlineMap"
-                   title="View tweets"
-                   class="faa-parent animated-hover">
+                    href="https://twitter.com/FrontlineMap"
+                    title="View tweets"
+                    class="faa-parent animated-hover">
                     <span class="faa-tada fa-stack fa-2x"><i class="fas fa-circle fa-stack-2x"></i><i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a>
 
                 <a id="facebook"
-                   href="https://www.facebook.com/FrontlineMap"
-                   title="View facebook page"
-                   class="faa-parent animated-hover"><i class="faa-tada fab fa-facebook fa-4x"></i></a>
+                    href="https://www.facebook.com/FrontLineMap"
+                    title="View facebook page"
+                    class="faa-parent animated-hover"><i class="faa-tada fab fa-facebook fa-4x"></i></a>
 
                 <a id="instagram"
-                   href="https://www.instagram.com/FrontlineMap"
-                   title="View instagram page"
-                   class="faa-parent animated-hover faa-parent--instagram"><i class="faa-tada fab fa-instagram fa-4x"></i></a>
+                    href="https://www.instagram.com/FrontLineMap"
+                    title="View instagram page"
+                    class="faa-parent animated-hover faa-parent--instagram"><i class="faa-tada fab fa-instagram fa-4x"></i></a>
             </span>
-            <nav>
-                <ol>
-                    <li><a href="/about.html">About</a></li>
-                    <li><a href="https://frontlinehelp.ushahidi.io/posts/create/6">PPE Needs</a></li>
-                    <li><a href="https://frontlinehelp.ushahidi.io/posts/create/2">PPE Supplies</a></li>
-                    <li><a href="https://timecounts.org/frontline">Volunteer</a></li>
-                    <li><a href="/resources.html">Resources</a></li>
-                </ol>
-            </nav>
-            <h1 id="title">Putting PPE needs on the <span class="main_hashtag">#FrontlineMap</span></h1>
+            <h1 id="title">Putting PPE needs on the <span class="hashtag_style">#FrontLineMap</span></h1>
         </div>
+        <nav>
+            <ol>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="https://frontlinehelp.ushahidi.io/posts/create/6">PPE Needs</a></li>
+                <li><a href="https://frontlinehelp.ushahidi.io/posts/create/2">PPE Supplies</a></li>
+                <li><a href="https://timecounts.org/frontline">Volunteer</a></li>
+            </ol>
+        </nav>
     </header>
-    <main class="home_main">
-        <div id="left_content">
 
+    <main>
+        <div id="core_content">
             <div id="intro">
                 <h1>How It Works</h1>
 
@@ -92,67 +97,49 @@
 
                 <h2>We're Here to Help</h2>
 
-                <p>By creating a clear, open map of PPE needs, and sharing real time information, we hope to help you get the supplies you need</p>
+                <p>By creating a clear, open map of PPE needs, and sharing real time information, we hope to help you get the supplies you need.</p>
 
-                <p>If you don’t use twitter <a href="https://frontlinehelp.ushahidi.io/posts/create/6">submit your PPE needs directly</a></p>
+                <p>If you don’t use twitter <a href="https://frontlinehelp.ushahidi.io/posts/create/6">submit your PPE needs directly</a>.</p>
             </div>
 
-            <div id="feeds">
-
-                <div id="needs">
-                    <h2>Your Needs</h2>
-                    <div id="published_tweets">
-                    </div>
-                </div>
-
-                <div id="patterns">
-                    <h2>Our Voice</h2>
-                    <div id="timeline_small">
-                        <a class="twitter-timeline" data-dnt="true" data-chrome="noheader,nofooter" data-limit="4" href="https://twitter.com/FrontlineMap?ref_src=twsrc%5Etfw">Tweets by FrontlineMap</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div id="map_wrapper">
             <div id="map">
+                <div id="map_inner">
+                    <div id="map_container"></div>
+                </div>
             </div>
         </div>
 
-    </main>
+        <div id="feeds">
+            <div id="need">
+                <h2>Your Needs</h2>
+                <div id="published_tweets" class="grid">
+                </div>
+            </div>
 
-
-
-
-    <footer>
-        <div id="footer_links">
-            <a href="/terms-and-conditions.html">Terms and Conditions</a>
-
+            <div id="patterns">
+                <h2>Our Voice</h2>
+                <div class="timeline_small">
+                    <a class="twitter-timeline" data-dnt="true" data-chrome="noheader,nofooter" data-limit="4" href="https://twitter.com/FrontlineMap?ref_src=twsrc%5Etfw">Tweets by FrontlineMap</a>
+                </div>
+            </div>
         </div>
-
-        <div id="os_note">
+    </main>
+    <footer>
+        <p>
+            <a href="https://wearebeep.com/" target="_blank" class="contributors beep" title="Beep"></a>
+            <a href="https://innovationbubble.eu/" target="_blank" class="contributors innovation_bubble" title="Innovation Bubble"></a>
+            <a href="https://thefourthangel.com/" target="_blank" class="contributors the_fourth_angel" title="The Fourth Angel"></a>
+            <a href="https://thesocialelement.agency/" target="_blank" class="contributors the_social_element" title="The Social Element"></a>
+            <a href="https://www.ucl.ac.uk/" target="_blank" class="contributors ucl" title="UCL"></a>
+            <a href="https://www.ushahidi.com/" target="_blank" class="contributors ushahidi" title="Ushahidi"></a>
+            <a href="https://www.fifth.co/" target="_blank" class="contributors the_fifth" title="The Fifth"></a>
+        </p>
+        <p>
+            <a href="/terms-and-conditions.html">Terms and Conditions</a>
             This site is open source
             <a href="https://github.com/open-distribution/frontline/">Contribute</a>
-        </div>
-
-        <div id="contributors_links">
-            <a href="https://wearebeep.com/" target="_blank" class="beep" title="Beep"></a>
-            <a href="https://innovationbubble.eu/" target="_blank" class="innovation_bubble" title="Innovation Bubble"></a>
-            <a href="https://thefourthangel.com/" target="_blank" class="the_fourth_angel" title="The Fourth Angel"></a>
-            <a href="https://thesocialelement.agency/" target="_blank" class="the_social_element" title="The Social Element"></a>
-            <a href="https://www.ucl.ac.uk/" target="_blank" class="ucl" title="UCL"></a>
-            <a href="https://www.ushahidi.com/" target="_blank" class="ushahidi" title="Ushahidi"></a>
-            <a href="https://www.fifth.co/" target="_blank" class="the_fifth" title="The Fifth"></a>
-        </div>
+        </p>
     </footer>
-
-
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-            crossorigin=""></script>
-    <script src="https://unpkg.com/leaflet.markercluster@1.0.5/dist/leaflet.markercluster.js"></script>
-    <script src="https://platform.twitter.com/widgets.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
