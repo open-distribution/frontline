@@ -1,5 +1,16 @@
 /* VARIABLES */
 /* MIXINS */
+/**
+ * Column mixin - typically applied to major block elements at
+ * smaller screen sizes
+ */
+.column {
+  width: 100%;
+  max-width: 45rem;
+  padding: 0 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
 .noselect {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -32,18 +43,25 @@
 .img-circle {
   border-radius: 50%;
 }
+.main_hashtag,
 .hashtag_style {
-  text-transform: uppercase;
   background-color: #ffffff;
   color: #00966B;
   display: inline-block;
 }
+.main_hashtag {
+  padding: 0px 20px;
+  border-radius: 18px;
+}
+.hashtag_style {
+  text-transform: uppercase;
+}
 .major_title,
 .minor_title {
-  text-transform: uppercase;
   background-color: #ffffff;
   color: #00966B;
   display: inline-block;
+  text-transform: uppercase;
 }
 .major_title {
   font-size: 2em;
@@ -92,16 +110,11 @@
 .box_5:hover {
   box-shadow: 1px 7px 8px rgba(0, 0, 0, 0.95), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-/**
- * Column mixin - typically applied to major block elements at
- * smaller screen sizes
- */
-.column {
-  width: 100%;
-  max-width: 45rem;
-  padding: 0 0.5rem;
-  margin-left: auto;
-  margin-right: auto;
+.link_like {
+  transition: all 1s ease-out;
+}
+.link_like_hover {
+  color: #0a150d;
 }
 /* RESET */
 html {
@@ -119,28 +132,22 @@ body {
   flex-flow: column;
   min-height: 100vh;
 }
+/* Sizing Variables */
+/* Main Layout */
+header {
+  height: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
 header #title_bar {
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: space-between;
-  padding: 1rem 1% 0 1%;
-}
-@media screen and (max-width: 880px) {
-  header #title_bar {
-    display: block;
-    width: 100%;
-    max-width: 45rem;
-    padding: 0 0.5rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-header #title_bar .logo {
-  background: url(images/frontline.jpg);
-  width: 110px;
-  height: 110px;
-  background-size: cover;
-  display: inline-block;
+  align-items: stretch;
+  height: calc(6rem - 1.5em);
+  padding: 0 1rem;
 }
 header #title_bar #icons {
   font-size: 0.75em;
@@ -160,30 +167,17 @@ header #title_bar #icons .faa-parent {
 header #title_bar #icons .faa-parent:hover {
   color: #076f51;
 }
-header #title_bar #title {
-  font-size: 2em;
-  margin: 0;
-  font-weight: normal;
-  white-space: normal;
-}
-header #title_bar #title span.hashtag_style {
-  font-weight: bold;
-  padding: 0px 20px;
-  border-radius: 20px;
-  white-space: nowrap;
+header #title_bar #icons #logo {
+  background: url(images/frontline.jpg);
+  width: 80px;
+  height: 75px;
+  background-size: cover;
+  display: inline-block;
 }
 header nav {
-  margin: 0 0 1rem 0;
-  padding: 0 1%;
-}
-@media screen and (max-width: 880px) {
-  header nav {
-    width: 100%;
-    max-width: 45rem;
-    padding: 0 0.5rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  height: 1.5em;
+  padding-left: 1rem;
+  margin-top: 2rem;
 }
 header nav ol {
   list-style: none;
@@ -205,25 +199,133 @@ header nav ol a:hover,
 header nav ol span {
   color: #0a150d;
 }
+main.home_main {
+  height: calc(100vh - calc(4rem + 6rem));
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+main {
+  width: 100vw;
+}
+main #left_content {
+  width: 550px;
+  height: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+main #left_content #intro {
+  padding: 1rem 1.2rem 0 1.2rem;
+}
+main #left_content #intro a {
+  transition: all 1s ease-out;
+}
+main #left_content #intro a:hover {
+  color: #0a150d;
+}
+main #left_content #feeds {
+  overflow-x: visible;
+}
+main #left_content #feeds h2 {
+  padding-left: 1rem;
+  margin-top: 3rem;
+}
+main #left_content #feeds #needs #published_tweets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 0.5rem;
+}
+main #left_content #feeds #needs .twitter-tweet {
+  box-shadow: 6px 9px 12px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+main #left_content #feeds #needs .twitter-tweet:hover {
+  box-shadow: 1px 7px 8px rgba(0, 0, 0, 0.95), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+main #left_content #feeds #patterns {
+  padding-bottom: 2rem;
+}
+main #left_content #feeds #patterns #timeline_small {
+  padding: 0 1.2rem;
+}
+main #map_wrapper {
+  width: calc(100vw - 550px);
+  height: calc(100vh - calc(4rem + 6rem));
+  box-sizing: content-box;
+}
+main #map_wrapper #map {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  box-sizing: content-box;
+}
+footer {
+  height: 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+}
+footer #contributors_links {
+  height: 100%;
+  margin-right: 1rem;
+  padding-top: 0.6rem;
+}
+footer #contributors_links a {
+  height: 40px;
+  width: 80px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  margin-right: 0.5rem;
+}
+footer #contributors_links a:hover {
+  -webkit-animation: tada 2s linear infinite;
+  animation: tada 2s linear infinite;
+}
+footer #contributors_links .beep {
+  background-image: url(/images/beep.png);
+}
+footer #contributors_links .innovation_bubble {
+  background-image: url(/images/innovation_bubble.png);
+}
+footer #contributors_links .the_fourth_angel {
+  background-image: url(/images/the_fourth_angel.png);
+}
+footer #contributors_links .the_social_element {
+  background-image: url(/images/the_social_element.png);
+}
+footer #contributors_links .oval {
+  background-image: url(/images/oval.png);
+}
+footer #contributors_links .ucl {
+  background-image: url(/images/ucl.png);
+}
+footer #contributors_links .ushahidi {
+  background-image: url(/images/ushahidi-wordmark.svg);
+}
+footer #contributors_links .the_fifth {
+  background-image: url(/images/the_fifth.png);
+}
+footer #footer_links,
+footer #os_note {
+  padding: 1rem;
+}
+footer #footer_links a,
+footer #os_note a {
+  transition: all 1s ease-out;
+}
+footer #footer_links a:hover,
+footer #os_note a:hover {
+  color: #0a150d;
+}
 h1,
 h2 {
   white-space: nowrap;
 }
-main {
-  flex: 1;
-  overflow: auto;
-  padding-top: 0px;
-}
-#core_content {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: stretch;
-}
-@media screen and (max-width: 880px) {
-  #core_content {
-    flex-direction: column;
-  }
+a {
+  color: #ffffff;
 }
 @media screen and (max-width: 880px) {
   #intro,
@@ -238,10 +340,10 @@ main {
 }
 #intro h1,
 .text_section h1 {
-  text-transform: uppercase;
   background-color: #ffffff;
   color: #00966B;
   display: inline-block;
+  text-transform: uppercase;
   font-size: 2em;
   padding: 0px 20px;
   border-radius: 18px;
@@ -249,10 +351,10 @@ main {
 }
 #intro h2,
 .text_section h2 {
-  text-transform: uppercase;
   background-color: #ffffff;
   color: #00966B;
   display: inline-block;
+  text-transform: uppercase;
   font-size: 1.5em;
   padding: 2px 14px 0px 14px;
   border-radius: 13px;
@@ -272,137 +374,78 @@ main {
   color: #f7f0f0;
   margin-left: 0.5rem;
 }
-@media screen and (min-width:881px) {
-  #intro {
-    padding: 0 2rem 0 1rem;
-    width: 30%;
-  }
-}
-@media screen and (max-width: 880px) {
-  #intro {
-    width: auto;
-  }
-}
 .text_section {
-  padding: 1rem 2rem;
+  padding: 2rem 10rem 2rem 5rem;
 }
-.text_section p {
-  padding-left: 1rem;
-}
-.text_section h1,
 .text_section h2 {
   margin-top: 2rem;
+  margin-bottom: 1.5rem;
 }
-.text_section .first_title {
-  margin-top: 0;
+.text_section a {
+  transition: all 1s ease-out;
 }
-#map {
-  width: 70%;
-  margin-right: 1%;
+.text_section a:hover {
+  color: #0a150d;
 }
-@media screen and (max-width: 880px) {
-  #map {
-    width: 100%;
-    height: 400px;
-  }
+.indent_links a {
+  margin-left: 2rem;
 }
-#map #map_inner {
+.indent_links h3 {
+  margin-top: 2.5rem;
+}
+/**
+ * Map popups
+ */
+h1.good {
+  color: #00966B;
+}
+h1.bad {
+  color: #A51A1A;
+}
+.leaflet-container.leaflet-fullscreen-on {
+  width: 100% !important;
+  height: 80% !important;
+}
+.leaflet-popup-content p {
+  margin-top: 0px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+}
+.leaflet-popup-content .twitter_link {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+.leaflet-popup-content .label {
+  color: #00966B;
+}
+.leaflet-popup-content .date_time {
+  color: grey;
+  text-align: right;
+}
+.leaflet-popup-content ul {
+  margin-top: 0px;
+}
+.leaflet-container .custom-map-marker svg.iconic {
+  position: static;
+  width: 100%;
   height: 100%;
-  position: relative;
+  overflow: visible;
+  stroke: rgba(0, 0, 0, 0.24);
+  stroke-width: 0.24;
+  -webkit-filter: drop-shadow(0 8px 6px rgba(0, 0, 0, 0.64));
+  filter: drop-shadow(0 8px 6px rgba(0, 0, 0, 0.64));
 }
-#map #map_inner #map_container {
-  height: 100%;
-  position: relative;
-  outline: none;
-  margin: 0;
-  padding: 0;
-  box-sizing: content-box;
-  box-shadow: 0px 0px 7px 2px rgba(255, 255, 255, 0.5), 0px 0px 7px 2px rgba(76, 175, 80, 0.5);
-  border: solid 1px rgba(76, 175, 80, 0.5);
-  transition: all 1s ease-in-out;
-}
-#feeds {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 0 1%;
-}
-@media screen and (max-width: 880px) {
-  #feeds {
-    flex-direction: column;
-  }
-}
-#feeds h2 {
-  margin-bottom: 10px;
-  text-align: center;
-}
-#feeds #need {
-  width: 80%;
-}
-@media screen and (max-width: 880px) {
-  #feeds #need {
-    width: 100%;
-  }
-}
-#feeds #patterns {
-  width: 20%;
-}
-@media screen and (max-width: 880px) {
-  #feeds #patterns {
-    width: 100%;
-  }
-}
-#feeds .feed {
-  width: 32%;
-}
-@media screen and (max-width: 880px) {
-  #feeds .feed {
-    width: 100%;
-    max-width: 45rem;
-    padding: 0 0.5rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-#feeds .timeline_small {
-  text-align: center;
-  padding-top: 10px;
-  box-shadow: 6px 9px 12px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-#feeds .timeline_small:hover {
-  box-shadow: 1px 7px 8px rgba(0, 0, 0, 0.95), 0 10px 10px rgba(0, 0, 0, 0.22);
-}
-.twitter-tweet {
-  box-shadow: 6px 9px 12px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-.twitter-tweet:hover {
-  box-shadow: 1px 7px 8px rgba(0, 0, 0, 0.95), 0 10px 10px rgba(0, 0, 0, 0.22);
-}
-.grid {
-  text-align: center;
-  column-width: 250px;
-  column-gap: 5px;
-  overflow: hidden;
-}
-.grid-item {
-  width: 250px;
+.leaflet-container .custom-map-marker .iconic-bg {
   display: inline-block;
-  margin: 0px 10px 0 0;
-  /* Some gutter, account for twitter-widget style */
-}
-footer {
-  min-height: 60px;
-  text-align: center;
-}
-@media screen and (max-width: 880px) {
-  footer {
-    width: 100%;
-    max-width: 45rem;
-    padding: 0 0.5rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  z-index: -1;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  margin-left: -8px;
 }
 .fa-inverse {
   color: #00966B;
@@ -429,9 +472,6 @@ footer {
 #title_bar #icons .faa-parent--instagram i {
   color: #00966B;
   font-size: 3em;
-}
-a {
-  color: #ffffff;
 }
 /**
  * Animations
@@ -548,101 +588,4 @@ a {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
-}
-/**
- * Map popups
- */
-h1.good {
-  color: #00966B;
-}
-h1.bad {
-  color: #A51A1A;
-}
-.leaflet-container.leaflet-fullscreen-on {
-  width: 100% !important;
-  height: 80% !important;
-}
-.leaflet-popup-content p {
-  margin-top: 0px;
-  margin-bottom: 5px;
-  padding-left: 10px;
-}
-.leaflet-popup-content .twitter_link {
-  position: absolute;
-  top: 20px;
-  right: 10px;
-}
-.leaflet-popup-content .label {
-  color: #00966B;
-}
-.leaflet-popup-content .date_time {
-  color: grey;
-  text-align: right;
-}
-.leaflet-popup-content ul {
-  margin-top: 0px;
-}
-.leaflet-container .custom-map-marker svg.iconic {
-  position: static;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  stroke: rgba(0, 0, 0, 0.24);
-  stroke-width: 0.24;
-  -webkit-filter: drop-shadow(0 8px 6px rgba(0, 0, 0, 0.64));
-  filter: drop-shadow(0 8px 6px rgba(0, 0, 0, 0.64));
-}
-.leaflet-container .custom-map-marker .iconic-bg {
-  display: inline-block;
-  position: absolute;
-  top: 4px;
-  left: 50%;
-  z-index: -1;
-  width: 16px;
-  height: 16px;
-  background-color: #fff;
-  margin-left: -8px;
-}
-/**
- * Footer
- */
-footer {
-  margin-top: 5rem;
-}
-.contributors {
-  height: 40px;
-  width: 80px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
-  margin-right: 0.5rem;
-}
-.contributors:hover {
-  -webkit-animation: tada 2s linear infinite;
-  animation: tada 2s linear infinite;
-}
-.beep {
-  background-image: url(/images/beep.png);
-}
-.innovation_bubble {
-  background-image: url(/images/innovation_bubble.png);
-}
-.the_fourth_angel {
-  background-image: url(/images/the_fourth_angel.png);
-}
-.the_social_element {
-  background-image: url(/images/the_social_element.png);
-}
-.oval {
-  background-image: url(/images/oval.png);
-}
-.ucl {
-  background-image: url(/images/ucl.png);
-}
-.ushahidi {
-  background-image: url(/images/ushahidi-wordmark.svg);
-}
-.the_fifth {
-  background-image: url(/images/the_fifth.png);
 }
