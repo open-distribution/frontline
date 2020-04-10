@@ -15,8 +15,8 @@ const USHAHIDI_KEYS = {
  * Application settings and configuration
  */
 const SETTINGS = {
-    needsUrl: "https://frontlinehelp.api.ushahidi.io/api/v3/posts/?form=6", //  API endpoint to GET needs (submitted to form/survey number 6) 
-    tweetsLimit: 4, 
+    needsUrl: "https://frontlinehelp.api.ushahidi.io/api/v3/posts/?form=6", //  API endpoint to GET needs (submitted to form/survey number 6)
+    tweetsLimit: 4,
     debugMode: false,
     mapZoomDefault:  6,
     mapDefaultLat:  54.606039,
@@ -204,7 +204,7 @@ class NeedsPoint {
 
     getPopupContent() {
         var twitterLink = this.hasTweet() ? `<a class="twitter_link" target="_blank" title="View related tweet" href="https://twitter.com/i/web/status/${this.tweetId}"><i class='fab fa-twitter fa-2x'></i></a>` : "";
-  
+
         var dt = this.dateTime;
         var dtf = dt.substring(0, 10); //TODO:moment - format datetime, maybe don't need full momentjs var dt = moment(this.dateTime).format("DD/MM/YYYY H:mm");
         var postedHTml = Help.htmlTag(dtf, "div", "class='date_time act_as_hover' title='Published " + dt + "'");
@@ -246,7 +246,7 @@ function setupFrontlineApp() {
 
     Api.getData().then((d) => {
         var markers = L.markerClusterGroup();
-        var tweetRenderedToFeed = 0;    
+        var tweetRenderedToFeed = 0;
 
         d.forEach(n => {
             if (n.hasTweet() && tweetRenderedToFeed < SETTINGS.tweetsLimit) {
