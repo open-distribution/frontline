@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Ushahidi API responses use GUIDs to encode form fields
  *
  * This lookup translates from human-readable to the relevant GUID
@@ -242,7 +242,7 @@ function setupFrontlineApp() {
     setupEarlyErrors();
 
     var mapInstance = setupMap();
-    var tweetsContainer = document.getElementById("published_tweets");
+    var tweetsContainer = document.getElementById("needs");
 
     Api.getData().then((d) => {
         var markers = L.markerClusterGroup();
