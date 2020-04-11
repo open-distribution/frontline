@@ -98,10 +98,7 @@
  */
 .column {
   width: 100%;
-  max-width: 45rem;
-  padding: 0 0.5rem;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 0 0.5rem 0 0;
 }
 /* RESET */
 html {
@@ -117,33 +114,39 @@ body {
   margin: 0;
   display: flex;
   flex-flow: column;
+  padding: 0 0.5rem;
   min-height: 100vh;
+}
+/* all of the top segment */
+header {
+  display: flex;
 }
 header #title_bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1% 0 1%;
+  padding: 0 1% 0 1%;
 }
 @media screen and (max-width: 880px) {
   header #title_bar {
     display: block;
     width: 100%;
-    max-width: 45rem;
-    padding: 0 0.5rem;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 0 0.5rem 0 0;
   }
 }
 header #title_bar .logo {
-  background: url(images/frontline.jpg);
   width: 110px;
   height: 110px;
   background-size: cover;
   display: inline-block;
 }
 header #title_bar #icons {
+  display: grid;
+  grid-template-columns: repeat(4, min-content);
   font-size: 0.75em;
+  white-space: nowrap;
+  max-height: 95px;
+  /* limit height to keep nav bar close */
 }
 @media screen and (max-width: 880px) {
   header #title_bar #icons {
@@ -161,10 +164,21 @@ header #title_bar #icons .faa-parent:hover {
   color: #076f51;
 }
 header #title_bar #title {
-  font-size: 2em;
+  font-size: 1.5rem;
   margin: 0;
   font-weight: normal;
   white-space: normal;
+  line-height: 125%;
+  display: block;
+  padding: 0 0.25em 1.5em 0.5em;
+  text-align: left;
+}
+@media screen and (min-width:881px) {
+  header #title_bar #title {
+    padding: 0 0.25em 0.5em 0.5em;
+    display: inline;
+    /* if it can fit on a line, let it */
+  }
 }
 header #title_bar #title span.hashtag_style {
   font-weight: bold;
@@ -173,16 +187,13 @@ header #title_bar #title span.hashtag_style {
   white-space: nowrap;
 }
 header nav {
-  margin: 0 0 1rem 0;
+  margin: 0.25rem 0 0.5rem 1em;
   padding: 0 1%;
 }
 @media screen and (max-width: 880px) {
   header nav {
     width: 100%;
-    max-width: 45rem;
-    padding: 0 0.5rem;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 0 0.5rem 0 0;
   }
 }
 header nav ol {
@@ -193,26 +204,43 @@ header nav ol {
 header nav ol li {
   display: inline-block;
 }
-header nav ol a,
-header nav ol span {
-  padding: 0.5em;
-  margin-right: 1em;
+header nav ol a {
+  padding: 0 0.75em 0 0;
   text-decoration: none;
   text-transform: uppercase;
   transition: all 1s ease-out;
 }
-header nav ol a:hover,
-header nav ol span {
+header nav ol a:hover {
   color: #0a150d;
 }
 h1,
 h2 {
   white-space: nowrap;
 }
-main {
-  flex: 1;
-  overflow: auto;
+.home_main {
+  display: grid;
+  grid-template-columns: auto;
   padding-top: 0px;
+}
+@media screen and (min-width:881px) {
+  .home_main {
+    grid-template-columns: auto  64%;
+    grid-gap: 12px;
+    margin-top: 2em;
+  }
+}
+.main_hashtag {
+  text-transform: uppercase;
+  background-color: #ffffff;
+  color: #00966B;
+  display: inline-block;
+  font-size: 2em;
+  padding: 0px 20px;
+  border-radius: 18px;
+  display: inline;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 0 10px;
 }
 #core_content {
   display: flex;
@@ -230,10 +258,7 @@ main {
   .text_section {
     padding: 0 1%;
     width: 100%;
-    max-width: 45rem;
-    padding: 0 0.5rem;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 0 0.5rem 0 0;
   }
 }
 #intro h1,
@@ -253,17 +278,23 @@ main {
   background-color: #ffffff;
   color: #00966B;
   display: inline-block;
-  font-size: 1.5em;
-  padding: 2px 14px 0px 14px;
-  border-radius: 13px;
+  font-size: 2em;
+  padding: 0px 20px;
+  border-radius: 18px;
   margin-bottom: 0px;
   margin-top: 0px;
+}
+#intro p,
+.text_section p {
+  padding-left: 0.5em;
+  font-size: 1.25em;
 }
 #intro ul.hashtag_list,
 .text_section ul.hashtag_list {
   list-style: none;
   font-weight: bold;
   line-height: 1.5;
+  font-size: 1.25em;
   margin: 1rem 0 2rem;
 }
 #intro ul.hashtag_list li span,
@@ -275,7 +306,8 @@ main {
 @media screen and (min-width:881px) {
   #intro {
     padding: 0 2rem 0 1rem;
-    width: 30%;
+    grid-column: 1;
+    grid-row: 1;
   }
 }
 @media screen and (max-width: 880px) {
@@ -289,6 +321,11 @@ main {
 .text_section p {
   padding-left: 1rem;
 }
+@media screen and (max-width: 880px) {
+  .text_section {
+    font-size: 1.1em;
+  }
+}
 .text_section h1,
 .text_section h2 {
   margin-top: 2rem;
@@ -296,21 +333,29 @@ main {
 .text_section .first_title {
   margin-top: 0;
 }
-#map {
-  width: 70%;
-  margin-right: 1%;
-}
-@media screen and (max-width: 880px) {
-  #map {
-    width: 100%;
-    height: 400px;
+@media screen and (min-width:881px) {
+  #map_wrapper {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+    width: 99%;
   }
 }
-#map #map_inner {
+#map_wrapper #map {
+  width: 70%;
+  width: 100%;
+  height: 400px;
+}
+@media screen and (min-width:881px) {
+  #map_wrapper #map {
+    width: auto;
+    height: 100vh;
+  }
+}
+#map_wrapper #map #map_inner {
   height: 100%;
   position: relative;
 }
-#map #map_inner #map_container {
+#map_wrapper #map #map_inner #map_container {
   height: 100%;
   position: relative;
   outline: none;
@@ -322,29 +367,38 @@ main {
   transition: all 1s ease-in-out;
 }
 #feeds {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 0 1%;
+  /*    display: flex;
+    justify-content: space-evenly;
+    padding: 0 1%;
+*/
 }
 @media screen and (max-width: 880px) {
   #feeds {
     flex-direction: column;
   }
 }
+@media screen and (min-width:881px) {
+  #feeds {
+    grid-row: 2;
+    grid-column: 1;
+  }
+}
 #feeds h2 {
   margin-bottom: 10px;
   text-align: center;
 }
-#feeds #need {
-  width: 80%;
+#feeds #needs {
+  ddisplay: inline-grid;
+  grid-template-columns: auto;
+  justify-content: space-evenly;
+  grid-auto-columns: min-content;
+  padding: 0 1%;
+  text-align: center;
 }
 @media screen and (max-width: 880px) {
-  #feeds #need {
+  #feeds #needs {
     width: 100%;
   }
-}
-#feeds #patterns {
-  width: 20%;
 }
 @media screen and (max-width: 880px) {
   #feeds #patterns {
@@ -357,10 +411,7 @@ main {
 @media screen and (max-width: 880px) {
   #feeds .feed {
     width: 100%;
-    max-width: 45rem;
-    padding: 0 0.5rem;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 0 0.5rem 0 0;
   }
 }
 #feeds .timeline_small {
@@ -390,22 +441,26 @@ main {
   display: inline-block;
   margin: 0px 10px 0 0;
   /* Some gutter, account for twitter-widget style */
+  vertical-align: top;
 }
 footer {
   min-height: 60px;
   text-align: center;
+  font-size: 1.1em;
+  line-height: 1.8em;
 }
 @media screen and (max-width: 880px) {
   footer {
     width: 100%;
-    max-width: 45rem;
-    padding: 0 0.5rem;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 0 0.5rem 0 0;
   }
 }
 .fa-inverse {
   color: #00966B;
+}
+.smlogo {
+  margin-top: 1.8rem;
+  /* to align with logo */
 }
 .fa-stack {
   vertical-align: top;
@@ -608,6 +663,9 @@ h1.bad {
  */
 footer {
   margin-top: 5rem;
+}
+#contributors_links {
+  margin: 1rem;
 }
 .contributors {
   height: 40px;
