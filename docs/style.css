@@ -81,6 +81,12 @@
   width: 100%;
   padding: 0 0.5rem 0 0;
 }
+.link_like {
+  transition: all 1s ease-out;
+}
+.link_like_hover {
+  color: #0a150d;
+}
 /* RESET */
 html {
   box-sizing: border-box;
@@ -123,6 +129,7 @@ header #title_bar .logo {
 }
 header #title_bar #icons {
   display: grid;
+  align-items: center;
   grid-template-columns: repeat(4, min-content);
   font-size: 0.75em;
   white-space: nowrap;
@@ -142,29 +149,6 @@ header #title_bar #icons .faa-parent {
 }
 header #title_bar #icons .faa-parent:hover {
   color: #076f51;
-}
-header #title_bar #title {
-  font-size: 1.5rem;
-  margin: 0;
-  font-weight: normal;
-  white-space: normal;
-  line-height: 125%;
-  display: block;
-  padding: 0 0.25em 1.5em 0.5em;
-  text-align: left;
-}
-@media screen and (min-width:881px) {
-  header #title_bar #title {
-    padding: 0 0.25em 0.5em 0.5em;
-    display: inline;
-    /* if it can fit on a line, let it */
-  }
-}
-header #title_bar #title span.hashtag_style {
-  font-weight: bold;
-  padding: 0px 20px;
-  border-radius: 20px;
-  white-space: nowrap;
 }
 header nav {
   margin: 0.25rem 0 0.5rem 1em;
@@ -226,7 +210,7 @@ h2 {
   grid-template-columns: auto;
   padding-top: 0px;
 }
-@media screen and (min-width:881px) {
+@media screen and (min-width: 881px) {
   .home_main {
     grid-template-columns: auto 64%;
     grid-gap: 12px;
@@ -309,8 +293,6 @@ h2 {
   color: #f7f0f0;
   margin-left: 0.5rem;
 }
-@media screen and (min-width:881px) {
-=======
 @media screen and (min-width: 1366px) {
   #intro ul,
   .text_section ul {
@@ -318,7 +300,6 @@ h2 {
   }
 }
 @media screen and (min-width: 881px) {
->>>>>>> Stashed changes
   #intro {
     padding: 0 2rem 0 1rem;
     grid-column: 1;
@@ -348,7 +329,7 @@ h2 {
 .text_section .first_title {
   margin-top: 0;
 }
-@media screen and (min-width:881px) {
+@media screen and (min-width: 881px) {
   #map_wrapper {
     grid-row: 1 / span 2;
     grid-column: 2;
@@ -360,7 +341,7 @@ h2 {
   width: 100%;
   height: 400px;
 }
-@media screen and (min-width:881px) {
+@media screen and (min-width: 881px) {
   #map_wrapper #map {
     width: auto;
     height: 100vh;
@@ -371,7 +352,7 @@ h2 {
     flex-direction: column;
   }
 }
-@media screen and (min-width:881px) {
+@media screen and (min-width: 881px) {
   #feeds {
     grid-row: 2;
     grid-column: 1;
@@ -382,8 +363,6 @@ h2 {
   text-align: center;
 }
 #feeds #needs {
-  ddisplay: inline-grid;
-  grid-template-columns: auto;
   display: inline-grid;
   justify-content: space-evenly;
   grid-auto-columns: min-content;
@@ -447,7 +426,7 @@ footer {
   min-height: 60px;
   text-align: center;
   font-size: 1.1em;
-  line-height: 1.8em;
+  line-height: 1.2em;
 }
 @media screen and (max-width: 880px) {
   footer {
@@ -655,6 +634,39 @@ h1.bad {
   background-color: #fff;
   margin-left: -8px;
 }
+.grid-item {
+  width: 250px;
+  display: inline-block;
+  margin: 0 0 0 10px;
+  /* Some gutter, account for twitter-widget style */
+  vertical-align: top;
+}
+#map {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  box-sizing: content-box;
+}
+#title_bar #icons .faa-parent--instagram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  height: 4em;
+  width: 4em;
+  border-radius: 50%;
+}
+#title_bar #icons .faa-parent--instagram:hover {
+  text-decoration: none;
+  -webkit-animation: tada 2s linear infinite;
+  animation: tada 2s linear infinite;
+  color: transparent;
+  background-color: #076f51;
+}
+#title_bar #icons .faa-parent--instagram i {
+  color: #00966B;
+  font-size: 3em;
+}
 /**
  * Footer
  */
@@ -664,7 +676,7 @@ footer {
 #contributors_links {
   margin: 1rem;
 }
-.contributors {
+#contributors_links a {
   height: 40px;
   width: 80px;
   display: inline-block;
@@ -673,7 +685,7 @@ footer {
   background-position: center center;
   margin-right: 0.5rem;
 }
-.contributors:hover {
+#contributors_links a:hover {
   -webkit-animation: tada 2s linear infinite;
   animation: tada 2s linear infinite;
 }
@@ -700,7 +712,6 @@ footer {
 }
 .the_fifth {
   background-image: url(/images/the_fifth.png);
-}
 }
 @media screen and (min-width: 1366px), screen and (min-width: 881px) {
   /* CORE LAYOUT */

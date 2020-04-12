@@ -17,10 +17,6 @@
 
 @color_background_light: #fbfbfb;
 
-@max880: ~"screen and (max-width: 880px)";
-@wide: ~"screen and (min-width:881px)";
-
-
 @narrow: ~"screen and (max-width: 880px)";
 @wide: ~"screen and (min-width: 881px)";
 @x_wide: ~"screen and (min-width: 1366px)";
@@ -114,6 +110,15 @@
     padding: 0 .5rem 0 0;
 }
 
+.link_like {
+    transition: all 1s ease-out;
+}
+
+.link_like_hover {
+    color: @color_font_dark;
+}
+
+
 /* RESET */
 html {
     box-sizing: border-box;
@@ -158,6 +163,7 @@ header {
 
         #icons {
             display: grid;
+            align-items: center;
             grid-template-columns: repeat(4, min-content);
             font-size: 0.75em;
             white-space: nowrap;
@@ -388,15 +394,6 @@ h1, h2 {
     }
 
     #needs {
-      ddisplay: inline-grid;
-      grid-template-columns: auto;
-      justify-content: space-evenly;
-      grid-auto-columns: min-content;
-      padding: 0 1%;
-      text-align: center;
-      @media @max880 {
-        width: 100%;
-      }
         display: inline-grid;
         justify-content: space-evenly;
         grid-auto-columns: min-content;
@@ -460,12 +457,17 @@ footer {
     }
 
     font-size: 1.1em;
-    line-height: 1.8em;
+    line-height: 1.2em;
 }
 
 .fa-inverse {
     color: @color_background !important; /* ensures win over fontawesome when less is transpiled on client - leave for ease of dev */
 }
+
+// .smlogo {
+//     margin-top: 1.8rem; /* to align with logo */
+// }
+
 
 .fa-stack {
     vertical-align: top;
@@ -732,21 +734,6 @@ footer {
 }
 
 #contributors_links {
-  margin: 1rem;
-}
-.contributors {
-    height: 40px;
-    width: 80px;
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center center;
-    margin-right: 0.5rem;
-
-    &:hover {
-        -webkit-animation: tada 2s linear infinite;
-        animation: tada 2s linear infinite;
-=======
     margin: 1rem;
 
     a {
@@ -762,7 +749,6 @@ footer {
             -webkit-animation: tada 2s linear infinite;
             animation: tada 2s linear infinite;
         }
->>>>>>> Stashed changes
     }
 }
 
@@ -796,9 +782,6 @@ footer {
 
 .the_fifth {
     background-image: url(/images/the_fifth.png);
-<<<<<<< Updated upstream
-}
-=======
 }
 
 
