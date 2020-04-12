@@ -233,7 +233,7 @@ function setupFrontlineApp() {
     setupEarlyErrors();
 
     var mapInstance = setupMap();
-    var tweetsContainer = document.getElementById("published_tweets");
+    var tweetsContainer = document.getElementById("needs");
 
     Api.getData().then((d) => {
         var markers = L.markerClusterGroup();
