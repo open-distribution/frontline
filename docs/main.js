@@ -3,7 +3,7 @@
  *
  * This lookup translates from human-readable to the relevant GUID
  */
-const USHAHIDI_KEYS = {
+var USHAHIDI_KEYS = {
     location:  "9807e1f6-ac37-4f89-9a16-0707cd5f1237",
     org:  "f381bb54-8325-4728-90bd-a93f3dd4802c",
     needs:  "f3817f67-4a2e-4fda-bb83-df3909d5e588",
@@ -14,7 +14,7 @@ const USHAHIDI_KEYS = {
 /**
  * Application settings and configuration
  */
-const SETTINGS = {
+var SETTINGS = {
     needsUrl: "https://frontlinehelp.api.ushahidi.io/api/v3/posts/?form=6", //  API endpoint to GET needs (submitted to form/survey number 6)
     tweetsLimit: 4,
     debugMode: false,
@@ -127,9 +127,7 @@ var Help = /** @class */ (function () {
     };
     return Help;
 }());
-
-
-let countTweets = 0;
+var countTweets = 0;
 
 
 /**
@@ -138,46 +136,43 @@ let countTweets = 0;
  * - get data
  * - translate to NeedsPoint objects
  */
-class Api {
+var Api = {};
+Api.getData = function() {
+    return fetch(SETTINGS.needsUrl).then(response => response.json())
+        .then(function (data) {
+            var respVal = [];
+            data.results.forEach((p) => {
+                if (NeedsPoint.hasValidLocation(p)) {
+                    respVal.push(Api.buildNeed(p));
+                    countTweets++;
+                }
+                else {
+                    Help.log(p.id + " has bad location");
+                }
+            });
+            return respVal;
+        }).catch(e => Help.handleErrors(e));
+}
+Api.buildNeed = function(p) {
+    var res = new NeedsPoint();
+    res.id = p.id;
+    try {
 
-    static getData() {
-        return fetch(SETTINGS.needsUrl).then(response => response.json())
-            .then(function (data) {
-                var respVal = [];
-                data.results.forEach((p) => {
-                    if (NeedsPoint.hasValidLocation(p)) {
-                        respVal.push(Api.buildNeed(p));
-                        countTweets++;
-                    }
-                    else {
-                        Help.log(`${p.id} has bad location`);
-                    }
-                });
-                return respVal;
-            }).catch(e => Help.handleErrors(e));
+        res.postcode = p.content;
+        res.dateTime = p.post_date;
+
+        var loc = p.values[USHAHIDI_KEYS.location][0];
+        res.location = [loc.lat, loc.lon];
+
+        res.org = Help.getItem(p.values[USHAHIDI_KEYS.org], 0);
+        res.needs = p.values[USHAHIDI_KEYS.needs];
+        res.otherNeeds = Help.getItem(p.values[USHAHIDI_KEYS.otherNeeds], 0);
+        res.tweetId = Help.getItem(p.values[USHAHIDI_KEYS.tweetId], 0);
     }
-
-    static buildNeed(p) {
-        let res = new NeedsPoint();
-        res.id = p.id;
-        try {
-
-            res.postcode = p.content;
-            res.dateTime = p.post_date;
-
-            var loc = p.values[USHAHIDI_KEYS.location][0];
-            res.location = [loc.lat, loc.lon];
-
-            res.org = Help.getItem(p.values[USHAHIDI_KEYS.org], 0);
-            res.needs = p.values[USHAHIDI_KEYS.needs];
-            res.otherNeeds = Help.getItem(p.values[USHAHIDI_KEYS.otherNeeds], 0);
-            res.tweetId = Help.getItem(p.values[USHAHIDI_KEYS.tweetId], 0);
-        }
-        catch (e) {
-            Help.handleErrors(e);
-        }
-        return res;
+    catch (e) {
+        Help.handleErrors(e);
     }
+    return res;
 }
 
 /**
@@ -190,7 +185,8 @@ class Api {
  * - add to Leaflet map as a point
  * - add to Needs feed as a twitter embed
  */
-class NeedsPoint {
+var NeedsPoint = /** @class */ (function () {
+
     // id;
     // postcode;
     // dateTime;
@@ -199,36 +195,31 @@ class NeedsPoint {
     // needs;
     // otherNeeds;
     // tweetId;
-
-    hasTweet() { return Help.isGoodString(this.tweetId); }
-
-    getPopupContent() {
-        var twitterLink = this.hasTweet() ? `<a class="twitter_link" target="_blank" title="View related tweet" href="https://twitter.com/i/web/status/${this.tweetId}"><i class='fab fa-twitter fa-2x'></i></a>` : "";
-
+    function NeedsPoint() {
+    }
+    NeedsPoint.prototype.hasTweet = function () { return Help.isGoodString(this.tweetId); };
+    NeedsPoint.prototype.getPopupContent = function () {
+        var twitterLink = this.hasTweet() ? "<a class=\"twitter_link\" target=\"_blank\" title=\"View related tweet\" href=\"https://twitter.com/i/web/status/" + this.tweetId + "\"><i class='fab fa-twitter fa-2x'></i></a>" : "";
+        
         var dt = this.dateTime;
         var dtf = dt.substring(0, 10); //TODO:moment - format datetime, maybe don't need full momentjs var dt = moment(this.dateTime).format("DD/MM/YYYY H:mm");
         var postedHTml = Help.htmlTag(dtf, "div", "class='date_time act_as_hover' title='Published " + dt + "'");
 
-        return `<h1 class="bad">Need</h1>
-            ${twitterLink}
-            ${Help.labelledTag("Postcode:", this.postcode, "p")}
-            ${Help.labelledTag("Organisation:", this.org, "p")}
-            ${Help.labelledList("Needs:", this.needs)}
-            ${Help.labelledTag("Other Needs:", this.otherNeeds, "p")}
-            ${postedHTml}`;
-    }
-
-    static hasValidLocation(p) {
+        return "<h1 class=\"bad\">Need</h1>\n            " + twitterLink + "  \n            " + Help.labelledTag("Postcode:", this.postcode, "p") + "\n            " + Help.labelledTag("Organisation:", this.org, "p") + "\n            " + Help.labelledList("Needs:", this.needs) + "\n            " + Help.labelledTag("Other Needs:", this.otherNeeds, "p") + "\n            " + postedHTml;
+    };
+    NeedsPoint.hasValidLocation = function (p) {
+        var respVal = false;
         if (Help.hasProp(USHAHIDI_KEYS.location, p.values)) {
-            let locsAr = Help.getProp(USHAHIDI_KEYS.location, p.values);
+            var locsAr = Help.getProp(USHAHIDI_KEYS.location, p.values);
             if (Help.hasIndex(locsAr, 0)) {
-                let locsObj = locsAr[0];
+                var locsObj = locsAr[0];
                 return Help.hasProp("lat", locsObj) && Help.hasProp("lon", locsObj);
             }
         }
-        return false;
-    }
-}
+        return respVal;
+    };
+    return NeedsPoint;
+}());
 
 /**
  * Setup app
@@ -263,7 +254,7 @@ function setupFrontlineApp() {
     });
 
     function addTweet(tweetId, container) {
-        let div = document.createElement("div");
+        var div = document.createElement("div");
         div.id = tweetId;
         div.className = "grid-item";
         container.appendChild(div);
@@ -277,8 +268,8 @@ function setupFrontlineApp() {
             , width: 250
         }).then(function (tweet) {
             // inject CSS into iframe to hide elements
-            const css = document.createTextNode(`.EmbeddedTweet .CallToAction { display: none; } .EmbeddedTweet .TweetInfo { display: none; } .Tweet-body.e-entry-content { font-size:12px; }`);
-            let style;
+            var css = document.createTextNode(".EmbeddedTweet .CallToAction { display: none; } .EmbeddedTweet .TweetInfo { display: none; } .Tweet-body.e-entry-content { font-size:12px; }");
+            var style;
             if (tweet.shadowRoot) {
                 style = tweet.shadowRoot.firstElementChild;
             } else {
