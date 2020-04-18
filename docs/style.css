@@ -895,6 +895,9 @@ footer {
   margin-left: 0.5rem;
 }
 @media screen and (min-width: 1366px) {
+  #map_wrapper #map {
+    height: 100%;
+  }
   #intro {
     padding-top: 2rem;
   }
