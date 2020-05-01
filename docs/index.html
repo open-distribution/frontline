@@ -37,10 +37,10 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
           integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
           crossorigin="" />
+    <link href="https://unpkg.com/leaflet.markercluster@1.0.5/dist/MarkerCluster.css" rel="stylesheet" />
+    <link href="https://unpkg.com/leaflet.markercluster@1.0.5/dist/MarkerCluster.Default.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/e10dd0382c.js" crossorigin="anonymous"></script>
-    <script src="/polyfills.js"></script>
     <link href='/style.css' rel='stylesheet' />
-    <link href='/L.Control.Layers.Tree.css' rel='stylesheet' />
 </head>
 
 <body>
@@ -54,8 +54,7 @@
                    href="https://twitter.com/FrontlineMap"
                    title="View tweets"
                    class="smlogo faa-parent animated-hover">
-                    <span class="faa-tada fa-stack fa-2x"><i class="fas fa-circle fa-stack-2x"></i><i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span>
-                </a>
+                    <span class="faa-tada fa-stack fa-2x"><i class="fas fa-circle fa-stack-2x"></i><i class="fab fa-twitter fa-stack-1x fa-inverse"></i></span></a>
 
                 <a id="facebook"
                    href="https://www.facebook.com/FrontlineMap"
@@ -91,7 +90,7 @@
 
             <ul class="hashtag_list">
                 <li>#FrontlineMap</li>
-                <li>#WorkPostcode <span>e.g. #SW11AA</span></li>
+                <li>#WorkPostcode <span>e.g. #SW1A1AA</span></li>
                 <li>#PPEneed <span>e.g. #N95masks</span></li>
             </ul>
 
@@ -99,7 +98,7 @@
 
             <p>By creating a clear, open map of PPE needs, and sharing real time information, we hope to help you get the supplies you need</p>
 
-            <p>If you don’t use Twitter <a href="https://frontlinehelp.ushahidi.io/posts/create/6">submit your PPE needs directly</a></p>
+            <p>If you don’t use twitter <a href="https://frontlinehelp.ushahidi.io/posts/create/6">submit your PPE needs directly</a></p>
         </div>
 
         <div id="map_wrapper">
@@ -136,9 +135,8 @@
         <div id="contributors_links">
             <a href="https://wearebeep.com/" target="_blank" class="beep" title="Beep"></a>
             <a href="https://innovationbubble.eu/" target="_blank" class="innovation_bubble" title="Innovation Bubble"></a>
-            <a href="http://agileclarity.com/" target="_blank" class="agile_clarity" title="Agile Clarity"></a>
-            <a href="http://caregiven.co.uk/" target="_blank" class="care_given" title="Care Given"></a>
             <a href="https://thefourthangel.com/" target="_blank" class="the_fourth_angel" title="The Fourth Angel"></a>
+            <a href="https://thesocialelement.agency/" target="_blank" class="the_social_element" title="The Social Element"></a>
             <a href="https://www.ucl.ac.uk/" target="_blank" class="ucl" title="UCL"></a>
             <a href="https://www.ushahidi.com/" target="_blank" class="ushahidi" title="Ushahidi"></a>
             <a href="https://www.fifth.co/" target="_blank" class="the_fifth" title="The Fifth"></a>
@@ -149,19 +147,7 @@
             integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
             crossorigin=""></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.0.5/dist/leaflet.markercluster.js"></script>
-
-
     <script src="https://platform.twitter.com/widgets.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/L.Control.Layers.Tree.js"></script>
-    <script src="/oms.js"></script>
-    <script src="/moment.min.js"></script>
-    <script src="/help.js"></script>
-    <script src="/markers.js"></script>
-    <script src="/api.js"></script>
-    <script src="/loadJS.js"></script>
-
-    <script src="/data.js"></script>
-    <script src="/app2.js"></script>
+    <script src="/main.js"></script>
 </body>
 </html>

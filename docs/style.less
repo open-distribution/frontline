@@ -624,33 +624,37 @@ a {
 /**
  * Map popups
  */
+h1.good {
+    color: @color_green_main;
+}
 
-.leaflet-popup-content-wrapper {
-    border-radius: 0px;
+h1.bad {
+    color: @color_red_main;
+}
+
+.leaflet-container.leaflet-fullscreen-on {
+    width: 100% !important;
+    height: 80% !important;
 }
 
 .leaflet-popup-content {
-    margin: 5px 10px;
-
-    h1 {
-        margin-top: 0;
-    }
-
     p {
         margin-top: 0px;
         margin-bottom: 5px;
         padding-left: 10px;
     }
 
-    .twitter_link,
-    .website_link {
+    .twitter_link {
         position: absolute;
         top: 20px;
         right: 10px;
     }
 
+    .label {
+        color: @color_green_main;
+    }
+
     .date_time {
-        margin-top: 15px;
         color: grey;
         text-align: right;
     }
@@ -658,21 +662,7 @@ a {
     ul {
         margin-top: 0px;
     }
-
-    div.need {
-        .label, h1 {
-            color: @color_red_main;
-        }
-    }
-
-    div.supply {
-        .label, h1 {
-            color: @color_green_main;
-        }
-    }
 }
-
-
 
 .leaflet-container .custom-map-marker svg.iconic {
     position: static;
@@ -693,12 +683,11 @@ a {
     z-index: -1;
     width: 16px;
     height: 16px;
+    background-color: #fff;
     margin-left: -8px
 }
 
-.iconic-bg {
-    background-color: #fff;
-}
+
 
 .grid-item {
     width: 250px;
@@ -795,40 +784,6 @@ footer {
     background-image: url(/images/the_fifth.png);
 }
 
-.agile_clarity {
-    background-image: url(/images/agile_clarity.png);
-}
-
-.care_given {
-    background-image: url(/images/care_given.png);
-}
-
-
-
-#suppliers_title {
-    background-color: #ffffff;
-    color: #00966B;
-    display: inline-block;
-    text-transform: uppercase;
-    padding: 0px 20px;
-    border-radius: 18px;
-}
-
-#suppliers_wrap {
-    padding: 0;
-    padding-top: 100px; //TODO: calc from header height + 4
-}
-
-#suppliers_frame {
-    width: 100%;
-    height: 80%; //TODO: calc from map height - 8-10px
-}
-
-
-
-
-
-
 
 
 @media @x_wide, @wide {
@@ -911,17 +866,6 @@ footer {
             }
         }
     }
-
-    #suppliers_wrap {
-        padding: 0;
-        padding-top: calc(@header_height + 4px); //TODO: calc from header height + 4
-    }
-
-    #suppliers_frame {
-        width: 100%;
-        height: calc(@map_height - 10px); //TODO: calc from map height - 8-10px
-    }
-
 
     #our_voice {
         padding: 10px;
@@ -1050,7 +994,7 @@ footer {
 
     #map_wrapper {
         #map {
-            height: 100%;
+            height:100%;
         }
     }
 
@@ -1147,270 +1091,11 @@ footer {
 
 @media @not_x_wide {
 
-    header nav {
-        margin-top: 1rem;
+   header nav{
+        margin-top:1rem;
     }
 
     #title {
         margin-top: 2rem;
     }
-}
-
-.ie_note {
-    font-size: 2rem;
-    padding: 2rem;
-    text-align: center;
-}
-/* MARKERCLUSTER STYLES
-    BASED ON :
-    https://unpkg.com/leaflet.markercluster@1.0.5/dist/MarkerCluster.css
-    https://unpkg.com/leaflet.markercluster@1.0.5/dist/MarkerCluster.Default.css
-*/
-.leaflet-cluster-anim .leaflet-marker-icon, .leaflet-cluster-anim .leaflet-marker-shadow {
-    -webkit-transition: -webkit-transform 0.3s ease-out, opacity 0.3s ease-in;
-    -moz-transition: -moz-transform 0.3s ease-out, opacity 0.3s ease-in;
-    -o-transition: -o-transform 0.3s ease-out, opacity 0.3s ease-in;
-    transition: transform 0.3s ease-out, opacity 0.3s ease-in;
-}
-
-.leaflet-cluster-spider-leg {
-    /* stroke-dashoffset (duration and function) should match with leaflet-marker-icon transform in order to track it exactly */
-    -webkit-transition: -webkit-stroke-dashoffset 0.3s ease-out, -webkit-stroke-opacity 0.3s ease-in;
-    -moz-transition: -moz-stroke-dashoffset 0.3s ease-out, -moz-stroke-opacity 0.3s ease-in;
-    -o-transition: -o-stroke-dashoffset 0.3s ease-out, -o-stroke-opacity 0.3s ease-in;
-    transition: stroke-dashoffset 0.3s ease-out, stroke-opacity 0.3s ease-in;
-}
-/* IE 6-8 fallback colors */
-.leaflet-oldie .marker-cluster-small {
-    background-color: rgb(181, 226, 140);
-}
-
-.leaflet-oldie .marker-cluster-small div {
-    background-color: rgb(110, 204, 57);
-}
-
-.leaflet-oldie .marker-cluster-medium {
-    background-color: rgb(241, 211, 87);
-}
-
-.leaflet-oldie .marker-cluster-medium div {
-    background-color: rgb(240, 194, 12);
-}
-
-.leaflet-oldie .marker-cluster-large {
-    background-color: rgb(253, 156, 115);
-}
-
-.leaflet-oldie .marker-cluster-large div {
-    background-color: rgb(241, 128, 23);
-}
-
-.marker-cluster {
-    background-clip: padding-box;
-    border-radius: 20px;
-}
-
-.marker-cluster div {
-    width: 30px;
-    height: 30px;
-    margin-left: 5px;
-    margin-top: 5px;
-    text-align: center;
-    border-radius: 15px;
-    font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
-}
-
-.marker-cluster span {
-    line-height: 30px;
-}
-
-@color_bad_small: rgba(241, 211, 87, 0.6);
-@color_bad_small_inner: rgba(240, 194, 12, 0.6);
-@color_bad_med: rgba(253, 156, 115, 0.6);
-@color_bad_med_inner: rgba(241, 128, 23, 0.6);
-@color_bad_large: rgba(165, 26, 26, 0.6);
-@color_bad_large_inner: rgba(165, 26, 26, 0.6);
-
-.needs_cluster {
-    &.marker-cluster-small {
-        background-color: @color_bad_small;
-
-        div {
-            background-color: @color_bad_small_inner;
-        }
-    }
-
-    &.marker-cluster-medium {
-        background-color: @color_bad_med;
-
-        div {
-            background-color: @color_bad_med_inner;
-        }
-    }
-
-    &.marker-cluster-large {
-        background-color: @color_bad_large;
-
-        div {
-            background-color: @color_bad_large_inner;
-        }
-    }
-}
-
-@color_good_small: rgba(181, 226, 140, 0.6);
-@color_good_small_inner: rgba(110, 204, 57, 0.6);
-@color_good_med: rgba(73, 186, 74, 0.6);
-@color_good_med_inner: rgba(55, 177, 82, 0.6);
-@color_good_large: rgba(0, 150, 107, 0.6);
-@color_good_large_inner: rgba(13, 118, 88, 0.60);
-
-.supplies_cluster {
-    &.marker-cluster-small {
-        background-color: @color_good_small;
-
-        div {
-            background-color: @color_good_small_inner;
-        }
-    }
-
-    &.marker-cluster-medium {
-        background-color: @color_good_med;
-
-        div {
-            background-color: @color_good_med_inner;
-        }
-    }
-
-    &.marker-cluster-large {
-        background-color: @color_good_large;
-
-        div {
-            background-color: @color_good_large_inner;
-        }
-    }
-}
-
-
-.n, .s,
-.b1, .b2, .b3, .b4,
-.g1, .g2, .g3, .g4,
-.p1, .p2, .p3,
-.gr1 {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin-right: 5px;
-    line-height: 18px;
-    margin-bottom: -1px;
-}
-
-.n {
-    background-color: @color_red_main;
-}
-
-.s {
-    background-color: @color_green_main;
-}
-
-.b1 {
-    background-color: #A0C7E1;
-}
-
-.b2 {
-    background-color: #4C80B6;
-}
-
-.b3 {
-    background-color: #0C4C96;
-}
-
-.b4 {
-    background-color: #20254B;
-}
-
-.g1 {
-    background-color: #64AE3F;
-}
-
-.g2 {
-    background-color: #21652D;
-}
-
-.g3 {
-    background-color: #71C2AC;
-}
-
-.g4 {
-    background-color: #00966B;
-}
-
-.p1 {
-    background-color: #9388AA;
-}
-
-.p2 {
-    background-color: #4B3F72;
-}
-
-.p3 {
-    background-color: #54243C;
-}
-
-.gr1 {
-    background-color: #706F6F;
-}
-
-.leaflet-container div.toggleGroup {
-    position: relative;
-    min-width: 65px;
-    width: 100%;
-    display: block;
-    color: black;
-
-    &.needs_group {
-        i.fa-chevron-circle-up {
-            color: @color_red_main;
-        }
-    }
-
-    &.supplies_group {
-        i.fa-chevron-circle-up {
-            color: @color_green_main;
-        }
-    }
-
-    i.fa-chevron-circle-up {
-        position: absolute;
-        right: 0;
-        top: 2px;
-        transition: all .75s;
-    }
-
-    &.toggle_collapsed {
-        i.fa-chevron-circle-up {
-            color:gray;
-            -webkit-transform: rotate(-180deg);
-            transform: rotate(-180deg);
-        }
-    }
-
-    &:focus {
-        outline: none !important;
-    }
-}
-
-
-div.toggleGroup:focus {
-    outline: none !important;
-}
-
-.leaflet-control-layers {
-    :focus {
-        outline: none !important;
-    }
-}
-
-
-.text_section .resources_main {
-    margin-top: 3rem;
 }
