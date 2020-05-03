@@ -121,6 +121,251 @@ a {
 .fade-leave-to {
   opacity: 0;
 }
+.leaflet-popup-content-wrapper {
+  border-radius: 0px;
+}
+.leaflet-popup-content {
+  margin: 5px 10px;
+}
+.leaflet-popup-content h1 {
+  margin-top: 0;
+}
+.leaflet-popup-content p {
+  margin-top: 0px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+}
+.leaflet-popup-content .twitter_link,
+.leaflet-popup-content .website_link {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+.leaflet-popup-content .date_time {
+  margin-top: 15px;
+  color: grey;
+  text-align: right;
+}
+.leaflet-popup-content ul {
+  margin-top: 0px;
+}
+.leaflet-popup-content div.need .label,
+.leaflet-popup-content div.need h1 {
+  color: #A51A1A;
+}
+.leaflet-popup-content div.supply .label,
+.leaflet-popup-content div.supply h1 {
+  color: #00966B;
+}
+.leaflet-container .custom-map-marker svg.iconic {
+  position: static;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  stroke: rgba(0, 0, 0, 0.24);
+  stroke-width: 0.24;
+  -webkit-filter: drop-shadow(0 8px 6px rgba(0, 0, 0, 0.64));
+  filter: drop-shadow(0 8px 6px rgba(0, 0, 0, 0.64));
+}
+.leaflet-container .custom-map-marker .iconic-bg {
+  display: inline-block;
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  z-index: -1;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+}
+.iconic-bg {
+  background-color: #fff;
+}
+/* MARKERCLUSTER STYLES
+    BASED ON :
+    https://unpkg.com/leaflet.markercluster@1.0.5/dist/MarkerCluster.css
+    https://unpkg.com/leaflet.markercluster@1.0.5/dist/MarkerCluster.Default.css
+*/
+.leaflet-cluster-anim .leaflet-marker-icon,
+.leaflet-cluster-anim .leaflet-marker-shadow {
+  -webkit-transition: -webkit-transform 0.3s ease-out, opacity 0.3s ease-in;
+  -moz-transition: -moz-transform 0.3s ease-out, opacity 0.3s ease-in;
+  -o-transition: -o-transform 0.3s ease-out, opacity 0.3s ease-in;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-in;
+}
+.leaflet-cluster-spider-leg {
+  /* stroke-dashoffset (duration and function) should match with leaflet-marker-icon transform in order to track it exactly */
+  -webkit-transition: -webkit-stroke-dashoffset 0.3s ease-out, -webkit-stroke-opacity 0.3s ease-in;
+  -moz-transition: -moz-stroke-dashoffset 0.3s ease-out, -moz-stroke-opacity 0.3s ease-in;
+  -o-transition: -o-stroke-dashoffset 0.3s ease-out, -o-stroke-opacity 0.3s ease-in;
+  transition: stroke-dashoffset 0.3s ease-out, stroke-opacity 0.3s ease-in;
+}
+/* IE 6-8 fallback colors */
+.leaflet-oldie .marker-cluster-small {
+  background-color: #b5e28c;
+}
+.leaflet-oldie .marker-cluster-small div {
+  background-color: #6ecc39;
+}
+.leaflet-oldie .marker-cluster-medium {
+  background-color: #f1d357;
+}
+.leaflet-oldie .marker-cluster-medium div {
+  background-color: #f0c20c;
+}
+.leaflet-oldie .marker-cluster-large {
+  background-color: #fd9c73;
+}
+.leaflet-oldie .marker-cluster-large div {
+  background-color: #f18017;
+}
+.marker-cluster {
+  background-clip: padding-box;
+  border-radius: 20px;
+}
+.marker-cluster div {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  margin-top: 5px;
+  text-align: center;
+  border-radius: 15px;
+  font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+.marker-cluster span {
+  line-height: 30px;
+}
+.needs_cluster.marker-cluster-small {
+  background-color: rgba(241, 211, 87, 0.6);
+}
+.needs_cluster.marker-cluster-small div {
+  background-color: rgba(240, 194, 12, 0.6);
+}
+.needs_cluster.marker-cluster-medium {
+  background-color: rgba(253, 156, 115, 0.6);
+}
+.needs_cluster.marker-cluster-medium div {
+  background-color: rgba(241, 128, 23, 0.6);
+}
+.needs_cluster.marker-cluster-large {
+  background-color: rgba(165, 26, 26, 0.6);
+}
+.needs_cluster.marker-cluster-large div {
+  background-color: rgba(165, 26, 26, 0.6);
+}
+.supplies_cluster.marker-cluster-small {
+  background-color: rgba(181, 226, 140, 0.6);
+}
+.supplies_cluster.marker-cluster-small div {
+  background-color: rgba(110, 204, 57, 0.6);
+}
+.supplies_cluster.marker-cluster-medium {
+  background-color: rgba(73, 186, 74, 0.6);
+}
+.supplies_cluster.marker-cluster-medium div {
+  background-color: rgba(55, 177, 82, 0.6);
+}
+.supplies_cluster.marker-cluster-large {
+  background-color: rgba(0, 150, 107, 0.6);
+}
+.supplies_cluster.marker-cluster-large div {
+  background-color: rgba(13, 118, 88, 0.6);
+}
+.n,
+.s,
+.b1,
+.b2,
+.b3,
+.b4,
+.g1,
+.g2,
+.g3,
+.g4,
+.p1,
+.p2,
+.p3,
+.gr1 {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  line-height: 18px;
+  margin-bottom: -1px;
+}
+.n {
+  background-color: #A51A1A;
+}
+.s {
+  background-color: #00966B;
+}
+.b1 {
+  background-color: #A0C7E1;
+}
+.b2 {
+  background-color: #4C80B6;
+}
+.b3 {
+  background-color: #0C4C96;
+}
+.b4 {
+  background-color: #20254B;
+}
+.g1 {
+  background-color: #64AE3F;
+}
+.g2 {
+  background-color: #21652D;
+}
+.g3 {
+  background-color: #71C2AC;
+}
+.g4 {
+  background-color: #00966B;
+}
+.p1 {
+  background-color: #9388AA;
+}
+.p2 {
+  background-color: #4B3F72;
+}
+.p3 {
+  background-color: #54243C;
+}
+.gr1 {
+  background-color: #706F6F;
+}
+.leaflet-container div.toggleGroup {
+  position: relative;
+  min-width: 65px;
+  width: 100%;
+  display: block;
+  color: black;
+}
+.leaflet-container div.toggleGroup.needs_group i.fa-chevron-circle-up {
+  color: #A51A1A;
+}
+.leaflet-container div.toggleGroup.supplies_group i.fa-chevron-circle-up {
+  color: #00966B;
+}
+.leaflet-container div.toggleGroup i.fa-chevron-circle-up {
+  position: absolute;
+  right: 0;
+  top: 2px;
+  transition: all 0.75s;
+}
+.leaflet-container div.toggleGroup.toggle_collapsed i.fa-chevron-circle-up {
+  color: gray;
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+.leaflet-container div.toggleGroup:focus {
+  outline: none !important;
+}
+div.toggleGroup:focus {
+  outline: none !important;
+}
+.leaflet-control-layers :focus {
+  outline: none !important;
+}
 /* RESET */
 html {
   box-sizing: border-box;
@@ -231,13 +476,6 @@ body {
 }
 /* mobile first */
 /* HEADER */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  background-color: #00966B;
-  padding: 0 0.5rem;
-}
 #title_bar {
   display: flex;
   flex-direction: column;
@@ -299,6 +537,9 @@ nav ol a:hover,
 nav ol span:hover {
   color: #0a150d;
 }
+nav ol span {
+  color: #0a150d;
+}
 #title {
   font-size: 1.5rem;
   font-weight: normal;
@@ -306,7 +547,7 @@ nav ol span:hover {
   line-height: 125%;
   margin: 1rem;
   align-self: flex-start;
-  flex-shrink: 0;
+  flex-shrink: 1;
 }
 .main_hashtag {
   background-color: #ffffff;
@@ -317,24 +558,32 @@ nav ol span:hover {
   font-size: 1.5rem;
   font-weight: 700;
 }
+/* CONTENT */
 .home_main {
   display: grid;
   grid-template-columns: auto;
   padding-top: 0px;
 }
-#intro ul.hashtag_list {
+#intro,
+.text_section {
+  padding: 0 0.5rem;
+}
+#intro ul.hashtag_list,
+.text_section ul.hashtag_list {
   list-style: none;
   font-weight: bold;
   line-height: 1.5;
   font-size: 1.25em;
   margin: 1rem 0 2rem;
 }
-#intro ul.hashtag_list li span {
+#intro ul.hashtag_list li span,
+.text_section ul.hashtag_list li span {
   font-weight: normal;
   color: #f7f0f0;
   margin-left: 0.5rem;
 }
-#intro h1 {
+#intro h1,
+.text_section h1 {
   background-color: #ffffff;
   color: #00966B;
   display: inline-block;
@@ -344,7 +593,8 @@ nav ol span:hover {
   border-radius: 18px;
   margin: 0;
 }
-#intro h2 {
+#intro h2,
+.text_section h2 {
   background-color: #ffffff;
   color: #00966B;
   display: inline-block;
@@ -355,7 +605,8 @@ nav ol span:hover {
   margin: 0 auto;
   font-size: 1.5em;
 }
-#intro p {
+#intro p,
+.text_section p {
   padding-left: 0.5em;
   font-size: 1.25em;
 }
@@ -397,7 +648,8 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 1rem;
+  margin: 1rem 0 1rem 1rem;
+  overflow: hidden;
 }
 #contributors_links a {
   height: 40px;
@@ -412,20 +664,47 @@ footer {
   -webkit-animation: tada 2s linear infinite;
   animation: tada 2s linear infinite;
 }
+/* OTHER PAGES */
+.indent_links a {
+  padding-left: 3rem;
+}
+/*SUPPLIERS */
+#suppliers_title {
+  background-color: #ffffff;
+  color: #00966B;
+  display: inline-block;
+  text-transform: uppercase;
+  padding: 0px 20px;
+  border-radius: 18px;
+  margin: 1rem;
+}
+#suppliers_wrap {
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+}
+#suppliers_frame {
+  width: 100%;
+  height: 100%;
+}
 .grid {
   text-align: center;
   column-width: 250px;
   column-gap: 5px;
   overflow: hidden;
 }
-.grid-item {
-  width: 250px;
-  display: inline-block;
-  margin: 0px 10px 0 0;
-  /* Some gutter, account for twitter-widget style */
-  vertical-align: top;
-}
 @media screen and (min-width: 881px) {
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: #00966B;
+    padding: 0 0.5rem;
+    box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.25);
+  }
+  main {
+    flex: 1 0 auto;
+  }
   nav {
     width: auto;
   }
@@ -499,7 +778,8 @@ footer {
     justify-content: space-between;
     height: 4rem;
     box-shadow: -1px -6px 12px rgba(0, 0, 0, 0.3);
-    margin-top: 1rem;
+    margin-top: calc(0 - 4rem);
+    flex-shrink: 0;
   }
   #footer_links,
   #os_note {
@@ -513,11 +793,16 @@ footer {
   #os_note a:hover {
     color: #0a150d;
   }
+  .text_section {
+    padding: 1rem 2rem;
+  }
+  #suppliers_wrap {
+    height: calc(100vh - 4rem - 6rem);
+    position: fixed;
+    width: 100%;
+  }
 }
 @media screen and (min-width: 1366px) {
-  header {
-    box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.25);
-  }
   #title {
     font-size: 1.75em;
     font-weight: bold;
@@ -530,5 +815,15 @@ footer {
   }
   #intro ul {
     font-size: 1.25em;
+  }
+  .text_section {
+    padding-top: 4rem;
+  }
+  .text_section h2 {
+    margin-top: 2rem;
+  }
+  .text_section h3 {
+    margin-top: 3rem;
+    margin-bottom: 0;
   }
 }
