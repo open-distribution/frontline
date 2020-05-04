@@ -112,6 +112,7 @@ body {
     display: flex;
     flex-flow: column;
     min-height: 100vh;
+    padding: 0 0.5rem;
 }
 
 .fa-inverse {
@@ -292,11 +293,17 @@ nav {
     .major_title;
     margin: 0 auto;
     font-size: 1.5em;
+    white-space: normal;
+  }
+
+  h3 {
+    padding-left: 0.5em;
+    white-space: normal;
   }
 
   p {
     padding-left: 0.5em;
-    font-size: 1.25em;
+    font-size: 1em;
   }
 }
 
@@ -339,6 +346,7 @@ footer {
 #contributors_links {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   margin: 1rem 0 1rem 1rem;
   overflow: hidden;
@@ -351,19 +359,20 @@ footer {
         background-size: contain;
         background-position: center center;
         margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
 
         &:hover {
             -webkit-animation: tada 2s linear infinite;
             animation: tada 2s linear infinite;
         }
     }
-}
+  }
 
 /* OTHER PAGES */
 
 .indent_links {
     a {
-        padding-left: 3rem;
+        padding-left: 1rem;
     }
 }
 
@@ -455,11 +464,18 @@ footer {
     grid-row: 1;
 
     p {
+      font-size: 1.25em;
       padding-left: 1rem;
     }
 
     h1 {
       margin-top: 2rem;
+    }
+  }
+
+  .text_section {
+    p {
+      font-size: 1.25em;
     }
   }
 
@@ -523,6 +539,18 @@ footer {
     }
   }
 
+  #contributors_links {
+    flex-wrap: nowrap;
+    a {
+      margin-bottom: 0;
+    }
+  }
+
+  .indent_links {
+    a {
+        padding-left: 3rem;
+    }
+  }
   .text_section {
     padding: 1rem 2rem;
   }
