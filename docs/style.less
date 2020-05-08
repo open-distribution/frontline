@@ -112,7 +112,6 @@ body {
     display: flex;
     flex-flow: column;
     min-height: 100vh;
-    padding: 0 0.5rem;
 }
 
 .fa-inverse {
@@ -265,7 +264,7 @@ nav {
 .home_main {
     display: grid;
     grid-template-columns: auto;
-    padding-top: 0px;
+    padding: 0px 0.5rem;
 }
 
 #intro, .text_section {
@@ -322,14 +321,15 @@ height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%!important; // fix for iOS devices https://stackoverflow.com/a/56926100
 }
 
 .twitter-tweet {
   .box_5;
 }
 
-#our_voice {
-  width: 100%;
+.twitter-timeline {
+  width: 100% !important;
 }
 
 footer {
@@ -419,16 +419,14 @@ footer {
   @map_height: calc(100vh - @fixed_height);
 
   header {
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 2;
+    height: @header_height;
+    width: 100%;
     background-color: @color_green_main;
     padding: 0 0.5rem;
     box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.25);
-  }
-
-  main {
-    flex: 1 0 auto;
   }
 
   nav {
@@ -451,11 +449,16 @@ footer {
     align-self: center;
   }
 
+  main {
+    margin: @header_height 0 @footer_height;
+    padding: 0 0.5rem 1rem;
+    align-items: center;
+  }
+
   .home_main {
+    display: grid;
     grid-template-columns: auto @map_width;
-    grid-gap: 12px;
-    margin-top: 0;
-    padding-left: 0.5rem;
+    grid-gap: 12px 0;
   }
 
   #intro {
@@ -498,30 +501,37 @@ footer {
   #feeds {
     grid-row: 2;
     grid-column: 1;
+    width: 100% !important;
 
     h2 {
       margin-top: 0;
     }
-  }
 
-  #needs {
-    display: inline-grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: space-evenly;
-    grid-auto-columns: min-content;
-    text-align: center;
-    width: 100%;
-    padding: 0 1% 2.5rem;
+    #needs {
+      display: inline-grid;
+      grid-template-columns: 1fr 1fr;
+      justify-content: space-evenly;
+      grid-auto-columns: min-content;
+      text-align: center;
+      width: 100%;
+      padding: 0 1% 2.5rem;
+    }
+
+    #our_voice {
+      min-width: 100%;
+      text-align: center;
+    }
   }
 
   footer {
-    position: sticky;
+    position: fixed;
     z-index: 2;
     bottom: 0;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     height: @footer_height;
+    width: 100%;
     box-shadow: -1px -6px 12px rgba(0, 0, 0, 0.3);
     margin-top: calc(0 - @footer_height);
     flex-shrink: 0;

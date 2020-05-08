@@ -439,7 +439,6 @@ body {
   display: flex;
   flex-flow: column;
   min-height: 100vh;
-  padding: 0 0.5rem;
 }
 .fa-inverse {
   color: #00966B !important;
@@ -563,7 +562,7 @@ nav ol span {
 .home_main {
   display: grid;
   grid-template-columns: auto;
-  padding-top: 0px;
+  padding: 0px 0.5rem;
 }
 #intro,
 .text_section {
@@ -630,6 +629,7 @@ nav ol span {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%!important;
 }
 .twitter-tweet {
   box-shadow: 6px 9px 12px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
@@ -638,8 +638,8 @@ nav ol span {
 .twitter-tweet:hover {
   box-shadow: 1px 7px 8px rgba(0, 0, 0, 0.95), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-#our_voice {
-  width: 100%;
+.twitter-timeline {
+  width: 100% !important;
 }
 footer {
   display: flex;
@@ -704,15 +704,14 @@ footer {
 }
 @media screen and (min-width: 881px) {
   header {
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 2;
+    height: 6rem;
+    width: 100%;
     background-color: #00966B;
     padding: 0 0.5rem;
     box-shadow: 0px 6px 11px rgba(0, 0, 0, 0.25);
-  }
-  main {
-    flex: 1 0 auto;
   }
   nav {
     width: auto;
@@ -731,11 +730,15 @@ footer {
     margin: 0;
     align-self: center;
   }
+  main {
+    margin: 6rem 0 4rem;
+    padding: 0 0.5rem 1rem;
+    align-items: center;
+  }
   .home_main {
+    display: grid;
     grid-template-columns: auto calc(100vw - 530px - 20px);
-    grid-gap: 12px;
-    margin-top: 0;
-    padding-left: 0.5rem;
+    grid-gap: 12px 0;
   }
   #intro {
     padding: 0 1rem 0 1rem;
@@ -769,11 +772,12 @@ footer {
   #feeds {
     grid-row: 2;
     grid-column: 1;
+    width: 100% !important;
   }
   #feeds h2 {
     margin-top: 0;
   }
-  #needs {
+  #feeds #needs {
     display: inline-grid;
     grid-template-columns: 1fr 1fr;
     justify-content: space-evenly;
@@ -782,14 +786,19 @@ footer {
     width: 100%;
     padding: 0 1% 2.5rem;
   }
+  #feeds #our_voice {
+    min-width: 100%;
+    text-align: center;
+  }
   footer {
-    position: sticky;
+    position: fixed;
     z-index: 2;
     bottom: 0;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     height: 4rem;
+    width: 100%;
     box-shadow: -1px -6px 12px rgba(0, 0, 0, 0.3);
     margin-top: calc(0 - 4rem);
     flex-shrink: 0;
