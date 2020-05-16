@@ -322,6 +322,15 @@ height: 400px;
   flex-direction: column;
   align-items: center;
   width: 100%!important; // fix for iOS devices https://stackoverflow.com/a/56926100
+
+  #needs {
+    width: 100% !important; //see above;
+  }
+}
+
+.grid-item {
+    display: flex;
+    justify-content: center;
 }
 
 .twitter-tweet {
@@ -513,7 +522,6 @@ footer {
       justify-content: space-evenly;
       grid-auto-columns: min-content;
       text-align: center;
-      width: 100%;
       padding: 0 1% 2.5rem;
     }
 
@@ -522,6 +530,10 @@ footer {
       text-align: center;
     }
   }
+
+  .grid-item {
+    display: block;
+}
 
   footer {
     position: fixed;

@@ -631,6 +631,13 @@ nav ol span {
   align-items: center;
   width: 100%!important;
 }
+#feeds #needs {
+  width: 100% !important;
+}
+.grid-item {
+  display: flex;
+  justify-content: center;
+}
 .twitter-tweet {
   box-shadow: 6px 9px 12px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -783,12 +790,14 @@ footer {
     justify-content: space-evenly;
     grid-auto-columns: min-content;
     text-align: center;
-    width: 100%;
     padding: 0 1% 2.5rem;
   }
   #feeds #our_voice {
     min-width: 100%;
     text-align: center;
+  }
+  .grid-item {
+    display: block;
   }
   footer {
     position: fixed;
